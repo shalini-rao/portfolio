@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shalini — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --text: #1c1c1c;
+    --accent: #2c9dc9;
+    --accent-hover: #1b627d;
+    --muted: #6b6b6b;
+    --border: rgba(28,28,28,0.12);
+    --card-bg: #ebebeb;
+    --tag-bg: rgba(44,157,201,0.10);
+    --tag-text: #1b627d;
+    --quote-bg: rgba(44,157,201,0.07);
+    --quote-border: #2c9dc9;
+    --meta-bg: rgba(44,157,201,0.08);
+    --nav-bg: rgba(245,245,245,0.88);
+  }
+  [data-theme="dark"] {
+    --bg: #1c1c1c;
+    --text: #f5f5f5;
+    --muted: #999;
+    --border: rgba(245,245,245,0.10);
+    --card-bg: #272727;
+    --tag-bg: rgba(44,157,201,0.15);
+    --tag-text: #5ec6e8;
+    --quote-bg: rgba(44,157,201,0.08);
+    --meta-bg: rgba(44,157,201,0.10);
+    --nav-bg: rgba(28,28,28,0.88);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Archivo', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
+  }
+
+  /* ══════════════════════════════════════
+     OPENING PAGE
+  ══════════════════════════════════════ */
+  #splash {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  #splash.exiting {
+    animation: splashExit 0.8s cubic-bezier(0.76,0,0.24,1) forwards;
+  }
+  @keyframes splashExit {
+    0%  { opacity:1; transform:scale(1); }
+    100%{ opacity:0; transform:scale(1.03); pointer-events:none; }
+  }
+
+  /* Pastel blobs */
+  .blob-canvas { position:absolute; inset:0; overflow:hidden; }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(72px);
+    opacity: 0.52;
+    will-change: transform;
+  }
+  .b1{ width:500px;height:500px;background:#b8d8f8;top:-100px;left:-80px;animation:bm1 22s ease-in-out infinite alternate; }
+  .b2{ width:440px;height:440px;background:#d4b8f8;bottom:-80px;right:-60px;animation:bm2 26s ease-in-out infinite alternate; }
+  .b3{ width:380px;height:380px;background:#f8b8d8;top:42%;left:32%;animation:bm3 18s ease-in-out infinite alternate; }
+  .b4{ width:330px;height:330px;background:#b8f0d8;top:12%;right:8%;animation:bm4 24s ease-in-out infinite alternate; }
+  .b5{ width:290px;height:290px;background:#b8e8f8;bottom:18%;left:10%;animation:bm5 20s ease-in-out infinite alternate; }
+  .b6{ width:250px;height:250px;background:#e8d4f8;top:62%;right:22%;animation:bm6 16s ease-in-out infinite alternate; }
+  @keyframes bm1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(150px,110px) scale(1.2)}}
+  @keyframes bm2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-130px,-90px) scale(1.22)}}
+  @keyframes bm3{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-110px,130px) scale(0.86)}}
+  @keyframes bm4{0%{transform:translate(0,0) scale(1)}100%{transform:translate(90px,150px) scale(1.14)}}
+  @keyframes bm5{0%{transform:translate(0,0) scale(1)}100%{transform:translate(120px,-100px) scale(1.18)}}
+  @keyframes bm6{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-80px,-120px) scale(1.1)}}
+
+  .splash-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 64px;
+  }
+  .splash-text {
+    font-size: clamp(20px, 3.2vw, 34px);
+    font-weight: 700;
+    color: #1c1c1c;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    min-height: 2.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cursor {
+    display: inline-block;
+    width: 2px; height: 1em;
+    background: #1c1c1c;
+    margin-left: 3px;
+    vertical-align: middle;
+    animation: blink 0.85s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  #enter-btn {
+    margin-top: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 38px;
+    border-radius: 50px;
+    border: 2px solid var(--accent);
+    font-family: 'Archivo', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    color: var(--accent);
+    transition: background 0.45s ease, color 0.45s ease, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+  #enter-btn.filled { background: var(--accent); color: #fff; }
+  #enter-btn:hover  { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; transform: translateY(-1px); }
+
+  /* ══════════════════════════════════════
+     MAIN SITE
+  ══════════════════════════════════════ */
+  #site { opacity:0; transition: opacity 0.6s ease; }
+  #site.visible { opacity:1; }
+
+  /* Theme toggle — fixed, always on top */
+  #theme-toggle {
+    position: fixed;
+    top: 16px; right: 24px;
+    z-index: 9999;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 7px 0;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    cursor: pointer;
+    font-family: 'Archivo', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+    white-space: nowrap;
+  }
+  #theme-toggle:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  #theme-toggle svg { width:14px; height:14px; flex-shrink:0; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 500;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 140px 0 48px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s, opacity 0.35s, transform 0.35s;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+  }
+  nav.visible, nav.pinned {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+  .nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+  .nav-links li { display:flex; align-items:center; height:56px; }
+  .nav-links a {
+    font-size: 14px; font-weight:500; color:var(--muted);
+    text-decoration:none; transition:color 0.2s; letter-spacing:0.01em;
+    display:flex; align-items:center; line-height:1;
+  }
+  .nav-links a:hover { color:var(--accent); }
+
+  /* Pages */
+  .page { display:none; }
+  .page.active { display:block; }
+
+  /* ══════════════════════════════════════
+     LANDING PAGE
+  ══════════════════════════════════════ */
+  #home { padding-top: 0; }
+
+  .home-hero {
+    padding: 100px 80px 64px;
+    max-width: 900px;
+  }
+  .home-hero h1 {
+    font-size: clamp(28px, 4.2vw, 50px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .home-hero p {
+    font-size: 18px; font-weight:400; line-height:1.75;
+    color: var(--muted); max-width:700px; margin-bottom:28px;
+  }
+  .home-hero p a {
+    color:var(--accent); text-decoration:none; font-weight:600;
+    border-bottom: 1.5px solid transparent; transition:border-color 0.2s;
+  }
+  .home-hero p a:hover { border-color:var(--accent); }
+
+  .hobbies-shoutout {
+    display: inline-flex; align-items:center; gap:8px;
+    padding: 11px 22px;
+    border: 1px solid var(--border); border-radius:50px;
+    font-size:14px; font-weight:500; color:var(--muted);
+    text-decoration:none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    background: var(--card-bg);
+  }
+  .hobbies-shoutout:hover { border-color:var(--accent); color:var(--accent); }
+
+  /* Project banners */
+  .project-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    border-top: 1px solid var(--border);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .project-banner:hover { background: var(--card-bg); }
+  .project-banner.reverse { direction:rtl; }
+  .project-banner.reverse > * { direction:ltr; }
+
+  .project-banner-img {
+    background: var(--card-bg);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden; min-height:420px;
+  }
+  .project-banner-img img {
+    width:100%; height:100%; object-fit:cover;
+    transition:transform 0.6s cubic-bezier(.25,.46,.45,.94);
+  }
+  .project-banner:hover .project-banner-img img { transform:scale(1.03); }
+
+  .img-placeholder {
+    width:100%; height:100%; min-height:420px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:12px; color:var(--muted); font-size:13px; font-weight:500;
+    background: linear-gradient(135deg, var(--card-bg), var(--bg));
+    border: 2px dashed var(--border);
+  }
+  .img-placeholder .img-icon { font-size:26px; opacity:0.35; }
+  .img-placeholder .img-filename { font-size:11px; font-weight:600; letter-spacing:.06em; color:var(--accent); opacity:.7; font-family:monospace; }
+
+  .project-banner-info {
+    padding: 56px;
+    display:flex; flex-direction:column; justify-content:center; gap:20px;
+  }
+  .project-number { font-size:11px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); }
+  .project-banner-title { font-size:clamp(18px,2.1vw,28px); font-weight:800; letter-spacing:-0.02em; line-height:1.22; color:var(--text); }
+  .project-banner-meta { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .project-meta-item label { display:block; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+  .project-meta-item span { font-size:13px; font-weight:500; color:var(--text); line-height:1.4; }
+  .project-tags { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { padding:5px 12px; border-radius:50px; font-size:11px; font-weight:600; letter-spacing:.04em; background:var(--tag-bg); color:var(--tag-text); border:1px solid rgba(44,157,201,.2); }
+  .enter-hint {
+    font-size:13px; font-weight:500; color:var(--accent);
+    display:flex; align-items:center; gap:6px;
+    opacity:0; transform:translateX(-8px);
+    transition:opacity 0.3s, transform 0.3s;
+  }
+  .project-banner:hover .enter-hint { opacity:1; transform:translateX(0); }
+
+  /* Contact */
+  #contact { padding:80px; border-top:1px solid var(--border); }
+  .contact-label { font-size:11px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-bottom:28px; }
+  .contact-links { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .contact-btn {
+    display:inline-flex; align-items:center; gap:10px;
+    padding:13px 28px; border-radius:50px; text-decoration:none;
+    font-size:14px; font-weight:600; letter-spacing:.01em;
+    transition:background 0.2s, transform 0.15s, border-color 0.2s;
+  }
+  .contact-btn.primary { background:var(--accent); color:#fff; border:2px solid var(--accent); }
+  .contact-btn.primary:hover { background:var(--accent-hover); border-color:var(--accent-hover); transform:translateY(-1px); }
+  .contact-btn.secondary { background:transparent; color:var(--text); border:2px solid var(--border); }
+  .contact-btn.secondary:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+
+  /* ══════════════════════════════════════
+     PROJECT PAGES
+  ══════════════════════════════════════ */
+  .project-page { padding-top:56px; }
+
+  .project-header { padding:64px 80px 56px; max-width:1100px; border-bottom:1px solid var(--border); }
+  .back-link {
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; color:var(--muted);
+    text-decoration:none; margin-bottom:36px; letter-spacing:.02em;
+    transition:color 0.2s;
+  }
+  .back-link:hover { color:var(--accent); }
+  .project-title { font-size:clamp(24px,3.5vw,44px); font-weight:900; letter-spacing:-0.03em; line-height:1.1; color:var(--text); margin-bottom:40px; }
+
+  .project-callout { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); background:var(--meta-bg); border:1px solid rgba(44,157,201,.2); border-radius:16px; overflow:hidden; }
+  .callout-item { padding:24px 28px; border-right:1px solid rgba(44,157,201,.15); }
+  .callout-item:last-child { border-right:none; }
+  .callout-item label { display:block; font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .callout-item p { font-size:14px; font-weight:500; color:var(--text); line-height:1.5; }
+  .callout-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+
+  .project-body { max-width:860px; margin:0 auto; padding:64px 80px 80px; }
+
+  .project-section { margin-bottom:72px; opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
+  .project-section.visible { opacity:1; transform:translateY(0); }
+
+  .section-heading    { font-size:26px; font-weight:800; letter-spacing:-0.02em; color:var(--text); margin-bottom:24px; line-height:1.25; }
+  .subsection-heading { font-size:19px; font-weight:700; letter-spacing:-0.015em; color:var(--text); margin-bottom:16px; margin-top:40px; line-height:1.3; }
+  .subsubsection-heading { font-size:15px; font-weight:700; letter-spacing:.01em; color:var(--text); margin-bottom:12px; margin-top:28px; }
+
+  .project-body p { font-size:16px; font-weight:400; line-height:1.8; color:var(--text); margin-bottom:20px; }
+  .project-body p em { font-style:italic; }
+  .project-body p strong { font-weight:700; }
+  .project-body ul, .project-body ol { margin-bottom:20px; padding-left:24px; }
+  .project-body li { font-size:16px; line-height:1.75; color:var(--text); margin-bottom:8px; }
+  .project-body li strong { font-weight:700; }
+
+  .quote-callout {
+    margin:32px 0; padding:28px 32px;
+    background:var(--quote-bg); border-left:3px solid var(--quote-border); border-radius:0 12px 12px 0;
+    font-size:17px; font-weight:500; font-style:italic; line-height:1.65; color:var(--text); position:relative;
+  }
+  .quote-callout::before { content:'"'; position:absolute; top:-8px; left:24px; font-size:58px; font-weight:900; color:var(--accent); opacity:.18; line-height:1; font-style:normal; }
+
+  .figma-btn {
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 28px; background:var(--accent); color:#fff;
+    border-radius:50px; text-decoration:none; font-size:14px; font-weight:600; letter-spacing:.02em;
+    transition:background 0.2s, transform 0.15s; margin:8px 0;
+  }
+  .figma-btn:hover { background:var(--accent-hover); transform:translateY(-1px); }
+
+  .project-image { margin:32px 0; border-radius:12px; overflow:hidden; border:1px solid var(--border); }
+  .project-image img { width:100%; display:block; }
+  .image-caption { padding:12px 16px; background:var(--card-bg); font-size:12px; font-weight:500; color:var(--muted); letter-spacing:.02em; line-height:1.5; }
+  .project-image .img-placeholder { min-height:280px; border-radius:0; border:none; }
+
+  .key-decisions { background:var(--card-bg); border-radius:12px; padding:28px 32px; margin:24px 0; }
+  .key-decisions h4 { font-size:11px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; }
+  .key-decisions ul { padding-left:20px; margin:0; }
+  .key-decisions li { font-size:15px; line-height:1.7; color:var(--text); margin-bottom:10px; }
+  .key-decisions li strong { font-weight:700; }
+
+  .project-nav-footer { border-top:1px solid var(--border); display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:32px 80px; gap:24px; }
+  .proj-nav-link { display:flex; flex-direction:column; gap:6px; text-decoration:none; padding:16px 20px; border-radius:12px; border:1px solid var(--border); transition:border-color 0.2s, background 0.2s; max-width:280px; }
+  .proj-nav-link:hover { border-color:var(--accent); background:var(--card-bg); }
+  .proj-nav-link .nav-dir { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+  .proj-nav-link .nav-title { font-size:13px; font-weight:600; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:220px; }
+  .proj-nav-link.next { margin-left:auto; text-align:right; }
+  .back-home-link { text-align:center; font-size:13px; font-weight:600; color:var(--muted); text-decoration:none; display:flex; flex-direction:column; align-items:center; gap:4px; transition:color 0.2s; }
+  .back-home-link:hover { color:var(--accent); }
+
+  /* Hobbies */
+  #hobbies { padding-top:56px; }
+  .hobbies-header { padding:80px 80px 40px; border-bottom:1px solid var(--border); }
+  .hobbies-header h1 { font-size:clamp(28px,4vw,48px); font-weight:900; letter-spacing:-0.03em; color:var(--text); margin-bottom:16px; }
+  .hobbies-header p { font-size:16px; color:var(--muted); }
+  .hobbies-grid { padding:64px 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px; }
+  .hobby-placeholder { aspect-ratio:4/3; background:var(--card-bg); border:2px dashed var(--border); border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--muted); font-size:13px; font-weight:500; }
+  .hobby-placeholder .ph-icon { font-size:24px; opacity:.3; }
+
+  /* fade-in */
+  .fade-in { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity:1; transform:translateY(0); }
+
+  @media(max-width:768px){
+    .project-banner{ grid-template-columns:1fr; min-height:auto; }
+    .project-banner.reverse{ direction:ltr; }
+    .project-header,.project-body,.project-nav-footer{ padding-left:24px; padding-right:24px; }
+    nav{ padding:0 120px 0 20px; }
+    .home-hero{ padding:80px 24px 40px; }
+    .project-nav-footer{ grid-template-columns:1fr 1fr; }
+    .back-home-link{ display:none; }
+    .hobbies-header,.hobbies-grid{ padding-left:24px; padding-right:24px; }
+    .splash-content{ padding:32px 24px; }
+    #contact{ padding:60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ OPENING PAGE ══════════════ -->
+<div id="splash">
+  <div class="blob-canvas">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="blob b4"></div><div class="blob b5"></div><div class="blob b6"></div>
+  </div>
+  <div class="splash-content">
+    <div class="splash-text">
+      <span id="typing-text"></span><span class="cursor"></span>
+    </div>
+    <button id="enter-btn" onclick="enterSite()">Come on in &nbsp;→</button>
+  </div>
+</div>
+
+<!-- ══════════════ MAIN SITE ══════════════ -->
+<div id="site">
+
+  <!-- Theme toggle (always fixed, no emoji) -->
+  <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg id="t-icon" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5"/>
+      <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+      <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+    <span id="t-label">Light</span>
+  </button>
+
+  <!-- Nav -->
+  <nav id="main-nav">
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home',event)">Work</a></li>
+      <li><a href="YOUR_RESUME_PDF_URL_HERE" target="_blank" rel="noopener">Resume</a></li>
+      <li><a href="#" onclick="showPage('hobbies',event)">Life outside design</a></li>
+      <li><a href="#" onclick="scrollToContact(event)">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══════════════ LANDING PAGE ══════════════ -->
+  <div id="home" class="page active">
+    <div class="home-hero fade-in">
+      <h1>Hi! I'm Shalini, a strategy-minded product designer.</h1>
+      <p>I've been designing for 3.5 years at <a href="https://www.arcxp.com/" target="_blank" rel="noopener">Arc XP</a>, the AI-driven B2B SaaS content management system owned and distributed by The Washington Post. I've been lead designer on our <a href="https://www.arcxp.com/products/video-center/" target="_blank" rel="noopener">digital asset management</a> products, enabling newsroom and broadcast companies to store, distribute, and monetize their digital content.</p>
+      <a href="#" class="hobbies-shoutout" onclick="showPage('hobbies',event)">🎨 &nbsp;Curious what I get up to outside of work? →</a>
+    </div>
+
+    <!-- PROJECT 1 -->
+    <div class="project-banner fade-in" onclick="showProject(0)">
+      <div class="project-banner-img"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">VE2_hero.png</span></div></div>
+      <div class="project-banner-info">
+        <div class="project-number">01</div>
+        <div class="project-banner-title">Accelerating the video lifecycle with AI-assisted workflows by utilizing quantitative insights</div>
+        <div class="project-banner-meta">
+          <div class="project-meta-item"><label>Objective</label><span>Streamline video create-to-publish pipeline</span></div>
+          <div class="project-meta-item"><label>Result</label><span>Reduced time to publish by over 50%</span></div>
+          <div class="project-meta-item"><label>My Role</label><span>Product Designer &amp; User Researcher</span></div>
+        </div>
+        <div class="project-tags"><span class="tag">User Testing</span><span class="tag">Data Driven</span><span class="tag">Design Systems</span></div>
+        <div class="enter-hint">View case study →</div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-banner reverse fade-in" onclick="showProject(1)">
+      <div class="project-banner-img"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio_hero_v2.png</span></div></div>
+      <div class="project-banner-info">
+        <div class="project-number">02</div>
+        <div class="project-banner-title">Launching audio asset management to combat churn and "passive" reader behavior from AI prototype</div>
+        <div class="project-banner-meta">
+          <div class="project-meta-item"><label>Objective</label><span>Expand platform value for audio distribution</span></div>
+          <div class="project-meta-item"><label>Result</label><span>New audio asset type offering launched</span></div>
+          <div class="project-meta-item"><label>My Role</label><span>Product Designer</span></div>
+        </div>
+        <div class="project-tags"><span class="tag">AI Prototyping</span><span class="tag">0→1 Product</span><span class="tag">Content Strategy</span></div>
+        <div class="enter-hint">View case study →</div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-banner fade-in" onclick="showProject(2)">
+      <div class="project-banner-img"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card_hero.png</span></div></div>
+      <div class="project-banner-info">
+        <div class="project-number">03</div>
+        <div class="project-banner-title">Crafting a composable card component to accommodate varying asset form factors</div>
+        <div class="project-banner-meta">
+          <div class="project-meta-item"><label>Objective</label><span>Unify card components across 10+ products</span></div>
+          <div class="project-meta-item"><label>Result</label><span>Fully composable, flexible card system</span></div>
+          <div class="project-meta-item"><label>My Role</label><span>Lead Designer</span></div>
+        </div>
+        <div class="project-tags"><span class="tag">Design Systems</span><span class="tag">Component Design</span><span class="tag">Audit &amp; Discovery</span></div>
+        <div class="enter-hint">View case study →</div>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="project-banner reverse fade-in" onclick="showProject(3)">
+      <div class="project-banner-img"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful_hero.png</span></div></div>
+      <div class="project-banner-info">
+        <div class="project-number">04</div>
+        <div class="project-banner-title">Gamifying music education to improve theory retention in children and adults</div>
+        <div class="project-banner-meta">
+          <div class="project-meta-item"><label>Objective</label><span>Teacher-facing dashboard for Noteful app</span></div>
+          <div class="project-meta-item"><label>Result</label><span>Full rebrand + classroom management tool</span></div>
+          <div class="project-meta-item"><label>My Role</label><span>Product Manager &amp; Co-designer</span></div>
+        </div>
+        <div class="project-tags"><span class="tag">User Research</span><span class="tag">PM Strategy</span><span class="tag">Visual Design</span></div>
+        <div class="enter-hint">View case study →</div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact">
+      <p class="contact-label">Contact</p>
+      <div class="contact-links">
+        <a href="mailto:raoshalinid@gmail.com" class="contact-btn primary">Email me →</a>
+        <a href="https://www.linkedin.com/in/shalinidrao/" target="_blank" rel="noopener" class="contact-btn secondary">LinkedIn →</a>
+      </div>
+    </div>
+  </div><!-- /home -->
+
+  <!-- ══════════════ PROJECT 1: VIDEO ══════════════ -->
+  <div id="project-0" class="page project-page">
+    <div class="project-header">
+      <a href="#" class="back-link" onclick="goHome(event)">← Back to work</a>
+      <h1 class="project-title">Accelerating the video lifecycle with AI-assisted workflows by utilizing quantitative insights</h1>
+      <div class="project-callout">
+        <div class="callout-item"><label>Objective</label><p>Streamline video create-to-publish pipeline and create a more intuitive workflow across the platform</p></div>
+        <div class="callout-item"><label>Result</label><p>Reduced time to publish by over 50%</p></div>
+        <div class="callout-item"><label>My Role</label><p>Product Designer and User Researcher</p></div>
+        <div class="callout-item"><label>Tags</label><div class="callout-tags"><span class="tag">User Testing</span><span class="tag">Data Driven</span><span class="tag">Design Systems</span></div></div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div class="project-image project-section"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">VE2_hero.png</span></div></div>
+      <div class="project-section">
+        <h2 class="section-heading">Arc XP is modernizing Video Center's video editing workflow in order to make this user interface more consistent with other Arc editorial applications, so that uploading and editing a video is faster and more intuitive.</h2>
+        <p>The page in Video Center where customers can upload videos, add metadata, and publish (<em><strong>what we call the "Video Edit page"</strong></em>) is a relatively old piece of software.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Legacy_VOD_Edit.png</span></div></div>
+        <p>Arc has made significant changes to the Video Edit page over time to add new functionality, but the fundamental user interface has not changed. And that user interface is inconsistent with our other Arc apps because Arc didn't even exist as an idea yet when it was first built.</p>
+        <p>The Video Edit page is where our customers spend most of their time within Video Center. The average visitor session is nearly 20 minutes. We aimed to kill a few birds with one stone in this initiative:</p>
+        <ol>
+          <li><strong>Make the Video editing UX more consistent with our editorial application's UX</strong>, so our users don't have the headache of adapting to inconsistent UIs to accomplish the same action in our different applications</li>
+          <li><strong>Leverage our design system components</strong>, so that in the future we can deliver new features more quickly on the Video Edit page and across the other asset creation apps as a whole.</li>
+          <li><strong>Address some long-standing UI pain points</strong> that have been brought up by customers over their long history with the product</li>
+          <li><strong>Emphasize recent piecemeal improvements</strong> that were shoe-horned into legacy experience that can now be effectively integrated into workflows</li>
+          <li><strong>All publish actions consolidated</strong> to streamline key desired outcome</li>
+        </ol>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Video_Center_Usecases.png</span></div><div class="image-caption">Main use cases for the video management product in question</div></div>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Initial user research</h3>
+        <p>We ran a survey across several of our customer organizations to hear from direct users their pain points with the legacy experience. We received 70+ responses from 10+ customer organizations. There was an overall negative opinion of the ease of use for the product and a strong desire for a full overhaul of the entire experience.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Legacy_VOD_Edit_Opinion_scale.png</span></div></div>
+        <p>Some main pain points were:</p>
+        <ul>
+          <li>Lack of accuracy in selecting clip start and end points</li>
+          <li>Too much scrolling to find key fields</li>
+          <li>Too many clicks to get to the final publish</li>
+          <li>No transparency for next required steps or the user's position in the process</li>
+        </ul>
+        <p>The survey made clear that there were two main personas who frequented the Video Edit page.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">VE2_personas.png</span></div></div>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Discovery and Constraints</h3>
+        <p>We utilized Datadog to collect click data and session tracking to determine priority workflows and break up the work into MVP/beta release, full feature release, and what was headed for deprecation.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Jira screenshot</span></div><div class="image-caption">Jira tickets tagged with click data, corresponding UI element, and prioritization</div></div>
+        <p>Since the legacy UI was both archaic and convoluted, technical constraints were a large consideration at every turn of the work. Spikes needed to be investigated and backend logistics were heavy influences in deciding how each UI element was to be ported into a newly redesigned editing experience.</p>
+        <p>Also, since maintaining parity with our editorial application and leveraging as many existing components as possible were two main goals, fields and workflows that could be directly pasted in were also prioritized for MVP.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">VE2_Lofi_vision.png</span></div><div class="image-caption">Low fidelity direction for leadership to approve buy in</div></div>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Designing for MVP</h3>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">lofi screenshot</span></div><div class="image-caption">MVP functionality included a front-loaded object creation modal and pared down metadata fields</div></div>
+        <div class="key-decisions"><h4>Key design decisions</h4><ul>
+          <li><strong>Tabbed format</strong> to organize related fields together and minimize scrolling</li>
+          <li><strong>Two-pane screen</strong> allowing metadata to be viewed side by side with the video player</li>
+          <li><strong>Front load all required fields</strong> for initial save so valid object can be created as quickly as possible</li>
+          <li><strong>Strong parallels to other applications</strong> in the platform to ease learning curve between products</li>
+        </ul></div>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Final design solution</h3>
+        <p>After an initial round of user testing with employees of our MVP from three different customer organizations, we received feedback to inform the full release with 1 to 1 parity with the legacy experience.</p>
+        <div class="quote-callout">"Having the tab setup with the new editor, there's less of us scrolling up and down to change things or fix things ... so that is definitely overall aesthetically really nice."</div>
+        <ul><li>Using similar structure to other apps is lowering barrier to entry for employees to work across several products</li></ul>
+        <div class="quote-callout">"We would probably stay in the old editor until adding related stories was added into the new editor"</div>
+        <ul><li>We missed some key workflows when defining the MVP functionality — data isn't everything</li></ul>
+        <div class="quote-callout">"It's strange to see the word circulation just because that feels more like a news like it feels more like a newspaper and less a video related, more digital, digitally focused or worded."</div>
+        <ul><li>We need to use more video-centric terminology to keep the use cases separate</li></ul>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Figma wireframes and extra states</h3>
+        <a href="https://www.figma.com/design/SCDFy7QneEIQgjLnlBIm3Q/Video-Edit-Redesign?node-id=0-1&t=phF6Spi9yOYhIcfg-1" target="_blank" rel="noopener" class="figma-btn">View in Figma →</a>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Final thoughts</h3>
+        <p>This was a long overdue and highly anticipated redesign both within our company's engineering team and our customers' organizations. Strongly positive feedback was received on both ends. I consulted with the lead front-end engineers who would be taking on the work and created development documentation with according acceptance criteria. Each component and field section was rounded out with empty, error, and filled states.</p>
+        <p>Some positive feedback from our customers upon beta release:</p>
+        <div class="quote-callout">"It's digestible, especially because when you're looking at the current Video Center, it's just a lot happening. This is 1 thing at a time, which I think is nice actually"</div>
+        <div class="quote-callout">"For me, it works. Tabs is better than scrolling to see all the the metadata in the page."</div>
+        <div class="quote-callout">"The fact that I know Composer [editorial application] actually helps a lot with this because I've already learned this"</div>
+      </div>
+    </div>
+    <div class="project-nav-footer">
+      <div></div>
+      <a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>
+      <a href="#" class="proj-nav-link next" onclick="showProject(1,event)"><span class="nav-dir">Next →</span><span class="nav-title">Launching audio asset management...</span></a>
+    </div>
+  </div>
+
+  <!-- ══════════════ PROJECT 2: AUDIO ══════════════ -->
+  <div id="project-1" class="page project-page">
+    <div class="project-header">
+      <a href="#" class="back-link" onclick="goHome(event)">← Back to work</a>
+      <h1 class="project-title">Launching audio asset management to combat churn and "passive" reader behavior from AI prototype</h1>
+      <div class="project-callout">
+        <div class="callout-item"><label>Objective</label><p>Increase platform's value proposition for accessibility, reader engagement, and cross-platform distribution by offering audio asset management</p></div>
+        <div class="callout-item"><label>Result</label><p>Expanded asset type offering to include audio</p></div>
+        <div class="callout-item"><label>My Role</label><p>Product Designer</p></div>
+        <div class="callout-item"><label>Tags</label><div class="callout-tags"><span class="tag">AI Prototyping</span><span class="tag">0→1 Product</span><span class="tag">Content Strategy</span></div></div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div class="project-image project-section"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio_hero_v2.png</span></div></div>
+      <div class="project-section">
+        <p>As demand for audio-based content grows, the platform aims to offer a deeply personalized experience where readers who prefer audio can consume content in a new modality.</p>
+        <p>With full platform support for the audio modality, we seek to attract a range of customers including:</p>
+        <ul>
+          <li><strong>Enable newsrooms whose primary form of storytelling is Audio</strong> (radio broadcasters, podcasters) to bring that content to their site experience in the same way that video broadcasters do today.</li>
+          <li><strong>Enable newsrooms whose primary format is text to deliver audio experiences</strong>. Arc XP customers need a centralized solution to manage text-to-speech (TTS) audio articles and short-form audio clips</li>
+        </ul>
+        <p>I used Figma Make to create a rudimentary initial mockup of an audio management system following our existing patterns for asset landing pages. This one prototype proved to be instrumental in getting leadership buy-in and informed much of the later design iterations.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio AI prototype.png</span></div></div>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Critical Path</h3>
+        <p>Since this was an entirely new product offering, the critical path was defined to include all basic asset management functionality.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio critical path.png</span></div></div>
+        <p>In the effort to further the efforts to provide a unified asset selection experience (with the potential future of fully consolidating all asset management products into one), we leveraged the tried and tested two-pane asset edit format that had been implemented for written stories and video assets.</p>
+        <p>There had also been previous POC work done by engineering to create a new audio player with integrated thumbnails to be used across all products. This work informed how each audio object would behave in different experiences.</p>
+        <p>From here, I designed the landing page where users could search for audio objects, which would then be used in a modal form to allow users in the editorial experience to add an audio asset to their written content.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">audio_landing_page.png</span></div><div class="image-caption">Here, a user can browse or search for existing audio objects and create a new file.</div></div>
+        <p>I created the edit page to parallel the asset edit experiences in other products, with a smaller number of fields and simplified view for the first release of audio modality support.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">audio_edit_page.png</span></div><div class="image-caption">Here, a user can fill out the metadata for the object and upload the audio file.</div></div>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Moving into integrated workflows and AI-assisted generation</h3>
+        <p>The main goal for providing audio as an asset option was to <strong>enable newsrooms to leverage the audio modality to boost reader retention.</strong> Text-to-Speech (TTS) and consuming written content in an audio format is a burgeoning medium many platforms are using to combat reader churn.</p>
+        <p>There was already previous work done to integrate an AI Assistant into the editorial tool Composer that provided suggestions for metadata fields. This provided a landscape to add TTS functionality that could aid in the writing process.</p>
+        <p>There were a few design iterations to leverage the existing card design for audio objects. It demonstrated a need for a larger card design to be used in editorial applications and to leverage the functional thumbnail player.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">AIA TTS variations.png</span></div></div>
+        <p>From here, we evaluated how the audio element would fit inline in the editorial experience. Since there is still work to be done to investigate how child objects would be treated in a larger sense, the first iteration utilized the full size audio card.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">TTS_AIA.png</span></div><div class="image-caption">Users can generate an audio file narrating their written content and insert it into their story.</div></div>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Audio card design</h3>
+        <p>Each integration and presentation of an audio object required different information to be surfaced. The form factor of each card was defined by where the object would be integrated.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio cards.png</span></div></div>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Engineering handoff</h3>
+        <p>I prepared the work for our developers by crafting documentation with each relevant state and UI elements with the acceptance criteria to outline the expected behavior.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio dev doc.png</span></div></div>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Using AI prototyping to think ahead</h3>
+        <p>There was an outlined future phase of work that would eventually allow us to support podcasts, as so many media organizations are creating to keep up with changing content consumption habits. I utilized Figma Make to think ahead on how a podcast management system would fit into the existing audio tool.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Podcast.png</span></div></div>
+      </div>
+    </div>
+    <div class="project-nav-footer">
+      <a href="#" class="proj-nav-link" onclick="showProject(0,event)"><span class="nav-dir">← Previous</span><span class="nav-title">Accelerating the video lifecycle...</span></a>
+      <a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>
+      <a href="#" class="proj-nav-link next" onclick="showProject(2,event)"><span class="nav-dir">Next →</span><span class="nav-title">Crafting a composable card component...</span></a>
+    </div>
+  </div>
+
+  <!-- ══════════════ PROJECT 3: CARD ══════════════ -->
+  <div id="project-2" class="page project-page">
+    <div class="project-header">
+      <a href="#" class="back-link" onclick="goHome(event)">← Back to work</a>
+      <h1 class="project-title">Crafting a composable card component to accommodate varying asset form factors</h1>
+      <div class="project-callout">
+        <div class="callout-item"><label>Objective</label><p>Create a card component that can accommodate all use cases across 10+ products to unify the landing page views cross-platform</p></div>
+        <div class="callout-item"><label>Result</label><p>A fully composable card component with swappable content areas and flexible layout</p></div>
+        <div class="callout-item"><label>My Role</label><p>Lead Designer</p></div>
+        <div class="callout-item"><label>Tags</label><div class="callout-tags"><span class="tag">Design Systems</span><span class="tag">Component Design</span><span class="tag">Audit &amp; Discovery</span></div></div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div class="project-image project-section"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card hero.png</span></div></div>
+      <div class="project-section">
+        <p>Arc XP has had several designers over a decade all working on each product independently with little collaboration. As each product evolved, so did their design needs. With no design system at the beginning, this resulted in each product having different card displays with different components.</p>
+        <p>In our third iteration of our design library, I endeavored to create one card component that would span all our products' use cases while maintaining a cohesive look and feel. With nearly a dozen products all utilizing a card component of some form in their landing pages, there was a task at hand to devise a comprehensive layout that would accommodate a wide range of information and size constraints.</p>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Discovery and Refinement</h3>
+        <p>To begin, I audited all existing cards used across our 10+ products.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card examples.png</span></div></div>
+        <p>There was a concrete list of data points and types to be displayed on a card, which required some amount of prescription to create a unified layout and designated placement for specific content elements.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card elements.png</span></div></div>
+        <p>From here, it became clear that there were two main form factors of cards: a single row card and 2+ row card.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card layouts.png</span></div></div>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Final Component</h3>
+        <div class="key-decisions"><h4>Key design decisions</h4><ul>
+          <li>Title and overflow menu have fixed positions</li>
+          <li>Each data point is composable and swappable</li>
+          <li>Single row card rounded corners to match use cases on search results page and table rows</li>
+          <li>Optional extra rows and footer with swappable content areas</li>
+        </ul></div>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card components.png</span></div></div>
+      </div>
+      <div class="project-section">
+        <h3 class="section-heading">Component Applications</h3>
+        <p>To stress test the cards, I asked my fellow designers to use the component to match their existing use cases in their respective products.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card single row applications.png</span></div></div>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card multirow applications.png</span></div></div>
+      </div>
+    </div>
+    <div class="project-nav-footer">
+      <a href="#" class="proj-nav-link" onclick="showProject(1,event)"><span class="nav-dir">← Previous</span><span class="nav-title">Launching audio asset management...</span></a>
+      <a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>
+      <a href="#" class="proj-nav-link next" onclick="showProject(3,event)"><span class="nav-dir">Next →</span><span class="nav-title">Gamifying music education...</span></a>
+    </div>
+  </div>
+
+  <!-- ══════════════ PROJECT 4: NOTEFUL ══════════════ -->
+  <div id="project-3" class="page project-page">
+    <div class="project-header">
+      <a href="#" class="back-link" onclick="goHome(event)">← Back to work</a>
+      <h1 class="project-title">Gamifying music education to improve theory retention in children and adults</h1>
+      <div class="project-callout">
+        <div class="callout-item"><label>Objective</label><p>Create teacher-facing interface of music theory education gamification app (Noteful) to expand into classroom applications</p></div>
+        <div class="callout-item"><label>Result</label><p>Rebranded color and type system for Noteful and fully designed teacher dashboard</p></div>
+        <div class="callout-item"><label>My Role</label><p>Product Manager and Co-designer</p></div>
+        <div class="callout-item"><label>Tags</label><div class="callout-tags"><span class="tag">User Research</span><span class="tag">PM Strategy</span><span class="tag">Visual Design</span></div></div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div class="project-image project-section"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful hero.png</span></div></div>
+      <div class="project-section">
+        <p>I worked with a local startup called <strong>Noteful</strong> that is building a mobile app aiming to make learning music theory engaging and fun for younger students.</p>
+        <p>I acted as product manager and client liaison, which required me to maintain our project vision, establish deadlines and interim deliverables, maintain our client relationship, and oversee our design, research, and implementation progress. In addition, I contributed to our interface designs, research process and biweekly presentations. <strong>I was also the main decision maker and advocate for both our client's needs as well as our users' needs.</strong> Since the startup was so new, there was a lot of room to strategize with the founder about the vision for the company and how our product would align with their goals.</p>
+      </div>
+      <div class="project-section">
+        <h2 class="section-heading">Background</h2>
+        <h4 class="subsubsection-heading">Noteful is a Pittsburgh-based startup created by a music teacher frustrated with the lack of flexibility and engagement with current music theory teaching methods.</h4>
+        <p>The founder, Becky, has been teaching music to students of all ages for over 25 years and found that both her teacher peers and her students were frustrated with the traditional pen and paper methods of teaching and practicing music theory. She decided to develop a music theory game app (taking inspiration from Duolingo) to make practicing key theory concepts and exercises more enjoyable for students of all ages.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful_mobile.png</span></div><div class="image-caption">Work in progress mobile game app at the time of the project</div></div>
+        <h4 class="subsubsection-heading">The foundation of all content on the app is Becky's time-tested curriculum called "FRESH Theory."</h4>
+        <p>FRESH Theory is an acronym for Form, Rhythm, Ear training, Staff, Harmony, and musical Terms. This will come up many times throughout the process of designing this interface, and will act as the guiding force for the information architecture and color branding later on.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful fresh theory.png</span></div></div>
+      </div>
+      <div class="project-section">
+        <h2 class="section-heading">Opportunity</h2>
+        <h4 class="subsubsection-heading">Music teachers are spread too thin to manage all their students while also keeping their theory education engaging and fun.</h4>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful solution chart.png</span></div></div>
+      </div>
+      <div class="project-section">
+        <h2 class="section-heading">Solution</h2>
+        <h3 class="subsection-heading">Summary Dashboard</h3>
+        <p>The overall dashboard page offers teachers access to easily digestible information about student performance and assignments. Teachers have the option to toggle between different classrooms and student views.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">summary dashboard.png</span></div></div>
+        <p><strong>Fresh Theory Mastery Widget</strong></p>
+        <p>The FRESH Theory Mastery widget is an <strong>essential component of what makes the Noteful teacher interface different</strong> from other classroom management systems. The specificity of the data analytics as it applies to the core foundation of the Noteful game and curriculum cannot be replicated on a different platform.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful mastery widget.png</span></div></div>
+        <h3 class="subsection-heading">Assignment Details</h3>
+        <p>On the individual assignment page, teachers can view <strong>all questions and lessons within an assignment</strong> they created as well as <strong>how each of their students scored</strong>. They have more freedom to sort and manage the information to fit their needs using the different sorting tools and filters.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">assignment details.png</span></div></div>
+        <h3 class="subsection-heading">Gradebook</h3>
+        <p>The gradebook page shows grades for each student by lesson. It offers a <strong>complete history of a student's performance since joining the class</strong>. Teachers can search by a variety of keywords including student name, assignment name, lesson name, keywords in assignment or lesson name.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">gradebook.png</span></div></div>
+        <h4 class="subsubsection-heading">We've set Noteful up to be the first music-oriented classroom management system of its kind that every music teacher will view as an essential part of their toolkit.</h4>
+        <p>Teachers can now leverage the autograded assignment data to make decisions on how they structure their lessons, whether they're 1:1 or in a classroom setting. They can see trends in student performance as well as callouts for specific topics and questions the students are struggling with.</p>
+      </div>
+      <div class="project-section">
+        <h2 class="section-heading">Visual Design</h2>
+        <p>Since the mobile app was still very much in development, there was <strong>no type system in place and only a single color swatch for a primary color.</strong> Since the dashboard is meant to be viewed in either laptop or tablet screen size, the typeface needed to minimize eye strain, especially for older users. We also modified the original primary color chosen by the Noteful team.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful typography.png</span></div></div>
+        <p><strong>FRESH Theory is the foundation of all the content within the Noteful mobile app and the color system heavily impacts the information architecture.</strong></p>
+        <p>The FRESH Theory colors are used to categorize questions and lessons, and help students keep track of what concepts they're working on. However, the original system created by the Noteful team had accessibility issues, as well as heavy overlap with necessary system colors such as success and error flags. We aimed to <strong>keep the playful personality of the app, but with more consideration for accessibility</strong>, higher contrast between the colors, and the creation of room for other system colors.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful color library.png</span></div></div>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful results benefits.png</span></div></div>
+      </div>
+      <div class="project-section">
+        <h2 class="section-heading">The Process</h2>
+        <h3 class="subsection-heading">Research</h3>
+        <p>Throughout the duration of the project, we conducted <strong>6 rounds of interviews and user testing with over 25 classroom and private music teachers</strong>. The insights gained from each round directly informed the design decisions made in our low, mid, and high fidelity screens.</p>
+        <h4 class="subsubsection-heading">Contextual Inquiries</h4>
+        <p>We dove into <strong>current routines and workflows relating to teaching music theory</strong> during lessons, assigning homework, progress tracking, curriculum formation, student roadmaps, and student motivation. We also interviewed students to evaluate how theory plays into their motivation to learn music and the <strong>current pain points they had with reaching personal goals, teacher-student relationships, and control over their own learning</strong>.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful contextual inquiry.png</span></div></div>
+        <h4 class="subsubsection-heading">Card Sorting</h4>
+        <p>We came up with a list of possible metrics teachers do or do not have access to, as well as data our client told us the app would collect. We let teachers rank the order in which they would prioritize each metric to give us a better idea of <strong>what information they're missing in their current teaching styles.</strong></p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful card sorting.png</span></div></div>
+        <h4 class="subsubsection-heading">Competitive Analysis</h4>
+        <p>We looked into existing classroom management systems (Canvas, Khan Academy) and other music theory learning platforms (musictheory.net, Tenuto) to evaluate why teachers weren't using any tools already to solve their pain points. The first problem we found was the <strong>lack of flexibility and control</strong> the teacher had over how they wanted to manage their class and assignments. The second problem was that classroom management systems only exist for the transfer of assignments between teachers and students; there is <strong>no pre-generated content available</strong> for the teacher to utilize.</p>
+        <h3 class="subsection-heading">Defining the Vision</h3>
+        <h4 class="subsubsection-heading">Storyboarding and Speed Dating Interviews</h4>
+        <p>Using a Crazy 8 session, we created <strong>13 distinct storyboards</strong> of use cases for a music theory teacher interface. The use cases ranged from a messaging system that allowed students to ask quick questions outside of class to fully customizable roadmaps the teacher and student would collaboratively create.</p>
+        <p>We then conducted <strong>speed dating interviews</strong>, where we gave each teacher only a few minutes to get acquainted with each storyboard and give their overall impressions. This helped us refine our wide scope of ideas into the main 4 that teachers found most helpful and stated they would most likely adopt.</p>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful storyboarding.png</span></div></div>
+        <h3 class="subsection-heading">Prototype Iteration</h3>
+        <h4 class="subsubsection-heading">Low Fidelity</h4>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful low fi.png</span></div></div>
+        <p><strong>1. Private teachers need individual student views more than a group summary dashboard</strong></p>
+        <p>There is a drastically different use of the dashboard between private teachers who teach 1:1 and classroom teachers who are teaching 20–30 students at once. The dashboard would need to show summary statistics on a student by student basis, allowing the teacher to toggle between their students to see their progress.</p>
+        <p><strong>2. Teachers need familiar representations of important data otherwise the purpose of the visualizations is lost</strong></p>
+        <p>A big piece of feedback we got was that some of the visualizations weren't intuitive and were almost jarringly unfamiliar. While we want to simplify data and highlight irregularities, we should also keep the dashboard similar to what teachers are used to interacting with elsewhere.</p>
+        <h4 class="subsubsection-heading">Mid Fidelity</h4>
+        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful mid fi.png</span></div></div>
+        <p><strong>1. Provide holistic assignment information in one place</strong></p>
+        <p>As we saw when we tested our assignment page, teachers believed they would see all relevant assignment information on that page, including the questions most struggled with and the noteworthy scores. This showed us they value having all the information in one place even if it makes the page more crowded.</p>
+        <p><strong>2. Fix the gulf of execution for navigation between pages and views</strong></p>
+        <p>Specifically, teachers expected the navigation bar dropdown to show a roster of students rather than being used to toggle the views from classroom to individual students. They also thought that clicking an individual student's name would change the dashboard to that student's individual view. We need to be more mindful of the multiple different ways a teacher can accomplish the same task.</p>
+      </div>
+    </div>
+    <div class="project-nav-footer">
+      <a href="#" class="proj-nav-link" onclick="showProject(2,event)"><span class="nav-dir">← Previous</span><span class="nav-title">Crafting a composable card component...</span></a>
+      <a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════ HOBBIES ══════════════ -->
+  <div id="hobbies" class="page">
+    <div class="hobbies-header">
+      <a href="#" class="back-link" onclick="showPage('home',event)">← Back to work</a>
+      <h1>Life as a serial hobbyist</h1>
+      <p>Images and captions coming soon.</p>
+    </div>
+    <div class="hobbies-grid">
+      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
+      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
+      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
+      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
+      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
+      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
+    </div>
+  </div>
+
+</div><!-- /site -->
+
+<script>
+// ── THEME ──
+const SUN = `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
+const MOON = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
+let dark = false;
+function toggleTheme() {
+  dark = !dark;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : '');
+  document.getElementById('t-icon').innerHTML = dark ? MOON : SUN;
+  document.getElementById('t-label').textContent = dark ? 'Dark' : 'Light';
+}
+
+// ── STATE ──
+let homeScrollPos = 0;
+
+// ── TYPING ANIMATION ──
+const typingEl = document.getElementById('typing-text');
+const enterBtn = document.getElementById('enter-btn');
+const prefix  = "Hi! I'm ";
+const typo    = "Shaking";
+const correct = "Shalini";
+const suffix  = ", a strategy-minded product designer.";
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+async function runTyping() {
+  // 1. Type prefix
+  for (const ch of prefix) {
+    typingEl.textContent += ch;
+    await sleep(52 + Math.random() * 32);
+  }
+  // 2. Type "Shalini" letter by letter
+  for (const ch of correct) {
+    typingEl.textContent += ch;
+    await sleep(60 + Math.random() * 26);
+  }
+  // 3. Pause, then INSTANT autocorrect swap to "Shaking"
+  await sleep(360);
+  typingEl.innerHTML = prefix +
+    '<span style="background:rgba(44,157,201,0.2);border-radius:3px;padding:0 2px;transition:background .2s">' +
+    typo + '</span>';
+  await sleep(100);
+  typingEl.textContent = prefix + typo; // remove highlight span
+  // 4. Notice mistake, pause, then backspace
+  await sleep(500);
+  let s = prefix + typo;
+  while (s.length > prefix.length) {
+    s = s.slice(0, -1);
+    typingEl.textContent = s;
+    await sleep(72);
+  }
+  // 5. Retype correct name
+  await sleep(140);
+  for (const ch of correct) {
+    typingEl.textContent += ch;
+    await sleep(60 + Math.random() * 26);
+  }
+  // 6. Finish sentence
+  for (const ch of suffix) {
+    typingEl.textContent += ch;
+    await sleep(40 + Math.random() * 26);
+  }
+  // 7. Fill button
+  enterBtn.classList.add('filled');
+}
+
+runTyping();
+
+// ── ENTER SITE ──
+function enterSite() {
+  const splash = document.getElementById('splash');
+  splash.classList.add('exiting');
+  setTimeout(() => {
+    splash.style.display = 'none';
+    document.getElementById('site').classList.add('visible');
+    initNavScroll();
+    observeFadeIns();
+  }, 800);
+}
+
+// ── NAV SCROLL ──
+function initNavScroll() {
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    const homeActive = document.getElementById('home').classList.contains('active');
+    if (homeActive) {
+      window.scrollY > 60 ? nav.classList.add('visible') : nav.classList.remove('visible');
+    }
+  }, { passive: true });
+}
+
+function setNav(pageId) {
+  const nav = document.getElementById('main-nav');
+  if (pageId === 'home') {
+    nav.classList.remove('pinned');
+    if (window.scrollY > 60) nav.classList.add('visible');
+    else nav.classList.remove('visible');
+  } else {
+    nav.classList.remove('visible');
+    nav.classList.add('pinned');
+  }
+}
+
+// ── ROUTING ──
+function showPage(pageId, e) {
+  if (e) e.preventDefault();
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  window.scrollTo(0, 0);
+  setNav(pageId);
+}
+
+function showProject(idx, e) {
+  if (e) e.preventDefault();
+  homeScrollPos = window.scrollY;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('project-' + idx).classList.add('active');
+  window.scrollTo(0, 0);
+  setNav('project-' + idx);
+  observeProjectSections();
+}
+
+function goHome(e) {
+  if (e) e.preventDefault();
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('home').classList.add('active');
+  setNav('home');
+  setTimeout(() => window.scrollTo({ top: homeScrollPos, behavior: 'instant' }), 20);
+}
+
+function scrollToContact(e) {
+  e.preventDefault();
+  const homeActive = document.getElementById('home').classList.contains('active');
+  if (!homeActive) { showPage('home', null); setTimeout(() => document.getElementById('contact').scrollIntoView({ behavior:'smooth' }), 120); }
+  else { document.getElementById('contact').scrollIntoView({ behavior:'smooth' }); }
+}
+
+// ── SCROLL ANIMATIONS ──
+function observeFadeIns() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); obs.unobserve(en.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('#home .fade-in').forEach(el => obs.observe(el));
+}
+
+function observeProjectSections() {
+  setTimeout(() => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); obs.unobserve(en.target); } });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.page.active .project-section').forEach(el => obs.observe(el));
+  }, 80);
+}
+</script>
+</body>
+</html>
