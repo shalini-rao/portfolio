@@ -150,7 +150,7 @@
   #theme-toggle {
     position: fixed;
     top: 16px; right: 24px;
-    z-index: 9999;
+    z-index: 8999;
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 50px;
@@ -368,7 +368,7 @@
   }
   .figma-btn:hover { background:var(--accent-hover); transform:translateY(-1px); }
 
-  .project-image { margin:32px 0; border-radius:12px; overflow:hidden; border:1px solid var(--border); }
+  .project-image { margin:32px 0; border-radius:4px; overflow:hidden; border:1px solid var(--border); background:#ebebeb; }
   .project-image img { width:100%; display:block; }
   .image-caption { padding:12px 16px; background:var(--card-bg); font-size:12px; font-weight:500; color:var(--muted); letter-spacing:.02em; line-height:1.5; }
   .project-image .img-placeholder { min-height:280px; border-radius:0; border:none; }
@@ -466,7 +466,7 @@
 
     <!-- PROJECT 1 -->
     <div class="project-banner fade-in" onclick="showProject(0)">
-      <div class="project-banner-img"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">VE2_hero.png</span></div></div>
+      <div class="project-banner-img"><img src="images/VE2_hero_landing.png" alt="Video editing workflow redesign"></div>
       <div class="project-banner-info">
         <div class="project-number">01</div>
         <div class="project-banner-title">Accelerating the video lifecycle with AI-assisted workflows by utilizing quantitative insights</div>
@@ -475,14 +475,14 @@
           <div class="project-meta-item"><label>Result</label><span>Reduced time to publish by over 50%</span></div>
           <div class="project-meta-item"><label>My Role</label><span>Product Designer &amp; User Researcher</span></div>
         </div>
-        <div class="project-tags"><span class="tag">User Testing</span><span class="tag">Data Driven</span><span class="tag">Design Systems</span></div>
+        <div class="project-tags"><span class="tag">User Testing</span><span class="tag">Data Driven</span><span class="tag">End-to-end delivery</span></div>
         <div class="enter-hint">View case study →</div>
       </div>
     </div>
 
     <!-- PROJECT 2 -->
     <div class="project-banner reverse fade-in" onclick="showProject(1)">
-      <div class="project-banner-img"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio_hero_v2.png</span></div></div>
+      <div class="project-banner-img"><img src="images/Audio_hero_landing.png" alt="Audio asset management"></div>
       <div class="project-banner-info">
         <div class="project-number">02</div>
         <div class="project-banner-title">Launching audio asset management to combat churn and "passive" reader behavior from AI prototype</div>
@@ -491,14 +491,14 @@
           <div class="project-meta-item"><label>Result</label><span>New audio asset type offering launched</span></div>
           <div class="project-meta-item"><label>My Role</label><span>Product Designer</span></div>
         </div>
-        <div class="project-tags"><span class="tag">AI Prototyping</span><span class="tag">0→1 Product</span><span class="tag">Content Strategy</span></div>
+        <div class="project-tags"><span class="tag">AI Prototyping</span><span class="tag">0→1 Product</span><span class="tag">Market Gap</span></div>
         <div class="enter-hint">View case study →</div>
       </div>
     </div>
 
     <!-- PROJECT 3 -->
     <div class="project-banner fade-in" onclick="showProject(2)">
-      <div class="project-banner-img"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card_hero.png</span></div></div>
+      <div class="project-banner-img"><img src="images/Card_hero_landing.png" alt="Card component design"></div>
       <div class="project-banner-info">
         <div class="project-number">03</div>
         <div class="project-banner-title">Crafting a composable card component to accommodate varying asset form factors</div>
@@ -507,14 +507,14 @@
           <div class="project-meta-item"><label>Result</label><span>Fully composable, flexible card system</span></div>
           <div class="project-meta-item"><label>My Role</label><span>Lead Designer</span></div>
         </div>
-        <div class="project-tags"><span class="tag">Design Systems</span><span class="tag">Component Design</span><span class="tag">Audit &amp; Discovery</span></div>
+        <div class="project-tags"><span class="tag">Design Systems</span><span class="tag">Component Design</span></div>
         <div class="enter-hint">View case study →</div>
       </div>
     </div>
 
     <!-- PROJECT 4 -->
     <div class="project-banner reverse fade-in" onclick="showProject(3)">
-      <div class="project-banner-img"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful_hero.png</span></div></div>
+      <div class="project-banner-img"><img src="images/noteful_hero_landing.png" alt="Noteful app teacher dashboard"></div>
       <div class="project-banner-info">
         <div class="project-number">04</div>
         <div class="project-banner-title">Gamifying music education to improve theory retention in children and adults</div>
@@ -523,7 +523,7 @@
           <div class="project-meta-item"><label>Result</label><span>Full rebrand + classroom management tool</span></div>
           <div class="project-meta-item"><label>My Role</label><span>Product Manager &amp; Co-designer</span></div>
         </div>
-        <div class="project-tags"><span class="tag">User Research</span><span class="tag">PM Strategy</span><span class="tag">Visual Design</span></div>
+        <div class="project-tags"><span class="tag">End-to-end delivery</span><span class="tag">0→1 Product</span><span class="tag">Product Management</span></div>
         <div class="enter-hint">View case study →</div>
       </div>
     </div>
@@ -551,11 +551,11 @@
       </div>
     </div>
     <div class="project-body">
-      <div class="project-image project-section"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">VE2_hero.png</span></div></div>
+      <div class="project-image project-section"><img src="images/VE2_hero.png" alt="Video editing workflow redesign"></div>
       <div class="project-section">
         <h2 class="section-heading">Arc XP is modernizing Video Center's video editing workflow in order to make this user interface more consistent with other Arc editorial applications, so that uploading and editing a video is faster and more intuitive.</h2>
         <p>The page in Video Center where customers can upload videos, add metadata, and publish (<em><strong>what we call the "Video Edit page"</strong></em>) is a relatively old piece of software.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Legacy_VOD_Edit.png</span></div></div>
+        <div class="project-image"><img src="images/Legacy_VOD_Edit.png" alt="Legacy Video Edit Page"></div>
         <p>Arc has made significant changes to the Video Edit page over time to add new functionality, but the fundamental user interface has not changed. And that user interface is inconsistent with our other Arc apps because Arc didn't even exist as an idea yet when it was first built.</p>
         <p>The Video Edit page is where our customers spend most of their time within Video Center. The average visitor session is nearly 20 minutes. We aimed to kill a few birds with one stone in this initiative:</p>
         <ol>
@@ -565,12 +565,12 @@
           <li><strong>Emphasize recent piecemeal improvements</strong> that were shoe-horned into legacy experience that can now be effectively integrated into workflows</li>
           <li><strong>All publish actions consolidated</strong> to streamline key desired outcome</li>
         </ol>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Video_Center_Usecases.png</span></div><div class="image-caption">Main use cases for the video management product in question</div></div>
+        <div class="project-image"><img src="images/Video_Center_Usecases.png" alt="Main use cases for the video management product in question"><div class="image-caption">Main use cases for the video management product in question</div></div>
       </div>
       <div class="project-section">
         <h3 class="section-heading">Initial user research</h3>
         <p>We ran a survey across several of our customer organizations to hear from direct users their pain points with the legacy experience. We received 70+ responses from 10+ customer organizations. There was an overall negative opinion of the ease of use for the product and a strong desire for a full overhaul of the entire experience.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Legacy_VOD_Edit_Opinion_scale.png</span></div></div>
+        <div class="project-image"><img src="images/Legacy_VOD_Edit_Opinion_scale.png" alt="Legacy VOD Edit Opinion Scale"></div>
         <p>Some main pain points were:</p>
         <ul>
           <li>Lack of accuracy in selecting clip start and end points</li>
@@ -579,19 +579,19 @@
           <li>No transparency for next required steps or the user's position in the process</li>
         </ul>
         <p>The survey made clear that there were two main personas who frequented the Video Edit page.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">VE2_personas.png</span></div></div>
+        <div class="project-image"><img src="images/VE2_personas.png" alt="Main personas for the video editing product"></div>
       </div>
       <div class="project-section">
         <h3 class="section-heading">Discovery and Constraints</h3>
         <p>We utilized Datadog to collect click data and session tracking to determine priority workflows and break up the work into MVP/beta release, full feature release, and what was headed for deprecation.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Jira screenshot</span></div><div class="image-caption">Jira tickets tagged with click data, corresponding UI element, and prioritization</div></div>
+        <div class="project-image"><img src="images/VOD_Edit_Jira.png" alt="Jira tickets tagged with click data, corresponding UI element, and prioritization"><div class="image-caption">Jira tickets tagged with click data, corresponding UI element, and prioritization</div></div>
         <p>Since the legacy UI was both archaic and convoluted, technical constraints were a large consideration at every turn of the work. Spikes needed to be investigated and backend logistics were heavy influences in deciding how each UI element was to be ported into a newly redesigned editing experience.</p>
         <p>Also, since maintaining parity with our editorial application and leveraging as many existing components as possible were two main goals, fields and workflows that could be directly pasted in were also prioritized for MVP.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">VE2_Lofi_vision.png</span></div><div class="image-caption">Low fidelity direction for leadership to approve buy in</div></div>
+        <div class="project-image"><img src="images/VE2_Lofi_vision.png" alt="Low fidelity direction for leadership to approve buy in"><div class="image-caption">Low fidelity direction for leadership to approve buy in</div></div>
       </div>
       <div class="project-section">
         <h3 class="section-heading">Designing for MVP</h3>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">lofi screenshot</span></div><div class="image-caption">MVP functionality included a front-loaded object creation modal and pared down metadata fields</div></div>
+        <div class="project-image"><img src="images/VE2_MVP.png" alt="MVP functionality included a front-loaded object creation modal and pared down metadata fields"><div class="image-caption">MVP functionality included a front-loaded object creation modal and pared down metadata fields</div></div>
         <div class="key-decisions"><h4>Key design decisions</h4><ul>
           <li><strong>Tabbed format</strong> to organize related fields together and minimize scrolling</li>
           <li><strong>Two-pane screen</strong> allowing metadata to be viewed side by side with the video player</li>
@@ -642,7 +642,7 @@
       </div>
     </div>
     <div class="project-body">
-      <div class="project-image project-section"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio_hero_v2.png</span></div></div>
+      <div class="project-image project-section"><img src="images/Audio_hero.png" alt="Audio hero image"></div>
       <div class="project-section">
         <p>As demand for audio-based content grows, the platform aims to offer a deeply personalized experience where readers who prefer audio can consume content in a new modality.</p>
         <p>With full platform support for the audio modality, we seek to attract a range of customers including:</p>
@@ -651,42 +651,42 @@
           <li><strong>Enable newsrooms whose primary format is text to deliver audio experiences</strong>. Arc XP customers need a centralized solution to manage text-to-speech (TTS) audio articles and short-form audio clips</li>
         </ul>
         <p>I used Figma Make to create a rudimentary initial mockup of an audio management system following our existing patterns for asset landing pages. This one prototype proved to be instrumental in getting leadership buy-in and informed much of the later design iterations.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio AI prototype.png</span></div></div>
+        <div class="project-image"><img src="images/Audio_AI_prototype.png" alt="Audio AI prototype"></div>
       </div>
       <div class="project-section">
         <h3 class="section-heading">Critical Path</h3>
         <p>Since this was an entirely new product offering, the critical path was defined to include all basic asset management functionality.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio critical path.png</span></div></div>
+        <div class="project-image"><img src="images/Audio_critical_path.png" alt="Audio critical path"></div>
         <p>In the effort to further the efforts to provide a unified asset selection experience (with the potential future of fully consolidating all asset management products into one), we leveraged the tried and tested two-pane asset edit format that had been implemented for written stories and video assets.</p>
         <p>There had also been previous POC work done by engineering to create a new audio player with integrated thumbnails to be used across all products. This work informed how each audio object would behave in different experiences.</p>
         <p>From here, I designed the landing page where users could search for audio objects, which would then be used in a modal form to allow users in the editorial experience to add an audio asset to their written content.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">audio_landing_page.png</span></div><div class="image-caption">Here, a user can browse or search for existing audio objects and create a new file.</div></div>
+        <div class="project-image"><img src="images/audio_landing_page.png" alt="Audio landing page"><div class="image-caption">Here, a user can browse or search for existing audio objects and create a new file.</div></div>
         <p>I created the edit page to parallel the asset edit experiences in other products, with a smaller number of fields and simplified view for the first release of audio modality support.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">audio_edit_page.png</span></div><div class="image-caption">Here, a user can fill out the metadata for the object and upload the audio file.</div></div>
+        <div class="project-image"><img src="images/audio_edit_page.png" alt="Audio edit page"><div class="image-caption">Here, a user can fill out the metadata for the object and upload the audio file.</div></div>
       </div>
       <div class="project-section">
         <h3 class="section-heading">Moving into integrated workflows and AI-assisted generation</h3>
         <p>The main goal for providing audio as an asset option was to <strong>enable newsrooms to leverage the audio modality to boost reader retention.</strong> Text-to-Speech (TTS) and consuming written content in an audio format is a burgeoning medium many platforms are using to combat reader churn.</p>
         <p>There was already previous work done to integrate an AI Assistant into the editorial tool Composer that provided suggestions for metadata fields. This provided a landscape to add TTS functionality that could aid in the writing process.</p>
         <p>There were a few design iterations to leverage the existing card design for audio objects. It demonstrated a need for a larger card design to be used in editorial applications and to leverage the functional thumbnail player.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">AIA TTS variations.png</span></div></div>
+        <div class="project-image"><img src="images/AIA_TTS_variations.png" alt="AI-assisted TTS variations"></div>
         <p>From here, we evaluated how the audio element would fit inline in the editorial experience. Since there is still work to be done to investigate how child objects would be treated in a larger sense, the first iteration utilized the full size audio card.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">TTS_AIA.png</span></div><div class="image-caption">Users can generate an audio file narrating their written content and insert it into their story.</div></div>
+        <div class="project-image"><img src="images/TTS_AIA.png" alt="TTS AI prototype"><div class="image-caption">Users can generate an audio file narrating their written content and insert it into their story.</div></div>
       </div>
       <div class="project-section">
         <h3 class="section-heading">Audio card design</h3>
         <p>Each integration and presentation of an audio object required different information to be surfaced. The form factor of each card was defined by where the object would be integrated.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio cards.png</span></div></div>
+        <div class="project-image"><img src="images/Audio_cards.png" alt="Audio cards"></div>
       </div>
       <div class="project-section">
         <h3 class="section-heading">Engineering handoff</h3>
         <p>I prepared the work for our developers by crafting documentation with each relevant state and UI elements with the acceptance criteria to outline the expected behavior.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Audio dev doc.png</span></div></div>
+        <div class="project-image"><img src="images/Audio_dev_doc.png" alt="Audio development documentation"></div>
       </div>
       <div class="project-section">
         <h3 class="section-heading">Using AI prototyping to think ahead</h3>
         <p>There was an outlined future phase of work that would eventually allow us to support podcasts, as so many media organizations are creating to keep up with changing content consumption habits. I utilized Figma Make to think ahead on how a podcast management system would fit into the existing audio tool.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Podcast.png</span></div></div>
+        <div class="project-image"><img src="images/Podcast.png" alt="Podcast management system"></div>
       </div>
     </div>
     <div class="project-nav-footer">
@@ -709,7 +709,7 @@
       </div>
     </div>
     <div class="project-body">
-      <div class="project-image project-section"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card hero.png</span></div></div>
+      <div class="project-image project-section"><img src="images/Card_hero.png" alt="Card hero image"></div>
       <div class="project-section">
         <p>Arc XP has had several designers over a decade all working on each product independently with little collaboration. As each product evolved, so did their design needs. With no design system at the beginning, this resulted in each product having different card displays with different components.</p>
         <p>In our third iteration of our design library, I endeavored to create one card component that would span all our products' use cases while maintaining a cohesive look and feel. With nearly a dozen products all utilizing a card component of some form in their landing pages, there was a task at hand to devise a comprehensive layout that would accommodate a wide range of information and size constraints.</p>
@@ -717,11 +717,11 @@
       <div class="project-section">
         <h3 class="section-heading">Discovery and Refinement</h3>
         <p>To begin, I audited all existing cards used across our 10+ products.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card examples.png</span></div></div>
+        <div class="project-image"><img src="images/Card_examples.png" alt="Card examples"></div>
         <p>There was a concrete list of data points and types to be displayed on a card, which required some amount of prescription to create a unified layout and designated placement for specific content elements.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card elements.png</span></div></div>
+        <div class="project-image"><img src="images/Card_elements.png" alt="Card elements"></div>
         <p>From here, it became clear that there were two main form factors of cards: a single row card and 2+ row card.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card layouts.png</span></div></div>
+        <div class="project-image"><img src="images/Card_layouts.png" alt="Card layouts"></div>
       </div>
       <div class="project-section">
         <h3 class="section-heading">Final Component</h3>
@@ -731,13 +731,13 @@
           <li>Single row card rounded corners to match use cases on search results page and table rows</li>
           <li>Optional extra rows and footer with swappable content areas</li>
         </ul></div>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card components.png</span></div></div>
+        <div class="project-image"><img src="images/Card_components.png" alt="Card components"></div>
       </div>
       <div class="project-section">
         <h3 class="section-heading">Component Applications</h3>
         <p>To stress test the cards, I asked my fellow designers to use the component to match their existing use cases in their respective products.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card single row applications.png</span></div></div>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">Card multirow applications.png</span></div></div>
+        <div class="project-image"><img src="images/Card_single_row_applications.png" alt="Card single row applications"></div>
+        <div class="project-image"><img src="images/Card_multirow_applications.png" alt="Card multirow applications"></div>
       </div>
     </div>
     <div class="project-nav-footer">
@@ -760,7 +760,7 @@
       </div>
     </div>
     <div class="project-body">
-      <div class="project-image project-section"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful hero.png</span></div></div>
+      <div class="project-image project-section"><img src="images/noteful_hero.png" alt="Noteful hero image"></div>
       <div class="project-section">
         <p>I worked with a local startup called <strong>Noteful</strong> that is building a mobile app aiming to make learning music theory engaging and fun for younger students.</p>
         <p>I acted as product manager and client liaison, which required me to maintain our project vision, establish deadlines and interim deliverables, maintain our client relationship, and oversee our design, research, and implementation progress. In addition, I contributed to our interface designs, research process and biweekly presentations. <strong>I was also the main decision maker and advocate for both our client's needs as well as our users' needs.</strong> Since the startup was so new, there was a lot of room to strategize with the founder about the vision for the company and how our product would align with their goals.</p>
@@ -769,41 +769,41 @@
         <h2 class="section-heading">Background</h2>
         <h4 class="subsubsection-heading">Noteful is a Pittsburgh-based startup created by a music teacher frustrated with the lack of flexibility and engagement with current music theory teaching methods.</h4>
         <p>The founder, Becky, has been teaching music to students of all ages for over 25 years and found that both her teacher peers and her students were frustrated with the traditional pen and paper methods of teaching and practicing music theory. She decided to develop a music theory game app (taking inspiration from Duolingo) to make practicing key theory concepts and exercises more enjoyable for students of all ages.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful_mobile.png</span></div><div class="image-caption">Work in progress mobile game app at the time of the project</div></div>
+        <div class="project-image"><img src="images/noteful_mobile.png" alt="Noteful mobile game app"></div>
         <h4 class="subsubsection-heading">The foundation of all content on the app is Becky's time-tested curriculum called "FRESH Theory."</h4>
         <p>FRESH Theory is an acronym for Form, Rhythm, Ear training, Staff, Harmony, and musical Terms. This will come up many times throughout the process of designing this interface, and will act as the guiding force for the information architecture and color branding later on.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful fresh theory.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_fresh_theory.png" alt="Noteful FRESH Theory"></div>
       </div>
       <div class="project-section">
         <h2 class="section-heading">Opportunity</h2>
         <h4 class="subsubsection-heading">Music teachers are spread too thin to manage all their students while also keeping their theory education engaging and fun.</h4>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful solution chart.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_solution_chart.png" alt="Main use cases for the video management product in question"></div>
       </div>
       <div class="project-section">
         <h2 class="section-heading">Solution</h2>
         <h3 class="subsection-heading">Summary Dashboard</h3>
         <p>The overall dashboard page offers teachers access to easily digestible information about student performance and assignments. Teachers have the option to toggle between different classrooms and student views.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">summary dashboard.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_summary_dashboard.png" alt="Summary dashboard"></div>
         <p><strong>Fresh Theory Mastery Widget</strong></p>
         <p>The FRESH Theory Mastery widget is an <strong>essential component of what makes the Noteful teacher interface different</strong> from other classroom management systems. The specificity of the data analytics as it applies to the core foundation of the Noteful game and curriculum cannot be replicated on a different platform.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful mastery widget.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_mastery_widget.png" alt="Noteful mastery widget"></div>
         <h3 class="subsection-heading">Assignment Details</h3>
         <p>On the individual assignment page, teachers can view <strong>all questions and lessons within an assignment</strong> they created as well as <strong>how each of their students scored</strong>. They have more freedom to sort and manage the information to fit their needs using the different sorting tools and filters.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">assignment details.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_assignment_details.png" alt="Assignment details"></div>
         <h3 class="subsection-heading">Gradebook</h3>
         <p>The gradebook page shows grades for each student by lesson. It offers a <strong>complete history of a student's performance since joining the class</strong>. Teachers can search by a variety of keywords including student name, assignment name, lesson name, keywords in assignment or lesson name.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">gradebook.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_gradebook.png" alt="Gradebook"></div>
         <h4 class="subsubsection-heading">We've set Noteful up to be the first music-oriented classroom management system of its kind that every music teacher will view as an essential part of their toolkit.</h4>
         <p>Teachers can now leverage the autograded assignment data to make decisions on how they structure their lessons, whether they're 1:1 or in a classroom setting. They can see trends in student performance as well as callouts for specific topics and questions the students are struggling with.</p>
       </div>
       <div class="project-section">
         <h2 class="section-heading">Visual Design</h2>
         <p>Since the mobile app was still very much in development, there was <strong>no type system in place and only a single color swatch for a primary color.</strong> Since the dashboard is meant to be viewed in either laptop or tablet screen size, the typeface needed to minimize eye strain, especially for older users. We also modified the original primary color chosen by the Noteful team.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful typography.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_typography.png" alt="Noteful typography"></div>
         <p><strong>FRESH Theory is the foundation of all the content within the Noteful mobile app and the color system heavily impacts the information architecture.</strong></p>
         <p>The FRESH Theory colors are used to categorize questions and lessons, and help students keep track of what concepts they're working on. However, the original system created by the Noteful team had accessibility issues, as well as heavy overlap with necessary system colors such as success and error flags. We aimed to <strong>keep the playful personality of the app, but with more consideration for accessibility</strong>, higher contrast between the colors, and the creation of room for other system colors.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful color library.png</span></div></div>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful results benefits.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_color_library.png" alt="Noteful color library"></div>
+        <div class="project-image"><img src="images/noteful_results_benefits.png" alt="Noteful results and benefits"></div>
       </div>
       <div class="project-section">
         <h2 class="section-heading">The Process</h2>
@@ -811,26 +811,26 @@
         <p>Throughout the duration of the project, we conducted <strong>6 rounds of interviews and user testing with over 25 classroom and private music teachers</strong>. The insights gained from each round directly informed the design decisions made in our low, mid, and high fidelity screens.</p>
         <h4 class="subsubsection-heading">Contextual Inquiries</h4>
         <p>We dove into <strong>current routines and workflows relating to teaching music theory</strong> during lessons, assigning homework, progress tracking, curriculum formation, student roadmaps, and student motivation. We also interviewed students to evaluate how theory plays into their motivation to learn music and the <strong>current pain points they had with reaching personal goals, teacher-student relationships, and control over their own learning</strong>.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful contextual inquiry.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_contextual_inquiry.png" alt="Main use cases for the video management product in question"></div>
         <h4 class="subsubsection-heading">Card Sorting</h4>
         <p>We came up with a list of possible metrics teachers do or do not have access to, as well as data our client told us the app would collect. We let teachers rank the order in which they would prioritize each metric to give us a better idea of <strong>what information they're missing in their current teaching styles.</strong></p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful card sorting.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_card_sorting.png" alt="Noteful card sorting"></div>
         <h4 class="subsubsection-heading">Competitive Analysis</h4>
         <p>We looked into existing classroom management systems (Canvas, Khan Academy) and other music theory learning platforms (musictheory.net, Tenuto) to evaluate why teachers weren't using any tools already to solve their pain points. The first problem we found was the <strong>lack of flexibility and control</strong> the teacher had over how they wanted to manage their class and assignments. The second problem was that classroom management systems only exist for the transfer of assignments between teachers and students; there is <strong>no pre-generated content available</strong> for the teacher to utilize.</p>
         <h3 class="subsection-heading">Defining the Vision</h3>
         <h4 class="subsubsection-heading">Storyboarding and Speed Dating Interviews</h4>
         <p>Using a Crazy 8 session, we created <strong>13 distinct storyboards</strong> of use cases for a music theory teacher interface. The use cases ranged from a messaging system that allowed students to ask quick questions outside of class to fully customizable roadmaps the teacher and student would collaboratively create.</p>
         <p>We then conducted <strong>speed dating interviews</strong>, where we gave each teacher only a few minutes to get acquainted with each storyboard and give their overall impressions. This helped us refine our wide scope of ideas into the main 4 that teachers found most helpful and stated they would most likely adopt.</p>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful storyboarding.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_storyboarding.png" alt="Noteful storyboarding"></div>
         <h3 class="subsection-heading">Prototype Iteration</h3>
         <h4 class="subsubsection-heading">Low Fidelity</h4>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful low fi.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_lowfi.png" alt="Noteful low fidelity prototype"></div>
         <p><strong>1. Private teachers need individual student views more than a group summary dashboard</strong></p>
         <p>There is a drastically different use of the dashboard between private teachers who teach 1:1 and classroom teachers who are teaching 20–30 students at once. The dashboard would need to show summary statistics on a student by student basis, allowing the teacher to toggle between their students to see their progress.</p>
         <p><strong>2. Teachers need familiar representations of important data otherwise the purpose of the visualizations is lost</strong></p>
         <p>A big piece of feedback we got was that some of the visualizations weren't intuitive and were almost jarringly unfamiliar. While we want to simplify data and highlight irregularities, we should also keep the dashboard similar to what teachers are used to interacting with elsewhere.</p>
         <h4 class="subsubsection-heading">Mid Fidelity</h4>
-        <div class="project-image"><div class="img-placeholder"><span class="img-icon">🖼</span><span class="img-filename">noteful mid fi.png</span></div></div>
+        <div class="project-image"><img src="images/noteful_midfi.png" alt="Noteful mid fidelity prototype"></div>
         <p><strong>1. Provide holistic assignment information in one place</strong></p>
         <p>As we saw when we tested our assignment page, teachers believed they would see all relevant assignment information on that page, including the questions most struggled with and the noteworthy scores. This showed us they value having all the information in one place even if it makes the page more crowded.</p>
         <p><strong>2. Fix the gulf of execution for navigation between pages and views</strong></p>
@@ -1016,6 +1016,66 @@ function observeProjectSections() {
     document.querySelectorAll('.page.active .project-section').forEach(el => obs.observe(el));
   }, 80);
 }
+</script>
+<!-- ══ LIGHTBOX ══ -->
+<div id="lightbox" style="
+  display:none; position:fixed; inset:0; z-index:9000;
+  background:rgba(0,0,0,0.85); backdrop-filter:blur(8px);
+  align-items:center; justify-content:center; cursor:zoom-out;
+  padding:32px;
+">
+  <button id="lb-close" style="
+    position:fixed; top:20px; right:24px;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
+    border-radius:50%; width:40px; height:40px;
+    color:#fff; font-size:18px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Archivo',sans-serif; line-height:1;
+    transition:background 0.2s;
+  " aria-label="Close">✕</button>
+  <img id="lb-img" src="" alt="" style="
+    max-width:92vw; max-height:88vh;
+    object-fit:contain; border-radius:8px;
+    box-shadow:0 24px 80px rgba(0,0,0,0.6);
+    transition:opacity 0.2s;
+  ">
+</div>
+
+<script>
+(function(){
+  const lb     = document.getElementById('lightbox');
+  const lbImg  = document.getElementById('lb-img');
+  const lbClose= document.getElementById('lb-close');
+
+  // Open on any project-body or project-header img click
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('.project-body img, .project-header img');
+    if (!img) return;
+    e.stopPropagation();
+    lbImg.src     = img.src;
+    lbImg.alt     = img.alt;
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+
+  // Close on backdrop click, close button, or Escape
+  lb.addEventListener('click', close);
+  lbClose.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+  function close() {
+    lb.style.display = 'none';
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  // Add cursor style to all eligible images once site is visible
+  const observer = new MutationObserver(() => {
+    document.querySelectorAll('.project-body img, .project-header img')
+      .forEach(img => img.style.cursor = 'zoom-in');
+  });
+  observer.observe(document.getElementById('site'), { childList:true, subtree:true, attributes:true });
+})();
 </script>
 </body>
 </html>
