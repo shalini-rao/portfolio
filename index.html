@@ -408,6 +408,31 @@
   .hobby-placeholder { aspect-ratio:4/3; background:var(--card-bg); border:2px dashed var(--border); border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--muted); font-size:13px; font-weight:500; }
   .hobby-placeholder .ph-icon { font-size:24px; opacity:.3; }
 
+  .hobby-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hobby-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  }
+  .hobby-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+  }
+  .hobby-caption {
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
   /* fade-in */
   .fade-in { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
   .fade-in.visible { opacity:1; transform:translateY(0); }
@@ -424,6 +449,8 @@
     .splash-content{ padding:32px 24px; }
     #contact{ padding:60px 24px; }
   }
+
+
 </style>
 </head>
 <body>
@@ -860,15 +887,57 @@
     <div class="hobbies-header">
       <a href="#" class="back-link" onclick="showPage('home',event)">← Back to work</a>
       <h1>Life as a serial hobbyist</h1>
-      <p>Images and captions coming soon.</p>
+      <p>I really can get into a craft. See some of the fun below:</p>
     </div>
     <div class="hobbies-grid">
-      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
-      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
-      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
-      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
-      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
-      <div class="hobby-placeholder"><span class="ph-icon">📷</span><span>Image + caption</span></div>
+      <div class="hobby-card">
+        <img src="images/hobbies_crochet.jpg" alt="brief description">
+        <p class="hobby-caption">Crocheted an elephant for a friend</p>
+      </div>
+      <div class="hobby-card">
+        <img src="images/hobbies_sewing.jpg" alt="brief description">
+        <p class="hobby-caption">Sewed some foldable nylon bags (Baggu Dupe)</p>
+      </div>
+      <div class="hobby-card">
+        <img src="images/hobbies_knitting.jpg" alt="brief description">
+        <p class="hobby-caption">Knitted a scarf for the first time ever</p>
+      </div>
+      <div class="hobby-card">
+        <img src="images/hobbies_bouquets.jpg" alt="brief description">
+        <p class="hobby-caption">Learned how to arrange flower bouquets</p>
+      </div>
+      <div class="hobby-card">
+        <img src="images/hobbies_art.png" alt="brief description">
+        <p class="hobby-caption">Learning how to do digital art using Procreate</p>
+      </div>
+      <div class="hobby-card">
+        <img src="images/hobbies_henna.jpg" alt="brief description">
+        <p class="hobby-caption">Learning how to do mehendi (aka henna)</p>
+      </div>
+      <div class="hobby-card">
+        <img src="images/hobbies_gardening.jpg" alt="brief description">
+        <p class="hobby-caption">Started to garden - grew my own tomatoes and peppers</p>
+      </div>
+      <div class="hobby-card">
+        <img src="images/hobbies_pesto.jpg" alt="brief description">
+        <p class="hobby-caption">Grew my own basil to make homemade pesto</p>
+      </div>
+      <div class="hobby-card">
+        <img src="images/hobbies_mending.jpg" alt="brief description">
+        <p class="hobby-caption">Learning how to mend torn clothing (reduce waste!)</p>
+      </div>
+      <div class="hobby-card">
+        <img src="images/hobbies_ski.JPG" alt="brief description">
+        <p class="hobby-caption">Learned how to ski after college</p>
+      </div>
+      <div class="hobby-card">
+        <img src="images/hobbies_christmas.jpg" alt="brief description">
+        <p class="hobby-caption">Started thrifting vintage Christmas village</p>
+      </div>
+      <div class="hobby-card">
+        <img src="images/hobbies_embroidery.jpg" alt="brief description">
+        <p class="hobby-caption">Embroidered Sokka's boomerang (from Avatar)</p>
+      </div>
     </div>
   </div>
 
