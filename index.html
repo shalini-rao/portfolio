@@ -299,9 +299,15 @@
     transition:opacity 0.3s, transform 0.3s;
   }
   .project-banner:hover .enter-hint { opacity:1; transform:translateX(0); }
-  .hover-swap { position: relative; }
-  .hover-swap .swap-static,
-  .hover-swap .swap-gif {
+
+  .hover-swap {
+    position: relative;
+    background: var(--card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hover-swap .swap-static {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -309,7 +315,15 @@
     object-fit: cover;
     transition: opacity 0.4s ease;
   }
-  .hover-swap .swap-gif { opacity: 0; }
+  .hover-swap .swap-gif {
+    position: relative;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
   .project-banner:hover .hover-swap .swap-static { opacity: 0; }
   .project-banner:hover .hover-swap .swap-gif    { opacity: 1; }
 
