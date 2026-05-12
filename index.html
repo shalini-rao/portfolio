@@ -299,6 +299,19 @@
     transition:opacity 0.3s, transform 0.3s;
   }
   .project-banner:hover .enter-hint { opacity:1; transform:translateX(0); }
+  .hover-swap { position: relative; }
+  .hover-swap .swap-static,
+  .hover-swap .swap-gif {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease;
+  }
+  .hover-swap .swap-gif { opacity: 0; }
+  .project-banner:hover .hover-swap .swap-static { opacity: 0; }
+  .project-banner:hover .hover-swap .swap-gif    { opacity: 1; }
 
   /* Contact */
   #contact { padding:80px; border-top:1px solid var(--border); }
@@ -505,7 +518,10 @@
 
     <!-- PROJECT 1 -->
     <div class="project-banner fade-in" onclick="showProject(0)">
-      <div class="project-banner-img"><img src="images/VE2_hero_landing.png" alt="Video editing workflow redesign"></div>
+      <div class="project-banner-img hover-swap">
+        <img class="swap-static" src="images/VE2_hero_landing.png" alt="Video editing workflow">
+        <img class="swap-gif" src="images/VE2_landing.gif" alt="Video editing workflow in motion">
+      </div>
       <div class="project-banner-info">
         <div class="project-number">01</div>
         <div class="project-banner-title">Accelerating the video lifecycle with AI-assisted workflows by utilizing quantitative insights</div>
@@ -657,6 +673,12 @@
       </div>
       <div class="project-section">
         <h3 class="section-heading">Figma wireframes and extra states</h3>
+        <div class="project-image">
+          <video autoplay loop muted playsinline style="width:100%; display:block;">
+            <source src="images/VE2_thumbnail_generate.mp4" type="video/mp4">
+          </video>
+          <div class="image-caption">Redesigned thumbnail selection and AI generation</div>
+        </div>
         <a href="https://www.figma.com/design/SCDFy7QneEIQgjLnlBIm3Q/Video-Edit-Redesign?node-id=0-1&t=phF6Spi9yOYhIcfg-1" target="_blank" rel="noopener" class="figma-btn">View in Figma →</a>
       </div>
       <div class="project-section">
