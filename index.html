@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shalini — Product Designer</title>
+<title>Shalini, Product Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -477,6 +477,27 @@
     #contact{ padding:60px 24px; }
   }
 
+  /* Floating scroll/home buttons */
+  .float-btn {
+    position: fixed;
+    z-index: 900;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--muted);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    opacity: 0; pointer-events: none;
+    transform: translateY(20px);
+    transition: background 0.2s, color 0.2s, border-color 0.2s,
+                opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-family: 'Archivo', sans-serif;
+  }
+  .float-btn.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .float-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  #float-up   { bottom: 24px; right: 24px; }
+  #float-home { bottom: 24px; left: 24px; }
 
 </style>
 </head>
@@ -725,7 +746,7 @@
         <div class="quote-callout">"Having the tab setup with the new editor, there's less of us scrolling up and down to change things or fix things ... so that is definitely overall aesthetically really nice."</div>
         <ul><li>Using similar structure to other apps is lowering barrier to entry for employees to work across several products</li></ul>
         <div class="quote-callout">"We would probably stay in the old editor until adding related stories was added into the new editor"</div>
-        <ul><li>We missed some key workflows when defining the MVP functionality — data isn't everything</li></ul>
+        <ul><li>We missed some key workflows when defining the MVP functionality: data isn't everything</li></ul>
         <div class="quote-callout">"It's strange to see the word circulation just because that feels more like a news like it feels more like a newspaper and less a video related, more digital, digitally focused or worded."</div>
         <ul><li>We need to use more video-centric terminology to keep the use cases separate</li></ul>
       </div>
@@ -828,7 +849,7 @@
       <a href="#" class="back-link" onclick="goHome(event)">← Back to work</a>
       <h1 class="project-title">Designing an AI assistant from zero, across an entire platform.</h1>
       <div class="project-callout">
-        <div class="callout-item"><label>Objective</label><p>Turn an open-ended mandate — "add AI, figure out what that means" — into a shipped product feature that saves journalists time without taking control away from them</p></div>
+        <div class="callout-item"><label>Objective</label><p>Turn an open-ended mandate ("add AI, figure out what that means") into a shipped product feature that saves journalists time without taking control away from them</p></div>
         <div class="callout-item"><label>Result</label><p>A native AI assistant panel, shipped in Composer and designed to extend across Arc XP's entire product suite, surfacing metadata updates, style guide feedback, and content opportunities as reviewable, reversible suggestions</p></div>
         <div class="callout-item"><label>My Role</label><p>Product Designer</p></div>
         <div class="callout-item"><label>Tags</label><div class="callout-tags"><span class="tag">AI Design</span><span class="tag">User Research</span><span class="tag">Design Systems</span></div></div>
@@ -856,7 +877,7 @@
         <p>The most important design decision we made early was spatial. The assistant would live in a side panel, not inline with the content. This was not just aesthetic. It was about trust.</p>
         <p>A tension kept surfacing throughout the project: journalists wanted help, but they did not want to open their story and find it changed. The panel gives the AI a place to exist without overstepping. It can do things, surface things, flag things. But the story body stays the author's.</p>
         <p>After settling on the panel concept, I took on the problem of how field-level changes would be communicated within it. Specifically: how do you distinguish between changes that were automatically applied versus changes that are suggestions waiting for a human decision?</p>
-        <p>That distinction mattered more than it might seem. Some changes came from the organization's own configuration — required tags, mandatory keyword rules, standards that every story published through Arc had to meet. Those were not AI suggestions. They were organizational policy, automatically applied. The AI's own recommendations were a different category entirely, and they needed to read that way.</p>
+        <p>That distinction mattered more than it might seem. Some changes came from the organization's own configuration: required tags, mandatory keyword rules, standards that every story published through Arc had to meet. Those were not AI suggestions. They were organizational policy, automatically applied. The AI's own recommendations were a different category entirely, and they needed to read that way.</p>
         <p>If everything looks like an alert, nothing does. The visual language we landed on made auto-applied changes feel like a record: something that happened, that you could undo, that was logged. AI suggestions felt like a recommendation waiting for a response.</p>
         <div class="project-image"><img src="images/aia_field_indicators.png" alt="Audio edit page"><div class="image-caption">Exploring how to signal an AI-suggested change at the field level without overwhelming the interface. The goal was clarity without noise.</div></div>
         <div class="project-image"><img src="images/aia_review_screen.png" alt="Audio edit page"><div class="image-caption">The review view inside the panel. Auto-applied changes are presented as a clear log with per-item undo controls. Rejected suggestions collect at the bottom. Nothing disappears silently.</div></div>
@@ -865,9 +886,9 @@
       <div class="project-section">
         <h3 class="section-heading">What the research confirmed</h3>
         <p>Once we had a working concept, we ran usability sessions with third-party participants recruited via Respondent. I was part of running and observing those sessions.</p>
-        <p>The findings reinforced what we had suspected but also pushed us further. Users were not opposed to AI doing things. They were opposed to AI doing things they could not see, trace, or reverse. Across participants the ask was consistent: surface everything as a suggestion, make every action undoable, and keep the history visible — not just from the current session, but from previous sessions and from other collaborators working on the same story.</p>
+        <p>The findings reinforced what we had suspected but also pushed us further. Users were not opposed to AI doing things. They were opposed to AI doing things they could not see, trace, or reverse. Across participants the ask was consistent: surface everything as a suggestion, make every action undoable, and keep the history visible, not just from the current session, but from previous sessions and from other collaborators working on the same story.</p>
         <p>One finding that stuck with me: users wanted to come back the next day and still see what the AI had suggested. The idea that suggestions would evaporate on page reload felt unacceptable. They wanted a record, almost like a paper trail. That shaped how we thought about the panel's home state, the history footer, and how accepted or rejected suggestions were logged with timestamps rather than simply disappearing.</p>
-        <div class="quote-callout">"Prioritize suggestions over auto-applied changes until trust is established. Allow users to manually trigger AI workflows. AI should never silently overwrite user work." — Key recommendation from usability research</div>
+        <div class="quote-callout">"Prioritize suggestions over auto-applied changes until trust is established. Allow users to manually trigger AI workflows. AI should never silently overwrite user work." (Key recommendation from usability research)</div>
         <div class="project-image"><img src="images/aia_home_state.png" alt="AIA home state"><div class="image-caption">The home state of the panel. Workflow cards give a status-at-a-glance view of what has been reviewed and what still needs attention. The prompt bar at the bottom opens the door to manual, on-demand actions.</div></div>
         <div class="project-image"><img src="images/aia_history_log.png" alt="AIA history log"><div class="image-caption">The history view keeps a record of every AI action taken on a story. Accepted, rejected, or undone: nothing is lost, and nothing happens without a trace.</div></div>
       </div>
@@ -875,8 +896,8 @@
       <div class="project-section">
         <h3 class="section-heading">The supporting content layer</h3>
         <p>Beyond metadata, the panel also handled what we called supporting content: related stories surfaced from Arc's vector search, and lead art suggestions pulled from the story's subject matter.</p>
-        <p>I worked on how these would be presented in the review flow — specifically how to show an AI-suggested image in context without making it feel like the AI had made an editorial call. The suggestion had to feel like a recommendation from a well-informed colleague, not an autonomous edit.</p>
-        <p>The accepted and rejected states were as important as the suggestion itself. When an author rejected a lead image, that rejection needed to be visible and recoverable — not punitive, not permanent, not lost.</p>
+        <p>I worked on how these would be presented in the review flow, specifically how to show an AI-suggested image in context without making it feel like the AI had made an editorial call. The suggestion had to feel like a recommendation from a well-informed colleague, not an autonomous edit.</p>
+        <p>The accepted and rejected states were as important as the suggestion itself. When an author rejected a lead image, that rejection needed to be visible and recoverable: not punitive, not permanent, not lost.</p>
         <div class="project-image"><img src="images/aia_supporting_content.png" alt="AIA supporting content"><div class="image-caption">Supporting content review, showing accepted related stories and a rejected lead image. The rejection is surfaced clearly with the option to revisit.</div></div>
         <div class="project-image"><img src="images/aia_style_guide.png" alt="Audio edit page"><div class="image-caption">Style guide suggestions appear as reviewable comments tied to specific passages in the story, not as direct edits. The author decides what to apply.</div></div>
       </div>
@@ -884,12 +905,12 @@
       <div class="project-section">
         <h3 class="section-heading">Extending the assistant beyond Composer</h3>
         <p>Composer was where the assistant launched, but the design work always asked a broader question: if this works here, what does it look like everywhere else?</p>
-        <p>I took on the exploration of what the AI Assistant would look like inside Arc XP's Video Center — the tool broadcasters and video producers use to manage and publish video-on-demand content. The surface is different: instead of a story body with text fields, you have a video with metadata fields and a timeline. But the underlying logic held.</p>
-        <p>Producers were spending time on the same category of work — filling out titles, captions, blurbs, tagging clips — and the transcripts being generated by Arc Intelligence's video vectorization pipeline were already available, ready to be put to use.</p>
+        <p>I took on the exploration of what the AI Assistant would look like inside Arc XP's Video Center, the tool broadcasters and video producers use to manage and publish video-on-demand content. The surface is different: instead of a story body with text fields, you have a video with metadata fields and a timeline. But the underlying logic held.</p>
+        <p>Producers were spending time on the same category of work: filling out titles, captions, blurbs, tagging clips. The transcripts being generated by Arc Intelligence's video vectorization pipeline were already available, ready to be put to use.</p>
         <p>I designed an adapted version of the same panel for this context, now surfacing content opportunities specific to video: a suggestion to generate an article draft from the video transcript, a clip identified from the footage worth pushing to social channels, and metadata updates applied from the transcript and reviewable through the same accept/reject flow used in Composer.</p>
-        <p>These explorations were brought to high fidelity and presented to leadership to show the assistant's adaptability across Arc XP's product suite. A related thread I explored separately was text-to-speech — looking at how the assistant could generate an audio version of a story. That work fed into a different product area and is covered in the <a href="#" onclick="showProject(1,event)" style="color:var(--accent);font-weight:600;text-decoration:none;border-bottom:1.5px solid transparent;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='transparent'">audio case study</a>.</p>
+        <p>These explorations were brought to high fidelity and presented to leadership to show the assistant's adaptability across Arc XP's product suite. A related thread I explored separately was text-to-speech, looking at how the assistant could generate an audio version of a story. That work fed into a different product area and is covered in the <a href="#" onclick="showProject(1,event)" style="color:var(--accent);font-weight:600;text-decoration:none;border-bottom:1.5px solid transparent;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='transparent'">audio case study</a>.</p>
         <div class="project-image"><img src="images/aia_cross_surface.png" alt="Audio edit page"><div class="image-caption">The same panel logic, adapted for different surfaces. The design language was built to extend, not to be rebuilt for each new context.</div></div>
-        <div class="project-image"><img src="images/aia_video_center.png" alt="Audio edit page"><div class="image-caption">The AI Assistant adapted for Video Center. The panel shifts to match the surface: instead of style guide feedback, it surfaces content opportunities tied to the video itself — suggesting an article from the transcript, flagging a clip worth publishing, and applying metadata derived from what the video actually says.</div></div>
+        <div class="project-image"><img src="images/aia_video_center.png" alt="Audio edit page"><div class="image-caption">The AI Assistant adapted for Video Center. The panel shifts to match the surface: instead of style guide feedback, it surfaces content opportunities tied to the video itself: suggesting an article from the transcript, flagging a clip worth publishing, and applying metadata derived from what the video actually says.</div></div>
         <div class="project-image"><img src="images/aia_tts.png" alt="Audio edit page"><div class="image-caption">A thread of the exploration looked at text-to-speech: using the assistant to generate an audio version of a story. That work eventually fed into a separate product area.</div></div>
       </div>
 
@@ -996,11 +1017,11 @@
         <p>Three buckets of need emerged from every conversation: <strong>Engagement</strong>, <strong>Monetization</strong>, and <strong>Errors</strong>. Every client framed it differently but landed in the same place.</p>
         <div class="project-image">
           <img src="images/dashboard_synthesis.png" alt="Dashboard research synthesis grid">
-          <div class="image-caption">Research synthesis grid — client names mapped to their top metric requests across Engagement, Monetization, and Errors</div>
+          <div class="image-caption">Research synthesis grid: client names mapped to their top metric requests across Engagement, Monetization, and Errors</div>
         </div>
         <div class="quote-callout">"We would really love some help. It's a bit of an abusive experience."</div>
         <p>They weren't asking for a sophisticated analytics platform. They were asking to stop being in the dark.</p>
-        <p>A few specific patterns shaped the design decisions that followed. Multi-site publishers needed to drill down to individual sites — aggregate views across all their properties were too broad to be useful. Clients wanted to rank videos by performance and click through to a single video view. And nearly everyone wanted the monetization section to link out to their existing ad partner dashboard rather than replace it.</p>
+        <p>A few specific patterns shaped the design decisions that followed. Multi-site publishers needed to drill down to individual sites, since aggregate views across all their properties were too broad to be useful. Clients wanted to rank videos by performance and click through to a single video view. And nearly everyone wanted the monetization section to link out to their existing ad partner dashboard rather than replace it.</p>
       </div>
 
       <div class="project-section">
@@ -1025,17 +1046,17 @@
             <li><strong>Errors</strong> sit below that, covering ad errors, video playback stalls, and rebuffering percentage</li>
           </ul>
         </div>
-        <p>A most-viewed videos table anchors the bottom of the aggregate view, stack-ranked by total views — the number one request across every client interview.</p>
+        <p>A most-viewed videos table anchors the bottom of the aggregate view, stack-ranked by total views, the number one request across every client interview.</p>
         <div class="project-image">
           <img src="images/dashboard_aggregate.png" alt="Dashboard aggregate view">
-          <div class="image-caption">Full aggregate view — Engagement, Monetization, and Errors organized into discrete sections</div>
+          <div class="image-caption">Full aggregate view: Engagement, Monetization, and Errors organized into discrete sections</div>
         </div>
         <p>The single video view mirrors the aggregate layout almost exactly, with the video title, primary site, and publish date surfaced at the top so editors can confirm they're looking at the right asset.</p>
         <div class="project-image">
           <img src="images/dashboard_single.png" alt="Dashboard single video view">
-          <div class="image-caption">Single video view — mirrors the aggregate layout with asset-level metadata surfaced at the top</div>
+          <div class="image-caption">Single video view: mirrors the aggregate layout with asset-level metadata surfaced at the top</div>
         </div>
-        <p>A website filter and time range selector sit at the top of both views. For multi-site publishers, the website dropdown was a non-negotiable requirement from research. The time range options — Today, Past 7 days, Past 30 days — came directly from how clients described their actual workflows.</p>
+        <p>A website filter and time range selector sit at the top of both views. For multi-site publishers, the website dropdown was a non-negotiable requirement from research. The time range options (Today, Past 7 days, Past 30 days) came directly from how clients described their actual workflows.</p>
         <p>The monetization section includes a persistent link to the client's ad partner dashboard. Clients weren't asking Arc to replace Google Ad Manager or their existing analytics stack. They wanted Arc to surface the top-line numbers and get out of the way.</p>
       </div>
 
@@ -1048,7 +1069,7 @@
           </video>
           <div class="image-caption">Redesign concept - in collaboration with Figma Make</div>
         </div>
-        <p>The core structure would stay the same: the three-bucket layout, the aggregate and single video views, the most-viewed table. What would change is everything visual — tighter typographic hierarchy to make the big numbers land harder, color used intentionally to separate healthy metrics from error states, and chart types chosen for what the data actually needs rather than what Datadog provides out of the box.</p>
+        <p>The core structure would stay the same: the three-bucket layout, the aggregate and single video views, the most-viewed table. What would change is everything visual: tighter typographic hierarchy to make the big numbers land harder, color used intentionally to separate healthy metrics from error states, and chart types chosen for what the data actually needs rather than what Datadog provides out of the box.</p>
         <p>The empty state experience would also get real attention. The v1 shipped with placeholder labels and blank chart areas while data loaded. For clients seeing the dashboard for the first time during a beta demo, that created confusion about whether the tool was working. A proper loading state and empty state would have made the beta feel more credible from day one.</p>
       </div>
 
@@ -1223,6 +1244,15 @@
     </div>
   </div>
 
+
+  <!-- Floating buttons (project pages only) -->
+  <button id="float-up" class="float-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+  <button id="float-home" class="float-btn" onclick="goHome()" aria-label="Back to home">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  </button>
+
 </div><!-- /site -->
 
 <script>
@@ -1239,6 +1269,32 @@ function toggleTheme() {
 
 // ── STATE ──
 let homeScrollPos = 0;
+
+// ── FLOAT BUTTONS ──
+let _floatScrollHandler = null;
+
+function updateFloatBtns(pageId) {
+  const upBtn = document.getElementById('float-up');
+  const homeBtn = document.getElementById('float-home');
+  if (_floatScrollHandler) {
+    window.removeEventListener('scroll', _floatScrollHandler);
+    _floatScrollHandler = null;
+  }
+  if (pageId.startsWith('project-')) {
+    _floatScrollHandler = () => {
+      const show = window.scrollY > 60;
+      upBtn.classList.toggle('visible', show);
+      homeBtn.classList.toggle('visible', show);
+    };
+    window.addEventListener('scroll', _floatScrollHandler, { passive: true });
+    const show = window.scrollY > 60;
+    upBtn.classList.toggle('visible', show);
+    homeBtn.classList.toggle('visible', show);
+  } else {
+    upBtn.classList.remove('visible');
+    homeBtn.classList.remove('visible');
+  }
+}
 
 // ── TYPING ANIMATION ──
 const typingEl = document.getElementById('typing-text');
@@ -1300,6 +1356,7 @@ function enterSite() {
   setTimeout(() => {
     splash.style.display = 'none';
     document.getElementById('site').classList.add('visible');
+    history.replaceState({page: 'home'}, '', location.pathname + location.search);
     initNavScroll();
     observeFadeIns();
   }, 800);
@@ -1329,38 +1386,74 @@ function setNav(pageId) {
 }
 
 // ── ROUTING ──
-function showPage(pageId, e) {
-  if (e) e.preventDefault();
+function _activatePage(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
   window.scrollTo(0, 0);
   setNav(pageId);
+  updateFloatBtns(pageId);
 }
 
-function showProject(idx, e) {
-  if (e) e.preventDefault();
-  homeScrollPos = window.scrollY;
+function _activateProject(idx) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('project-' + idx).classList.add('active');
   window.scrollTo(0, 0);
   setNav('project-' + idx);
   observeProjectSections();
+  updateFloatBtns('project-' + idx);
+}
+
+function showPage(pageId, e) {
+  if (e) e.preventDefault();
+  history.pushState({page: pageId}, '', '#' + pageId);
+  _activatePage(pageId);
+}
+
+const PROJECT_SLUGS = [
+  'video-editing',
+  'audio',
+  'ai-assistant',
+  'card-component',
+  'video-analytics',
+  'noteful'
+];
+
+function showProject(idx, e) {
+  if (e) e.preventDefault();
+  homeScrollPos = window.scrollY;
+  history.pushState({page: 'project-' + idx, idx: idx}, '', '#' + PROJECT_SLUGS[idx]);
+  _activateProject(idx);
 }
 
 function goHome(e) {
   if (e) e.preventDefault();
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('home').classList.add('active');
-  setNav('home');
+  history.pushState({page: 'home'}, '', location.pathname + location.search);
+  _activatePage('home');
   setTimeout(() => window.scrollTo({ top: homeScrollPos, behavior: 'instant' }), 20);
 }
 
 function scrollToContact(e) {
-  e.preventDefault();
+  if (e) e.preventDefault();
   const homeActive = document.getElementById('home').classList.contains('active');
-  if (!homeActive) { showPage('home', null); setTimeout(() => document.getElementById('contact').scrollIntoView({ behavior:'smooth' }), 120); }
+  if (!homeActive) { goHome(null); setTimeout(() => document.getElementById('contact').scrollIntoView({ behavior:'smooth' }), 120); }
   else { document.getElementById('contact').scrollIntoView({ behavior:'smooth' }); }
 }
+
+// Handle browser back/forward
+window.addEventListener('popstate', function(e) {
+  const state = e.state;
+  if (!state || state.page === 'home') {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('home').classList.add('active');
+    setNav('home');
+    updateFloatBtns('home');
+    setTimeout(() => window.scrollTo({ top: homeScrollPos, behavior: 'instant' }), 20);
+  } else if (typeof state.idx === 'number') {
+    _activateProject(state.idx);
+  } else if (state.page) {
+    _activatePage(state.page);
+  }
+});
 
 // ── SCROLL ANIMATIONS ──
 function observeFadeIns() {
