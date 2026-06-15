@@ -1232,7 +1232,7 @@ async function runHeroTyping() {
     '<span style="text-decoration: underline wavy #e53e3e; text-underline-offset: 3px;">' +
     correct + '</span>';
   // 4. Pause, then instant autocorrect to "Shaking"
-  await sleep(900);
+  await sleep(400);
   typed = prefix + typo;
   heroTyping.textContent = typed;
   // 5. Pause, then backspace only to "Sha" (delete "king" = 4 chars)
