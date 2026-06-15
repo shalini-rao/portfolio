@@ -47,104 +47,24 @@
   }
 
   /* ══════════════════════════════════════
-     OPENING PAGE
+     MAIN SITE
   ══════════════════════════════════════ */
-  #splash {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  #splash.exiting {
-    animation: splashExit 0.8s cubic-bezier(0.76,0,0.24,1) forwards;
-  }
-  @keyframes splashExit {
-    0%  { opacity:1; transform:scale(1); }
-    100%{ opacity:0; transform:scale(1.03); pointer-events:none; }
-  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  #site { opacity:1; }
 
-  /* Pastel blobs */
-  .blob-canvas { position:absolute; inset:0; overflow:hidden; }
-  .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(72px);
-    opacity: 0.52;
-    will-change: transform;
-  }
-  .b1{ width:500px;height:500px;background:#b8d8f8;top:-100px;left:-80px;animation:bm1 22s ease-in-out infinite alternate; }
-  .b2{ width:440px;height:440px;background:#d4b8f8;bottom:-80px;right:-60px;animation:bm2 26s ease-in-out infinite alternate; }
-  .b3{ width:380px;height:380px;background:#f8b8d8;top:42%;left:32%;animation:bm3 18s ease-in-out infinite alternate; }
-  .b4{ width:330px;height:330px;background:#b8f0d8;top:12%;right:8%;animation:bm4 24s ease-in-out infinite alternate; }
-  .b5{ width:290px;height:290px;background:#b8e8f8;bottom:18%;left:10%;animation:bm5 20s ease-in-out infinite alternate; }
-  .b6{ width:250px;height:250px;background:#e8d4f8;top:62%;right:22%;animation:bm6 16s ease-in-out infinite alternate; }
-  @keyframes bm1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(150px,110px) scale(1.2)}}
-  @keyframes bm2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-130px,-90px) scale(1.22)}}
-  @keyframes bm3{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-110px,130px) scale(0.86)}}
-  @keyframes bm4{0%{transform:translate(0,0) scale(1)}100%{transform:translate(90px,150px) scale(1.14)}}
-  @keyframes bm5{0%{transform:translate(0,0) scale(1)}100%{transform:translate(120px,-100px) scale(1.18)}}
-  @keyframes bm6{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-80px,-120px) scale(1.1)}}
-
-  .splash-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 48px 64px;
-  }
-  .splash-text {
-    font-size: clamp(20px, 3.2vw, 34px);
-    font-weight: 700;
-    color: #1c1c1c;
-    letter-spacing: -0.02em;
-    line-height: 1.35;
-    min-height: 2.8em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .cursor {
+  /* Hero typing cursor */
+  .hero-cursor {
     display: inline-block;
-    width: 2px; height: 1em;
-    background: #1c1c1c;
+    width: 3px; height: 0.9em;
+    background: var(--text);
     margin-left: 3px;
     vertical-align: middle;
     animation: blink 0.85s step-end infinite;
   }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-  #enter-btn {
-    margin-top: 48px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 38px;
-    border-radius: 50px;
-    border: 2px solid var(--accent);
-    font-family: 'Archivo', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    background: transparent;
-    color: var(--accent);
-    transition: background 0.45s ease, color 0.45s ease, transform 0.15s;
-    letter-spacing: 0.01em;
+  .hero-cursor.done {
+    animation: none;
+    opacity: 0;
   }
-  #enter-btn.filled { background: var(--accent); color: #fff; }
-  #enter-btn:hover  { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; transform: translateY(-1px); }
-
-  /* ══════════════════════════════════════
-     MAIN SITE
-  ══════════════════════════════════════ */
-  #site { opacity:0; transition: opacity 0.6s ease; }
-  #site.visible { opacity:1; }
 
   /* Theme toggle — fixed, always on top */
   #theme-toggle {
@@ -473,7 +393,6 @@
     .project-nav-footer{ grid-template-columns:1fr 1fr; }
     .back-home-link{ display:none; }
     .hobbies-header,.hobbies-grid{ padding-left:24px; padding-right:24px; }
-    .splash-content{ padding:32px 24px; }
     #contact{ padding:60px 24px; }
   }
 
@@ -503,22 +422,8 @@
 </head>
 <body>
 
-<!-- ══════════════ OPENING PAGE ══════════════ -->
-<div id="splash">
-  <div class="blob-canvas">
-    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-    <div class="blob b4"></div><div class="blob b5"></div><div class="blob b6"></div>
-  </div>
-  <div class="splash-content">
-    <div class="splash-text">
-      <span id="typing-text"></span><span class="cursor"></span>
-    </div>
-    <button id="enter-btn" onclick="enterSite()">Come on in &nbsp;→</button>
-  </div>
-</div>
-
 <!-- ══════════════ MAIN SITE ══════════════ -->
-<div id="site">
+<div id="site" class="visible">
 
   <!-- Theme toggle (always fixed, no emoji) -->
   <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
@@ -544,8 +449,8 @@
 
   <!-- ══════════════ LANDING PAGE ══════════════ -->
   <div id="home" class="page active">
-    <div class="home-hero fade-in">
-      <h1>Hi! I'm Shalini, a strategy-minded product designer.</h1>
+    <div class="home-hero">
+      <h1><span id="hero-typing"></span><span class="hero-cursor" id="hero-cursor"></span></h1>
       <p>I've been designing for 3.5 years at <a href="https://www.arcxp.com/" target="_blank" rel="noopener">Arc XP</a>, the AI-driven B2B SaaS content management system owned and distributed by The Washington Post. I've been lead designer on our <a href="https://www.arcxp.com/products/video-center/" target="_blank" rel="noopener">digital asset management</a> products, enabling newsroom and broadcast companies to store, distribute, and monetize their digital content.</p>
       <p style="font-size: 14px; font-weight:200; font-style: italic;">*I made this portfolio in collaboration with Claude, but all design decisions and written content are my own.</p>
       <a href="#" class="hobbies-shoutout" onclick="showPage('hobbies',event)">🎨 &nbsp;Curious what I get up to outside of work? →</a>
@@ -1297,8 +1202,8 @@ function updateFloatBtns(pageId) {
 }
 
 // ── TYPING ANIMATION ──
-const typingEl = document.getElementById('typing-text');
-const enterBtn = document.getElementById('enter-btn');
+const heroTyping = document.getElementById('hero-typing');
+const heroCursor = document.getElementById('hero-cursor');
 const prefix  = "Hi! I'm ";
 const typo    = "Shaking";
 const correct = "Shalini";
@@ -1306,61 +1211,60 @@ const suffix  = ", a strategy-minded product designer.";
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-async function runTyping() {
+let typed = '';
+
+async function runHeroTyping() {
   // 1. Type prefix
   for (const ch of prefix) {
-    typingEl.textContent += ch;
+    typed += ch;
+    heroTyping.textContent = typed;
     await sleep(52 + Math.random() * 32);
   }
   // 2. Type "Shalini" letter by letter
   for (const ch of correct) {
-    typingEl.textContent += ch;
+    typed += ch;
+    heroTyping.textContent = typed;
     await sleep(60 + Math.random() * 26);
   }
-  // 3. Pause, then INSTANT autocorrect swap to "Shaking"
-  await sleep(360);
-  typingEl.innerHTML = prefix +
-    '<span style="background:rgba(44,157,201,0.2);border-radius:3px;padding:0 2px;transition:background .2s">' +
-    typo + '</span>';
-  await sleep(100);
-  typingEl.textContent = prefix + typo; // remove highlight span
-  // 4. Notice mistake, pause, then backspace
-  await sleep(500);
-  let s = prefix + typo;
-  while (s.length > prefix.length) {
-    s = s.slice(0, -1);
-    typingEl.textContent = s;
+  // 3. Pause, then show dotted red underline under "Shalini"
+  await sleep(480);
+  heroTyping.innerHTML = prefix +
+    '<span style="text-decoration: underline wavy #e53e3e; text-underline-offset: 3px;">' +
+    correct + '</span>';
+  // 4. Pause, then instant autocorrect to "Shaking"
+  await sleep(900);
+  typed = prefix + typo;
+  heroTyping.textContent = typed;
+  // 5. Pause, then backspace only to "Sha" (delete "king" = 4 chars)
+  await sleep(520);
+  const backTo = prefix.length + 3; // "Hi! I'm Sha"
+  while (typed.length > backTo) {
+    typed = typed.slice(0, -1);
+    heroTyping.textContent = typed;
     await sleep(72);
   }
-  // 5. Retype correct name
-  await sleep(140);
-  for (const ch of correct) {
-    typingEl.textContent += ch;
+  // 6. Retype "lini"
+  await sleep(160);
+  for (const ch of 'lini') {
+    typed += ch;
+    heroTyping.textContent = typed;
     await sleep(60 + Math.random() * 26);
   }
-  // 6. Finish sentence
+  // 7. Finish sentence
   for (const ch of suffix) {
-    typingEl.textContent += ch;
-    await sleep(40 + Math.random() * 26);
+    typed += ch;
+    heroTyping.textContent = typed;
+    await sleep(38 + Math.random() * 26);
   }
-  // 7. Fill button
-  enterBtn.classList.add('filled');
+  // 8. Stop cursor blinking
+  heroCursor.classList.add('done');
 }
 
-runTyping();
-
-// ── ENTER SITE ──
-function enterSite() {
-  const splash = document.getElementById('splash');
-  splash.classList.add('exiting');
-  setTimeout(() => {
-    splash.style.display = 'none';
-    document.getElementById('site').classList.add('visible');
-    history.replaceState({page: 'home'}, '', location.pathname + location.search);
-    initNavScroll();
-    observeFadeIns();
-  }, 800);
-}
+// ── INIT ON LOAD ──
+history.replaceState({page: 'home'}, '', location.pathname + location.search);
+initNavScroll();
+observeFadeIns();
+runHeroTyping();
 
 // ── NAV SCROLL ──
 function initNavScroll() {
