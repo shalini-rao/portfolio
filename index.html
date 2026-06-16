@@ -129,16 +129,67 @@
   .page.active { display:block; }
 
   /* ══════════════════════════════════════
-     LANDING PAGE
+     LANDING PAGE (TOP-PINNED, FULL HERO IMAGE)
   ══════════════════════════════════════ */
   #home { padding-top: 0; }
 
   .home-hero {
-    padding: 100px 80px 64px;
-    max-width: 900px;
+    width: 100%;
+    padding: 100px max(5vw, 40px) 64px;
+    box-sizing: border-box;
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Pins the image block cleanly to the top */
+    gap: 64px;
   }
+
+  /* 1. TEXT COLUMN (FIXED SEPARATION WIDTH) */
+  .hero-text-column {
+    width: 580px; 
+    flex-shrink: 0; /* Prevents text column boundaries from shifting */
+  }
+
+  /* 2. IMAGE COLUMN (STABLE CONSTRAINED FRAME) */
+  .hero-image-column {
+    position: relative;
+    width: 460px; /* Gives the image its own explicit base size */
+    max-width: 100%;
+    flex-shrink: 0;
+    overflow: hidden;
+    
+    /* Fade-in configuration */
+    opacity: 0;
+    animation: heroFadeIn 1.2s ease-out 0.5s forwards;
+  }
+
+  /* THE CRITICAL RESIZING FIX */
+  .hero-image-column img {
+    width: 100%;
+    height: auto; /* Lets the image calculate its true height proportionally */
+    display: block;
+    
+    /* CRITICAL: "contain" scales the image so that the FULL graphic is 
+       always completely visible, never cropped or cut off at the edges */
+    object-fit: contain; 
+    object-position: top center; 
+  }
+
+  /* Fade-in Animation keyframes */
+  @keyframes heroFadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Typography Sizing */
   .home-hero h1 {
-    font-size: clamp(28px, 4.2vw, 50px);
+    font-size: clamp(28px, 3.5vw, 44px); 
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1.15;
@@ -146,8 +197,8 @@
     margin-bottom: 28px;
   }
   .home-hero p {
-    font-size: 18px; font-weight:400; line-height:1.75;
-    color: var(--muted); max-width:700px; margin-bottom:28px;
+    font-size: 16px; font-weight:400; line-height:1.75;
+    color: var(--muted); margin-bottom:28px;
   }
   .home-hero p a {
     color:var(--accent); text-decoration:none; font-weight:600;
@@ -389,7 +440,24 @@
     .project-banner.reverse{ direction:ltr; }
     .project-header,.project-body,.project-nav-footer{ padding-left:24px; padding-right:24px; }
     nav{ padding:0 120px 0 20px; }
-    .home-hero{ padding:80px 24px 40px; }
+    .home-hero { 
+      padding: 80px 24px 40px; 
+      flex-direction: column; 
+      align-items: center; /* Center layout components on mobile */
+      gap: 32px;
+    }
+    
+    .hero-text-column {
+      width: 100%; 
+    }
+    
+    .hero-image-column {
+      width: 100%; /* Spans natural container widths on phones */
+    }
+
+    .hero-image-column img {
+      height: auto; /* Naturally conforms to the image's layout aspect ratio */
+    }
     .project-nav-footer{ grid-template-columns:1fr 1fr; }
     .back-home-link{ display:none; }
     .hobbies-header,.hobbies-grid{ padding-left:24px; padding-right:24px; }
@@ -450,11 +518,19 @@
   <!-- ══════════════ LANDING PAGE ══════════════ -->
   <div id="home" class="page active">
     <div class="home-hero">
-      <h1><span id="hero-typing"></span><span class="hero-cursor" id="hero-cursor"></span></h1>
-      <p>I spent 3.5 years designing at <a href="https://www.arcxp.com/" target="_blank" rel="noopener">Arc XP</a>, the AI-driven B2B SaaS content management system owned and distributed by The Washington Post. I was lead designer on their <a href="https://www.arcxp.com/products/video-center/" target="_blank" rel="noopener">digital asset management</a> products, enabling newsrooms and broadcast companies worldwide to store, distribute, and monetize their digital content. With my technical background and emphasis on data-driven decisions, I thrive in cross-collaborative environments with user-centric goals.</p>
-      <p style="font-size: 14px; font-weight:200; font-style: italic;">*I made this portfolio in collaboration with Claude, but all design decisions and written content are my own.</p>
-      <a href="#" class="hobbies-shoutout" onclick="showPage('hobbies',event)">🎨 &nbsp;Curious what I get up to outside of work? →</a>
+      
+      <div class="hero-text-column"> 
+        <h1><span id="hero-typing"></span><span class="hero-cursor" id="hero-cursor"></span></h1>
+        <p>I spent 3.5 years designing at <a href="https://www.arcxp.com/" target="_blank" rel="noopener">Arc XP</a>, the AI-driven B2B SaaS content management system owned and distributed by The Washington Post. I was lead designer on their <a href="https://www.arcxp.com/products/video-center/" target="_blank" rel="noopener">digital asset management</a> products, enabling newsrooms and broadcast companies worldwide to store, distribute, and monetize their digital content. With my technical background and emphasis on data-driven decisions, I thrive in cross-collaborative environments with user-centric goals.</p>
+        <a href="#" class="hobbies-shoutout" onclick="showPage('hobbies',event)">🎨 &nbsp;Curious what I get up to outside of work? →</a>
+      </div>
+      
+      <div class="hero-image-column">
+        <img src="images/homepage_hero_image.png" alt="Shalini - Homepage hero image">
+      </div>
+
     </div>
+  
 
     <!-- PROJECT 1 -->
     <div class="project-banner fade-in" onclick="showProject(0)">
