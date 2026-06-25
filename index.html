@@ -485,8 +485,8 @@
   .float-btn {
     position: fixed;
     z-index: 900;
-    width: 44px; height: 44px;
-    border-radius: 50%;
+    height: 44px;
+    border-radius: 22px;
     border: 1px solid var(--border);
     background: var(--card-bg);
     color: var(--muted);
@@ -500,8 +500,22 @@
   }
   .float-btn.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
   .float-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-  #float-up   { bottom: 24px; right: 24px; }
-  #float-home { bottom: 24px; left: 24px; }
+  #float-up {
+    bottom: 36px; right: 36px;
+    width: 52px; height: 52px; border-radius: 26px;
+    padding: 0; overflow: hidden;
+    transition: background 0.2s, color 0.2s, border-color 0.2s,
+                opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                width 0.3s ease, padding 0.3s ease, gap 0.3s ease;
+  }
+  #float-up:hover { width: 138px; padding: 0 16px; gap: 7px; }
+  #float-up .btn-label {
+    white-space: nowrap; font-size: 13px; font-weight: 500;
+    max-width: 0; overflow: hidden; opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+  #float-up:hover .btn-label { max-width: 100px; opacity: 1; transition: opacity 0.15s ease 0.15s; }
+  #float-home { bottom: 36px; left: 36px; width: 44px; }
 
 </style>
 </head>
@@ -538,8 +552,9 @@
       
       <div class="hero-text-column"> 
         <h1><span id="hero-typing"></span><span class="hero-cursor" id="hero-cursor"></span></h1>
-        <p>I spent 3.5 years designing at <a href="https://www.arcxp.com/" target="_blank" rel="noopener">Arc XP</a>, the AI-driven B2B SaaS content management system owned and distributed by The Washington Post. I was lead designer on their <a href="https://www.arcxp.com/products/video-center/" target="_blank" rel="noopener">digital asset management</a> products, enabling newsrooms and broadcast companies worldwide to store, distribute, and monetize their digital content. With my technical background and emphasis on data-driven decisions, I thrive in cross-collaborative environments with user-centric goals.</p>
-        <a href="#" class="hobbies-shoutout" onclick="showPage('hobbies',event)">🎨 &nbsp;Curious what I get up to outside of work? →</a>
+        <p><strong>With my technical background and emphasis on research-based, data-driven decisions, I thrive in cross-collaborative environments with user-centric goals.</strong>I spent 3.5 years designing at <a href="https://www.arcxp.com/" target="_blank" rel="noopener">Arc XP</a>, the AI-driven B2B SaaS content management system owned and distributed by <i>The Washington Post</i>. I was lead designer on their <a href="https://www.arcxp.com/products/video-center/" target="_blank" rel="noopener">digital asset management</a> products, enabling newsrooms and broadcast companies worldwide to store, distribute, and monetize their digital content.</p>
+        <a href="#contact" class="contact-btn primary" onclick="scrollToContact(event)">Let's get in touch →</a>
+        <a href="#" class="hobbies-shoutout" onclick="showPage('hobbies',event)">🎨 &nbsp;Curious what I get up to outside of work?</a>
       </div>
       
       <div class="hero-image-column">
@@ -563,7 +578,7 @@
           <div class="project-meta-item"><label>Result</label><span>Reduced time to publish by over 50% and released to beta customer list</span></div>
           <div class="project-meta-item"><label>My Role</label><span> Lead Product Designer &amp; User Researcher, Worked with 1 PM and 3 engineers</span></div>
         </div>
-        <div class="project-tags"><span class="tag">User Testing</span><span class="tag">Data Driven</span><span class="tag">End-to-end delivery</span></div>
+        <div class="project-tags"><span class="tag">Cross-functional collaboration</span><span class="tag">Data Driven</span><span class="tag">End-to-end delivery</span></div>
         <div class="enter-hint">View case study →</div>
       </div>
     </div>
@@ -679,7 +694,7 @@
         <div class="callout-item"><label>Objective</label><p>Streamline video create-to-publish pipeline and create a more intuitive workflow across the platform</p></div>
         <div class="callout-item"><label>Result</label><p>Reduced time to publish by over 50% with successful and well-received beta release</p></div>
         <div class="callout-item"><label>My Role</label><p>Lead Product Designer & User Researcher, Worked with 1 PM and 3 engineers</p></div>
-        <div class="callout-item"><label>Tags</label><div class="callout-tags"><span class="tag">User Testing</span><span class="tag">Data Driven</span><span class="tag">Design Systems</span></div></div>
+        <div class="callout-item"><label>Tags</label><div class="callout-tags"><span class="tag">Cross-functional collaboration</span><span class="tag">Data Driven</span><span class="tag">End-to-end delivery</span></div></div>
       </div>
     </div>
     <div class="project-body">
@@ -1248,7 +1263,8 @@
 
   <!-- Floating buttons (project pages only) -->
   <button id="float-up" class="float-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    <span class="btn-label">Back to top</span>
   </button>
   <button id="float-home" class="float-btn" onclick="goHome()" aria-label="Back to home">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -1291,6 +1307,14 @@ function updateFloatBtns(pageId) {
     const show = window.scrollY > 60;
     upBtn.classList.toggle('visible', show);
     homeBtn.classList.toggle('visible', show);
+  } else if (pageId === 'home') {
+    homeBtn.classList.remove('visible');
+    _floatScrollHandler = () => {
+      upBtn.classList.toggle('visible', window.scrollY > 300);
+      homeBtn.classList.remove('visible');
+    };
+    window.addEventListener('scroll', _floatScrollHandler, { passive: true });
+    upBtn.classList.toggle('visible', window.scrollY > 300);
   } else {
     upBtn.classList.remove('visible');
     homeBtn.classList.remove('visible');
@@ -1359,6 +1383,7 @@ async function runHeroTyping() {
 // ── INIT ON LOAD ──
 history.replaceState({page: 'home'}, '', location.pathname + location.search);
 initNavScroll();
+updateFloatBtns('home');
 observeFadeIns();
 runHeroTyping();
 
