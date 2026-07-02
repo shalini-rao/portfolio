@@ -23,40 +23,43 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f5f5f5;
-    --text: #1c1c1c;
-    --accent: #2c9dc9;
-    --accent-hover: #1b627d;
-    --muted: #6b6b6b;
-    --border: rgba(28,28,28,0.12);
-    --card-bg: #ebebeb;
-    --tag-bg: rgba(44,157,201,0.10);
-    --tag-text: #1b627d;
-    --quote-bg: rgba(44,157,201,0.07);
-    --quote-border: #2c9dc9;
-    --meta-bg: rgba(44,157,201,0.08);
-    --nav-bg: rgba(245,245,245,0.88);
+    --bg: #F3F6F4;
+    --text: #1B2B28;
+    --accent: #177E6B;
+    --accent-hover: #0F5D4F;
+    --muted: #4A5C57;
+    --border: rgba(27,43,40,0.22);
+    --card-bg: #FFFFFF;
+    --tag-bg: rgba(23,126,107,0.10);
+    --tag-text: #177E6B;
+    --quote-bg: rgba(23,126,107,0.07);
+    --quote-border: #177E6B;
+    --meta-bg: rgba(23,126,107,0.08);
+    --nav-bg: rgba(243,246,244,0.88);
   }
   [data-theme="dark"] {
-    --bg: #1c1c1c;
-    --text: #f5f5f5;
-    --muted: #999;
-    --border: rgba(245,245,245,0.10);
-    --card-bg: #272727;
-    --tag-bg: rgba(44,157,201,0.15);
-    --tag-text: #5ec6e8;
-    --quote-bg: rgba(44,157,201,0.08);
-    --meta-bg: rgba(44,157,201,0.10);
-    --nav-bg: rgba(28,28,28,0.88);
+    --bg: #0F1B18;
+    --text: #E8F0EC;
+    --accent: #4CC2A8;
+    --accent-hover: #6FD4BE;
+    --muted: #9FB4AD;
+    --border: rgba(232,240,236,0.18);
+    --card-bg: #16241F;
+    --tag-bg: rgba(76,194,168,0.15);
+    --tag-text: #4CC2A8;
+    --quote-bg: rgba(76,194,168,0.08);
+    --quote-border: #4CC2A8;
+    --meta-bg: rgba(76,194,168,0.10);
+    --nav-bg: rgba(15,27,24,0.88);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Archivo', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
     transition: background 0.3s, color 0.3s;
@@ -98,7 +101,7 @@
     justify-content: center;
     gap: 7px;
     cursor: pointer;
-    font-family: 'Archivo', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     font-size: 13px;
     font-weight: 600;
     color: var(--text);
@@ -206,22 +209,43 @@
 
   /* Typography Sizing */
   .home-hero h1 {
-    font-size: clamp(28px, 3.5vw, 44px); 
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(28px, 3.5vw, 44px);
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1.15;
     color: var(--text);
-    margin-bottom: 28px;
+    margin-bottom: 1em;
   }
   .home-hero p {
     font-size: 16px; font-weight:400; line-height:1.75;
-    color: var(--muted); margin-bottom:28px;
+    color: var(--muted); margin-bottom:1em;
   }
-  .home-hero p a {
+  .home-hero h2 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1em;
+  }
+  .home-hero h2 .tagline-phrase {
+    display: block;
+    opacity: 0;
+    transform: translateX(-18px);
+    animation: tagline-slide-in 0.5s ease forwards;
+  }
+  .home-hero h2 .tagline-phrase:nth-child(1) { animation-delay: 0.1s; }
+  .home-hero h2 .tagline-phrase:nth-child(2) { animation-delay: 0.25s; padding-left: 1.2em; }
+  .home-hero h2 .tagline-phrase:nth-child(3) { animation-delay: 0.4s; padding-left: 2.4em; }
+  @keyframes tagline-slide-in {
+    to { opacity: 1; transform: translateX(0); }
+  }
+  /* .home-hero p a {
     color:var(--accent); text-decoration:none; font-weight:600;
     border-bottom: 1.5px solid transparent; transition:border-color 0.2s;
   }
-  .home-hero p a:hover { border-color:var(--accent); }
+  .home-hero p a:hover { border-color:var(--accent); } */
 
   .hobbies-shoutout {
     display: inline-flex; align-items:center; gap:8px;
@@ -274,12 +298,12 @@
     display:flex; flex-direction:column; justify-content:center; gap:20px;
   }
   .project-number { font-size:11px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); }
-  .project-banner-title { font-size:clamp(18px,2.1vw,28px); font-weight:800; letter-spacing:-0.02em; line-height:1.22; color:var(--text); }
+  .project-banner-title { font-family:'Sora',sans-serif; font-size:clamp(18px,2.1vw,28px); font-weight:800; letter-spacing:-0.02em; line-height:1.22; color:var(--text); }
   .project-banner-meta { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
   .project-meta-item label { display:block; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
   .project-meta-item span { font-size:13px; font-weight:500; color:var(--text); line-height:1.4; }
   .project-tags { display:flex; flex-wrap:wrap; gap:8px; }
-  .tag { padding:5px 12px; border-radius:50px; font-size:11px; font-weight:600; letter-spacing:.04em; background:var(--tag-bg); color:var(--tag-text); border:1px solid rgba(44,157,201,.2); }
+  .tag { padding:5px 12px; border-radius:50px; font-size:11px; font-weight:600; letter-spacing:.04em; background:var(--tag-bg); color:var(--tag-text); border:1px solid rgba(23,126,107,.2); }
   .enter-hint {
     font-size:13px; font-weight:500; color:var(--accent);
     display:flex; align-items:center; gap:6px;
@@ -354,10 +378,10 @@
     transition:color 0.2s;
   }
   .back-link:hover { color:var(--accent); }
-  .project-title { font-size:clamp(24px,3.5vw,44px); font-weight:900; letter-spacing:-0.03em; line-height:1.1; color:var(--text); margin-bottom:40px; }
+  .project-title { font-family:'Sora',sans-serif; font-size:clamp(24px,3.5vw,44px); font-weight:900; letter-spacing:-0.03em; line-height:1.1; color:var(--text); margin-bottom:40px; }
 
-  .project-callout { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); background:var(--meta-bg); border:1px solid rgba(44,157,201,.2); border-radius:16px; overflow:hidden; }
-  .callout-item { padding:24px 28px; border-right:1px solid rgba(44,157,201,.15); }
+  .project-callout { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); background:var(--meta-bg); border:1px solid rgba(23,126,107,.2); border-radius:16px; overflow:hidden; }
+  .callout-item { padding:24px 28px; border-right:1px solid rgba(23,126,107,.15); }
   .callout-item:last-child { border-right:none; }
   .callout-item label { display:block; font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
   .callout-item p { font-size:14px; font-weight:500; color:var(--text); line-height:1.5; }
@@ -368,9 +392,9 @@
   .project-section { margin-bottom:72px; opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
   .project-section.visible { opacity:1; transform:translateY(0); }
 
-  .section-heading    { font-size:26px; font-weight:800; letter-spacing:-0.02em; color:var(--text); margin-bottom:24px; line-height:1.25; }
-  .subsection-heading { font-size:19px; font-weight:700; letter-spacing:-0.015em; color:var(--text); margin-bottom:16px; margin-top:40px; line-height:1.3; }
-  .subsubsection-heading { font-size:15px; font-weight:700; letter-spacing:.01em; color:var(--text); margin-bottom:12px; margin-top:28px; }
+  .section-heading    { font-family:'Sora',sans-serif; font-size:26px; font-weight:800; letter-spacing:-0.02em; color:var(--text); margin-bottom:24px; line-height:1.25; }
+  .subsection-heading { font-family:'Sora',sans-serif; font-size:19px; font-weight:700; letter-spacing:-0.015em; color:var(--text); margin-bottom:16px; margin-top:40px; line-height:1.3; }
+  .subsubsection-heading { font-family:'Sora',sans-serif; font-size:15px; font-weight:700; letter-spacing:.01em; color:var(--text); margin-bottom:12px; margin-top:28px; }
 
   .project-body p { font-size:16px; font-weight:400; line-height:1.8; color:var(--text); margin-bottom:20px; }
   .project-body p em { font-style:italic; }
@@ -417,7 +441,7 @@
   /* Hobbies */
   #hobbies { padding-top:56px; }
   .hobbies-header { padding:80px 80px 40px; border-bottom:1px solid var(--border); }
-  .hobbies-header h1 { font-size:clamp(28px,4vw,48px); font-weight:900; letter-spacing:-0.03em; color:var(--text); margin-bottom:16px; }
+  .hobbies-header h1 { font-family:'Sora',sans-serif; font-size:clamp(28px,4vw,48px); font-weight:900; letter-spacing:-0.03em; color:var(--text); margin-bottom:16px; }
   .hobbies-header p { font-size:16px; color:var(--muted); }
   .hobbies-grid { padding:64px 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px; }
   .hobby-placeholder { aspect-ratio:4/3; background:var(--card-bg); border:2px dashed var(--border); border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--muted); font-size:13px; font-weight:500; }
@@ -496,7 +520,7 @@
     transform: translateY(20px);
     transition: background 0.2s, color 0.2s, border-color 0.2s,
                 opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    font-family: 'Archivo', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
   }
   .float-btn.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
   .float-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
@@ -552,7 +576,20 @@
       
       <div class="hero-text-column"> 
         <h1><span id="hero-typing"></span><span class="hero-cursor" id="hero-cursor"></span></h1>
-        <p><strong>With my technical background and emphasis on research-based, data-driven decisions, I thrive in cross-collaborative environments with user-centric goals.</strong>I spent 3.5 years designing at <a href="https://www.arcxp.com/" target="_blank" rel="noopener">Arc XP</a>, the AI-driven B2B SaaS content management system owned and distributed by <i>The Washington Post</i>. I was lead designer on their <a href="https://www.arcxp.com/products/video-center/" target="_blank" rel="noopener">digital asset management</a> products, enabling newsrooms and broadcast companies worldwide to store, distribute, and monetize their digital content.</p>
+        <h2>
+          <!-- <span class="tagline-phrase">Technically grounded</span>
+          <span class="tagline-phrase">Data and Research Driven</span>
+          <span class="tagline-phrase">End-to-end delivery</span> -->
+          Technically grounded designer with 5+ years of experience driving end-to-end delivery, 
+          leveraging data and user research, and streamlining complex AI-driven workflows in B2B SaaS 
+          and content management tools
+        </h2>
+        <!-- <p>I spent 3.5 years designing at <a href="https://www.arcxp.com/" target="_blank" rel="noopener">Arc XP</a>, 
+          the AI-driven B2B SaaS content management system owned and distributed by <strong><i>The Washington Post</i></strong>. I was lead designer on their 
+          <a href="https://www.arcxp.com/products/video-center/" target="_blank" rel="noopener">digital asset management</a> products, enabling newsrooms 
+          and broadcast companies worldwide to store, distribute, and monetize their digital content.</p> -->
+          <!-- <p><strong>With my technical background and emphasis on research-based, data-driven decisions, I thrive in cross-collaborative 
+          environments with user-centric goals.</strong></p> -->
         <a href="#contact" class="contact-btn primary" onclick="scrollToContact(event)">Let's get in touch →</a>
         <a href="#" class="hobbies-shoutout" onclick="showPage('hobbies',event)">🎨 &nbsp;Curious what I get up to outside of work?</a>
       </div>
@@ -571,7 +608,6 @@
         <img class="swap-gif" src="images/VE2_landing.gif" alt="Video editing workflow in motion">
       </div>
       <div class="project-banner-info">
-        <div class="project-number">01</div>
         <div class="project-banner-title">I rebuilt a decade-old video editing workflow to cut publish time in half</div>
         <div class="project-banner-meta">
           <div class="project-meta-item"><label>Objective</label><span>Fully redesign legacy video editing workflow to streamline create-to-publish pipeline and update outdated experience and backend</span></div>
@@ -590,7 +626,6 @@
         <img class="swap-gif" src="images/audio_landing.gif" alt="Audio asset management in motion">
       </div>
       <div class="project-banner-info">
-        <div class="project-number">02</div>
         <div class="project-banner-title">I prototyped a net-new audio product in Figma Make and drove the product from competitive analysis to shipped multi-phase roadmap</div>
         <div class="project-banner-meta">
           <div class="project-meta-item"><label>Objective</label><span>Expand platform value for audio distribution</span></div>
@@ -609,7 +644,6 @@
         <img class="swap-gif" src="images/aia_landing.gif" alt="Video editing workflow in motion">
       </div>
       <div class="project-banner-info">
-        <div class="project-number">03</div>
         <div class="project-banner-title">We designed an AI assistant from zero, across an entire platform.</div>
         <div class="project-banner-meta">
           <div class="project-meta-item"><label>Objective</label><span>Turn an open-ended AI mandate into a shipped product</span></div>
@@ -628,7 +662,6 @@
         <img class="swap-gif" src="images/card_landing.gif" alt="Card component design in motion">
       </div>
       <div class="project-banner-info">
-        <div class="project-number">04</div>
         <div class="project-banner-title">I crafted a composable card component to accommodate a dozen asset form factors</div>
         <div class="project-banner-meta">
           <div class="project-meta-item"><label>Objective</label><span>Unify card components across 10+ products</span></div>
@@ -647,7 +680,6 @@
         <img class="swap-gif" src="images/dashboard_landing.gif" alt="Dashboard hero image in motion">
       </div>
       <div class="project-banner-info">
-        <div class="project-number">05</div>
         <div class="project-banner-title">I worked within hard constraints to give enterprise publishers their first view into video performance data</div>
         <div class="project-banner-meta">
           <div class="project-meta-item"><label>Objective</label><span>Self-serve video analytics for enterprise publishers</span></div>
@@ -663,7 +695,6 @@
     <div class="project-banner reverse fade-in" onclick="showProject(5)">
       <div class="project-banner-img"><img src="images/noteful_hero_landing.png" alt="Noteful app teacher dashboard"></div>
       <div class="project-banner-info">
-        <div class="project-number">06</div>
         <div class="project-banner-title">We gamified music education to improve theory retention in children and adults</div>
         <div class="project-banner-meta">
           <div class="project-meta-item"><label>Objective</label><span>Teacher-facing dashboard for Noteful app</span></div>
@@ -1510,7 +1541,7 @@ function observeProjectSections() {
     border-radius:50%; width:40px; height:40px;
     color:#fff; font-size:18px; cursor:pointer;
     display:flex; align-items:center; justify-content:center;
-    font-family:'Archivo',sans-serif; line-height:1;
+    font-family:'Inter',sans-serif; line-height:1;
     transition:background 0.2s;
   " aria-label="Close">✕</button>
   <img id="lb-img" src="" alt="" style="
