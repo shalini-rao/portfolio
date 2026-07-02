@@ -325,19 +325,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: opacity 0.4s ease;
+    transition: transform 0.6s cubic-bezier(.25,.46,.45,.94);
   }
-  .hover-swap .swap-gif {
-    position: relative;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  .project-banner:hover .hover-swap .swap-static { opacity: 0; }
-  .project-banner:hover .hover-swap .swap-gif    { opacity: 1; }
+  .hover-swap .swap-gif { display: none; }
+  .project-banner:hover .hover-swap .swap-static { transform: scale(1.04); }
 
   /* Contact */
   #contact { padding:80px; border-top:1px solid var(--border); }
@@ -629,7 +620,7 @@
         <div class="project-banner-title">I prototyped a net-new audio product in Figma Make and drove the product from competitive analysis to shipped multi-phase roadmap</div>
         <div class="project-banner-meta">
           <div class="project-meta-item"><label>Objective</label><span>Expand platform value for audio distribution</span></div>
-          <div class="project-meta-item"><label>Result</label><span>New audio asset type offering launched</span></div>
+          <div class="project-meta-item"><label>Result</label><span>New audio asset type offering launched, 259 daily users across 30 customer organizations</span></div>
           <div class="project-meta-item"><label>My Role</label><span> Lead Product Designer, Worked with 1 PM and 2 engineers</span></div>
         </div>
         <div class="project-tags"><span class="tag">AI Prototyping</span><span class="tag">0→1 Product</span><span class="tag">Market Gap</span></div>
@@ -647,7 +638,7 @@
         <div class="project-banner-title">We designed an AI assistant from zero, across an entire platform.</div>
         <div class="project-banner-meta">
           <div class="project-meta-item"><label>Objective</label><span>Turn an open-ended AI mandate into a shipped product</span></div>
-          <div class="project-meta-item"><label>Result</label><span>Native AI assistant panel shipped across Arc XP</span></div>
+          <div class="project-meta-item"><label>Result</label><span>Native AI assistant panel shipped across Arc XP, reached 85% acceptance rate across 184k suggestions over six months and 365k ARR</span></div>
           <div class="project-meta-item"><label>My Role</label><span> Product Designer, Worked with tiger team of 3 designers, 2 PMs, and 5 engineers</span></div>
         </div>
         <div class="project-tags"><span class="tag">AI Design</span><span class="tag">User Research</span><span class="tag">Design Systems</span></div>
@@ -830,7 +821,7 @@
       <h1 class="project-title">Prototyping a net-new audio product in Figma Make, from competitive analysis to shipped multi-phase roadmap</h1>
       <div class="project-callout">
         <div class="callout-item"><label>Objective</label><p>Increase platform's value proposition for accessibility, reader engagement, and cross-platform distribution by offering audio asset management</p></div>
-        <div class="callout-item"><label>Result</label><p>Expanded asset type offering to include audio</p></div>
+        <div class="callout-item"><label>Result</label><p>Expanded asset type offering to include audio, 259 daily users across 30 customer organizations</p></div>
         <div class="callout-item"><label>My Role</label><p>Product Designer</p></div>
         <div class="callout-item"><label>Tags</label><div class="callout-tags"><span class="tag">AI Prototyping</span><span class="tag">0→1 Product</span><span class="tag">Content Strategy</span></div></div>
       </div>
@@ -897,7 +888,7 @@
       <h1 class="project-title">Designing an AI assistant from zero, across an entire platform.</h1>
       <div class="project-callout">
         <div class="callout-item"><label>Objective</label><p>Turn an open-ended mandate ("add AI, figure out what that means") into a shipped product feature that saves journalists time without taking control away from them</p></div>
-        <div class="callout-item"><label>Result</label><p>A native AI assistant panel, shipped in Composer and designed to extend across Arc XP's entire product suite, surfacing metadata updates, style guide feedback, and content opportunities as reviewable, reversible suggestions</p></div>
+        <div class="callout-item"><label>Result</label><p>A native AI assistant panel, shipped in Composer and designed to extend across Arc XP's entire product suite, surfacing metadata updates, style guide feedback, and content opportunities as reviewable, reversible suggestions. Reached 85% acceptance rate across 184k suggestions over six months and 365k ARR.</p></div>
         <div class="callout-item"><label>My Role</label><p>Product Designer, Worked with tiger team of 3 designers, 2 PMs, and 5 engineers</p></div>
         <div class="callout-item"><label>Tags</label><div class="callout-tags"><span class="tag">AI Design</span><span class="tag">User Research</span><span class="tag">Design Systems</span></div></div>
       </div>
