@@ -257,6 +257,7 @@
     background: var(--card-bg);
   }
   .hobbies-shoutout:hover { border-color:var(--accent); color:var(--accent); }
+  .hero-cta-group { display:flex; flex-direction:column; align-items:flex-start; gap:12px; margin-top:4px; }
 
   /* Project banners */
   .project-banner {
@@ -467,33 +468,123 @@
   .fade-in { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
   .fade-in.visible { opacity:1; transform:translateY(0); }
 
+  /* ══════════════════════════════════════
+     HAMBURGER / MOBILE MENU
+  ══════════════════════════════════════ */
+  .hamburger-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    width: 40px; height: 40px;
+    align-items: center; justify-content: center;
+    cursor: pointer;
+    color: var(--text);
+    border-radius: 8px;
+    padding: 0;
+    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+  }
+  .hamburger-btn:hover { background: var(--tag-bg); color: var(--accent); }
+  .hamburger-btn .icon-close { display: none; }
+  .hamburger-btn.open .icon-hamburger { display: none; }
+  .hamburger-btn.open .icon-close { display: block; }
+
+  .mobile-menu {
+    position: fixed;
+    top: 56px; right: 16px;
+    width: 236px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    z-index: 8999;
+    padding: 10px;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+    display: none;
+  }
+  .mobile-menu-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 2px;
+  }
+  .mobile-theme-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--meta-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px; font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    text-align: left;
+  }
+  .mobile-theme-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .mobile-theme-btn svg { width: 14px; height: 14px; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .mobile-nav-links { list-style: none; padding: 2px 0; }
+  .mobile-nav-links li a {
+    display: block;
+    padding: 10px 14px;
+    font-size: 14px; font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .mobile-nav-links li a:hover { background: var(--tag-bg); color: var(--accent); }
+  .mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 8997;
+  }
+  .mobile-overlay.open { display: block; }
+
   @media(max-width:768px){
     .project-banner{ grid-template-columns:1fr; min-height:auto; }
     .project-banner.reverse{ direction:ltr; }
     .project-header,.project-body,.project-nav-footer{ padding-left:24px; padding-right:24px; }
-    nav{ padding:0 120px 0 20px; }
-    .home-hero { 
-      padding: 80px 24px 40px; 
-      flex-direction: column; 
-      align-items: center; /* Center layout components on mobile */
+    nav{ padding:0 16px; opacity:1; pointer-events:all; transform:translateY(0); transition:background 0.3s; }
+    #theme-toggle{ display:none; }
+    .nav-links{ display:none; }
+    .hamburger-btn{ display:flex; position:fixed; top:8px; right:16px; z-index:9001; background:var(--card-bg); border:1px solid var(--border); border-radius:8px; }
+    .mobile-menu{ display:flex; opacity:0; pointer-events:none; transform:translateY(-6px) scale(0.98); transition:opacity 0.18s ease, transform 0.18s ease; }
+    .mobile-menu.open{ opacity:1; pointer-events:auto; transform:translateY(0) scale(1); }
+    .home-hero {
+      padding: 80px 24px 40px;
+      flex-direction: column;
+      align-items: center;
       gap: 32px;
     }
-    
     .hero-text-column {
-      width: 100%; 
+      width: 100%;
     }
-    
     .hero-image-column {
-      width: 100%; /* Spans natural container widths on phones */
+      width: 100%;
     }
-
     .hero-image-column img {
-      height: auto; /* Naturally conforms to the image's layout aspect ratio */
+      height: auto;
     }
-    .project-nav-footer{ grid-template-columns:1fr 1fr; }
+    .project-banner-meta{ grid-template-columns:1fr; }
+    .project-nav-footer{ display:flex; flex-wrap:nowrap; gap:12px; padding:20px 24px; }
+    .project-nav-footer > div:empty{ display:none; }
     .back-home-link{ display:none; }
+    .proj-nav-link{ flex:1 1 0; min-width:0; max-width:unset; }
+    .proj-nav-link.next{ margin-left:0; }
+    .proj-nav-link .nav-title{ max-width:100%; }
     .hobbies-header,.hobbies-grid{ padding-left:24px; padding-right:24px; }
     #contact{ padding:60px 24px; }
+    .project-callout{ grid-template-columns:1fr; }
+    .callout-item{ border-right:none; border-bottom:1px solid rgba(23,126,107,.15); }
+    .callout-item:last-child{ border-bottom:none; }
+    .project-banner-img{ min-height:unset; }
+    .project-banner-img img{ width:100%; height:auto; object-fit:unset; }
+    .hover-swap .swap-static{ position:relative; inset:auto; width:100%; height:auto; object-fit:unset; }
   }
 
   /* Floating scroll/home buttons */
@@ -559,7 +650,27 @@
       <li><a href="#" onclick="showPage('hobbies',event)">Life outside design</a></li>
       <li><a href="#" onclick="scrollToContact(event)">Contact</a></li>
     </ul>
+    <button class="hamburger-btn" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false">
+      <svg class="icon-hamburger" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
   </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <button class="mobile-theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg id="mt-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <span id="mt-label">Light</span>
+    </button>
+    <div class="mobile-menu-divider"></div>
+    <ul class="mobile-nav-links">
+      <li><a href="#" onclick="closeMobileMenu(); showPage('home',event)">Work</a></li>
+      <li><a href="shalinirao_resume.pdf" target="_blank" rel="noopener" onclick="closeMobileMenu()">Resume</a></li>
+      <li><a href="#" onclick="closeMobileMenu(); showPage('hobbies',event)">Life outside design</a></li>
+      <li><a href="#" onclick="closeMobileMenu(); scrollToContact(event)">Contact</a></li>
+    </ul>
+  </div>
+  <div id="mobile-overlay" class="mobile-overlay" onclick="closeMobileMenu()"></div>
 
   <!-- ══════════════ LANDING PAGE ══════════════ -->
   <div id="home" class="page active">
@@ -581,8 +692,10 @@
           and broadcast companies worldwide to store, distribute, and monetize their digital content.</p> -->
           <!-- <p><strong>With my technical background and emphasis on research-based, data-driven decisions, I thrive in cross-collaborative 
           environments with user-centric goals.</strong></p> -->
-        <a href="#contact" class="contact-btn primary" onclick="scrollToContact(event)">Let's get in touch →</a>
-        <a href="#" class="hobbies-shoutout" onclick="showPage('hobbies',event)">🎨 &nbsp;Curious what I get up to outside of work?</a>
+        <div class="hero-cta-group">
+          <a href="#contact" class="contact-btn primary" onclick="scrollToContact(event)">Let's get in touch →</a>
+          <a href="#" class="hobbies-shoutout" onclick="showPage('hobbies',event)">🎨 &nbsp;Curious what I get up to outside of work?</a>
+        </div>
       </div>
       
       <div class="hero-image-column">
@@ -1304,10 +1417,41 @@ function toggleTheme() {
   document.documentElement.setAttribute('data-theme', dark ? 'dark' : '');
   document.getElementById('t-icon').innerHTML = dark ? MOON : SUN;
   document.getElementById('t-label').textContent = dark ? 'Dark' : 'Light';
+  const mtIcon = document.getElementById('mt-icon');
+  const mtLabel = document.getElementById('mt-label');
+  if (mtIcon) mtIcon.innerHTML = dark ? MOON : SUN;
+  if (mtLabel) mtLabel.textContent = dark ? 'Dark' : 'Light';
+}
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('mobile-overlay');
+  const btn = document.getElementById('hamburger-btn');
+  if (menu.classList.contains('open')) {
+    closeMobileMenu();
+  } else {
+    menu.classList.add('open');
+    overlay.classList.add('open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+  }
+}
+
+function closeMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('mobile-overlay');
+  const btn = document.getElementById('hamburger-btn');
+  menu.classList.remove('open');
+  overlay.classList.remove('open');
+  btn.classList.remove('open');
+  btn.setAttribute('aria-expanded', 'false');
+  menu.setAttribute('aria-hidden', 'true');
 }
 
 // ── STATE ──
 let homeScrollPos = 0;
+let originProjectIdx = null; // which project index was clicked directly from home
 
 // ── FLOAT BUTTONS ──
 let _floatScrollHandler = null;
@@ -1445,6 +1589,9 @@ function _activateProject(idx) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('project-' + idx).classList.add('active');
   window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  setTimeout(() => { window.scrollTo(0, 0); document.documentElement.scrollTop = 0; }, 50);
   setNav('project-' + idx);
   observeProjectSections();
   updateFloatBtns('project-' + idx);
@@ -1467,16 +1614,23 @@ const PROJECT_SLUGS = [
 
 function showProject(idx, e) {
   if (e) e.preventDefault();
-  homeScrollPos = window.scrollY;
+  if (document.getElementById('home').classList.contains('active')) {
+    homeScrollPos = window.scrollY;
+    originProjectIdx = idx;
+  }
   history.pushState({page: 'project-' + idx, idx: idx}, '', '#' + PROJECT_SLUGS[idx]);
   _activateProject(idx);
 }
 
 function goHome(e) {
   if (e) e.preventDefault();
+  const activeEl = document.querySelector('.page.active');
+  const activeId = activeEl ? activeEl.id : '';
+  const currentIdx = activeId.startsWith('project-') ? parseInt(activeId.split('-')[1]) : null;
+  const scrollTarget = (currentIdx !== null && currentIdx === originProjectIdx) ? homeScrollPos : 0;
   history.pushState({page: 'home'}, '', location.pathname + location.search);
   _activatePage('home');
-  setTimeout(() => window.scrollTo({ top: homeScrollPos, behavior: 'instant' }), 20);
+  setTimeout(() => window.scrollTo({ top: scrollTarget, behavior: 'instant' }), 20);
 }
 
 function scrollToContact(e) {
