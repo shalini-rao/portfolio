@@ -257,7 +257,7 @@
     background: var(--card-bg);
   }
   .hobbies-shoutout:hover { border-color:var(--accent); color:var(--accent); }
-  .hero-cta-group { display:flex; flex-direction:column; align-items:flex-start; gap:12px; margin-top:4px; }
+  .hero-cta-group { display:flex; flex-direction:row; align-items:center; flex-wrap:wrap; gap:12px; margin-top:4px; }
 
   /* Project banners */
   .project-banner {
@@ -1703,9 +1703,9 @@ function observeProjectSections() {
   const lbImg  = document.getElementById('lb-img');
   const lbClose= document.getElementById('lb-close');
 
-  // Open on any project-body or project-header img click
+  // Open on any project-body, project-header, or hobby-card img click
   document.addEventListener('click', function(e) {
-    const img = e.target.closest('.project-body img, .project-header img');
+    const img = e.target.closest('.project-body img, .project-header img, .hobby-card img');
     if (!img) return;
     e.stopPropagation();
     lbImg.src     = img.src;
@@ -1727,7 +1727,7 @@ function observeProjectSections() {
 
   // Add cursor style to all eligible images once site is visible
   const observer = new MutationObserver(() => {
-    document.querySelectorAll('.project-body img, .project-header img')
+    document.querySelectorAll('.project-body img, .project-header img, .hobby-card img')
       .forEach(img => img.style.cursor = 'zoom-in');
   });
   observer.observe(document.getElementById('site'), { childList:true, subtree:true, attributes:true });
