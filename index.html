@@ -1547,11 +1547,37 @@ async function runHeroTyping() {
 }
 
 // ── INIT ON LOAD ──
-history.replaceState({page: 'home'}, '', location.pathname + location.search);
-initNavScroll();
-updateFloatBtns('home');
-observeFadeIns();
-runHeroTyping();
+(function() {
+  const hash = location.hash.slice(1);
+  const slugs = ['video-editing', 'audio', 'ai-assistant', 'card-component', 'video-analytics', 'noteful'];
+  const projectIdx = slugs.indexOf(hash);
+  if (projectIdx !== -1) {
+    history.replaceState({page: 'project-' + projectIdx, idx: projectIdx}, '', location.hash);
+    _activateProject(projectIdx);
+    initNavScroll();
+    updateFloatBtns('project-' + projectIdx);
+  } else if (hash) {
+    const pageEl = document.getElementById(hash);
+    if (pageEl && pageEl.classList.contains('page')) {
+      history.replaceState({page: hash}, '', location.hash);
+      _activatePage(hash);
+      initNavScroll();
+      updateFloatBtns(hash);
+    } else {
+      history.replaceState({page: 'home'}, '', location.pathname + location.search);
+      initNavScroll();
+      updateFloatBtns('home');
+      observeFadeIns();
+      runHeroTyping();
+    }
+  } else {
+    history.replaceState({page: 'home'}, '', location.pathname + location.search);
+    initNavScroll();
+    updateFloatBtns('home');
+    observeFadeIns();
+    runHeroTyping();
+  }
+})();
 
 // ── NAV SCROLL ──
 function initNavScroll() {
