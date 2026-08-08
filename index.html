@@ -1454,8 +1454,7 @@ function closeMobileMenu() {
 }
 
 // ── STATE ──
-let homeScrollPos = 0;
-let originProjectIdx = null; // which project index was clicked directly from home
+let homeScrollPos = 0; // fallback scroll position if no project banner is being returned to
 
 // ── FLOAT BUTTONS ──
 let _floatScrollHandler = null;
@@ -1607,7 +1606,10 @@ function setNav(pageId) {
 }
 
 // ── ROUTING ──
+let _pendingScrollFix = null;
+
 function _activatePage(pageId) {
+  clearTimeout(_pendingScrollFix);
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
   window.scrollTo(0, 0);
@@ -1616,12 +1618,13 @@ function _activatePage(pageId) {
 }
 
 function _activateProject(idx) {
+  clearTimeout(_pendingScrollFix);
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('project-' + idx).classList.add('active');
   window.scrollTo(0, 0);
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
-  setTimeout(() => { window.scrollTo(0, 0); document.documentElement.scrollTop = 0; }, 50);
+  _pendingScrollFix = setTimeout(() => { window.scrollTo(0, 0); document.documentElement.scrollTop = 0; }, 50);
   setNav('project-' + idx);
   observeProjectSections();
   updateFloatBtns('project-' + idx);
@@ -1646,7 +1649,6 @@ function showProject(idx, e) {
   if (e) e.preventDefault();
   if (document.getElementById('home').classList.contains('active')) {
     homeScrollPos = window.scrollY;
-    originProjectIdx = idx;
   }
   history.pushState({page: 'project-' + idx, idx: idx}, '', '#' + PROJECT_SLUGS[idx]);
   _activateProject(idx);
@@ -1657,9 +1659,14 @@ function goHome(e) {
   const activeEl = document.querySelector('.page.active');
   const activeId = activeEl ? activeEl.id : '';
   const currentIdx = activeId.startsWith('project-') ? parseInt(activeId.split('-')[1]) : null;
-  const scrollTarget = (currentIdx !== null && currentIdx === originProjectIdx) ? homeScrollPos : 0;
   history.pushState({page: 'home'}, '', location.pathname + location.search);
   _activatePage('home');
+  // #home is only laid out (and its banners measurable) once it's the active
+  // page, so look up the current project's banner position after activating —
+  // this way "back to home" lands on the right banner even after using the
+  // Next/Previous footer links to hop between projects.
+  const banner = currentIdx !== null ? document.querySelectorAll('#home .project-banner')[currentIdx] : null;
+  const scrollTarget = banner ? banner.offsetTop : homeScrollPos;
   setTimeout(() => window.scrollTo({ top: scrollTarget, behavior: 'instant' }), 20);
 }
 
