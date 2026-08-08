@@ -858,7 +858,7 @@
         </div>
       </div>
       <div class="project-section">
-        <h3 class="section-heading">Initial user research</h3>
+        <h3 class="section-heading">We got 70+ responses (read as: complaints) on a survey of our customer organizations.</h3>
         <p>We ran a survey across several of our customer organizations to hear from direct users their pain points with the legacy experience. We received 70+ responses from 10+ customer organizations. There was an overall negative opinion of the ease of use for the product and a strong desire for a full overhaul of the entire experience.</p>
         <div class="project-image"><img src="images/Legacy_VOD_Edit_Opinion_scale.png" alt="Legacy VOD Edit Opinion Scale"></div>
         <p>Some main pain points were:</p>
@@ -872,7 +872,7 @@
         <div class="project-image"><img src="images/VE2_personas.png" alt="Main personas for the video editing product"></div>
       </div>
       <div class="project-section">
-        <h3 class="section-heading">Discovery and Constraints</h3>
+        <h3 class="section-heading">We gathered click data and session tracking from Datadog</h3>
         <p>We utilized Datadog to collect click data and session tracking to determine priority workflows and break up the work into MVP/beta release, full feature release, and what was headed for deprecation.</p>
         <div class="project-image"><img src="images/VOD_Edit_Jira.png" alt="Jira tickets tagged with click data, corresponding UI element, and prioritization"><div class="image-caption">Jira tickets tagged with click data, corresponding UI element, and prioritization</div></div>
         <p>Since the legacy UI was both archaic and convoluted, technical constraints were a large consideration at every turn of the work. Spikes needed to be investigated and backend logistics were heavy influences in deciding how each UI element was to be ported into a newly redesigned editing experience.</p>
@@ -880,7 +880,7 @@
         <div class="project-image"><img src="images/VE2_Lofi_vision.png" alt="Low fidelity direction for leadership to approve buy in"><div class="image-caption">Low fidelity direction for leadership to approve buy in</div></div>
       </div>
       <div class="project-section">
-        <h3 class="section-heading">Designing for MVP</h3>
+        <h3 class="section-heading">Our MVP aimed to target lower lift, highly used functionality</h3>
         <div class="project-image"><img src="images/VE2_MVP.png" alt="MVP functionality included a front-loaded object creation modal and pared down metadata fields"><div class="image-caption">MVP functionality included a front-loaded object creation modal and pared down metadata fields</div></div>
         <div class="key-decisions"><h4>Key design decisions</h4><ul>
           <li><strong>Tabbed format</strong> to organize related fields together and minimize scrolling</li>
@@ -890,7 +890,7 @@
         </ul></div>
       </div>
       <div class="project-section">
-        <h3 class="section-heading">Iterating on customer feedback</h3>
+        <h3 class="section-heading">Our goal was to have a useful enough MVP that our customers could try out for daily tasks</h3>
         <p>After an initial round of user testing with employees of our MVP from three different customer organizations, we received feedback to inform the full release with 1 to 1 parity with the legacy experience.</p>
         <div class="quote-callout">"Having the tab setup with the new editor, there's less of us scrolling up and down to change things or fix things ... so that is definitely overall aesthetically really nice."</div>
         <ul><li>Using similar structure to other apps is lowering barrier to entry for employees to work across several products</li></ul>
@@ -901,7 +901,7 @@
         <div class="project-image"><img src="images/VE2_panels.png" alt="Shows the condensed MVP functionality compared the full feature list"><div class="image-caption">Pared down MVP functionality panels vs full feature list for final version</div></div>
       </div>
       <div class="project-section">
-        <h3 class="section-heading">Final Solution</h3>
+        <h3 class="section-heading">Our final solution helped cut time to publish by over 50%</h3>
         <div class="project-image">
           <video autoplay loop muted playsinline style="width:100%; display:block;">
             <source src="images/VE2_thumbnail_generate.mp4" type="video/mp4">
@@ -912,7 +912,7 @@
         <a href="https://www.figma.com/proto/4v7Po8QrUszYQaAX9hfSHL/Untitled?node-id=1-13482&p=f&viewport=195%2C197%2C0.03&t=oyW06a2YfE1WBb2o-1&scaling=contain&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener" class="figma-btn">Figma Prototype →</a>
       </div>
       <div class="project-section">
-        <h3 class="section-heading">Final thoughts</h3>
+        <h3 class="section-heading">I had been asking for this for years, and seeing it through was incredibly satisfying</h3>
         <p>This was a long overdue and highly anticipated redesign both within our company's engineering team and our customers' organizations. Strongly positive feedback was received on both ends. I consulted with the lead front-end engineers who would be taking on the work and created development documentation with according acceptance criteria. Each component and field section was rounded out with empty, error, and filled states.</p>
         <p>Some positive feedback from our customers upon beta release:</p>
         <div class="quote-callout">"It's digestible, especially because when you're looking at the current Video Center, it's just a lot happening. This is 1 thing at a time, which I think is nice actually"</div>
@@ -1035,7 +1035,7 @@
       </div>
 
       <div class="project-section">
-        <h3 class="section-heading">What the research confirmed</h3>
+        <h3 class="section-heading">The research confirmed that trust and verification were the key for writers</h3>
         <p>Once we had a working concept, we ran usability sessions with third-party participants recruited via Respondent. I was part of running and observing those sessions.</p>
         <p>The findings reinforced what we had suspected but also pushed us further. Users were not opposed to AI doing things. They were opposed to AI doing things they could not see, trace, or reverse. Across participants the ask was consistent: surface everything as a suggestion, make every action undoable, and keep the history visible, not just from the current session, but from previous sessions and from other collaborators working on the same story.</p>
         <p>One finding that stuck with me: users wanted to come back the next day and still see what the AI had suggested. The idea that suggestions would evaporate on page reload felt unacceptable. They wanted a record, almost like a paper trail. That shaped how we thought about the panel's home state, the history footer, and how accepted or rejected suggestions were logged with timestamps rather than simply disappearing.</p>
@@ -1045,7 +1045,7 @@
       </div>
 
       <div class="project-section">
-        <h3 class="section-heading">The supporting content layer</h3>
+        <h3 class="section-heading">The assistant could do more than just suggest changes</h3>
         <p>Beyond metadata, the panel also handled what we called supporting content: related stories surfaced from Arc's vector search, and lead art suggestions pulled from the story's subject matter.</p>
         <p>I worked on how these would be presented in the review flow, specifically how to show an AI-suggested image in context without making it feel like the AI had made an editorial call. The suggestion had to feel like a recommendation from a well-informed colleague, not an autonomous edit.</p>
         <p>The accepted and rejected states were as important as the suggestion itself. When an author rejected a lead image, that rejection needed to be visible and recoverable: not punitive, not permanent, not lost.</p>
@@ -1054,7 +1054,7 @@
       </div>
 
       <div class="project-section">
-        <h3 class="section-heading">Extending the assistant beyond Composer</h3>
+        <h3 class="section-heading">Extending the assistant beyond Composer into my other video product work</h3>
         <p>Composer was where the assistant launched, but the design work always asked a broader question: if this works here, what does it look like everywhere else?</p>
         <p>I took on the exploration of what the AI Assistant would look like inside Arc XP's Video Center, the tool broadcasters and video producers use to manage and publish video-on-demand content. The surface is different: instead of a story body with text fields, you have a video with metadata fields and a timeline. But the underlying logic held.</p>
         <p>Producers were spending time on the same category of work: filling out titles, captions, blurbs, tagging clips. The transcripts being generated by Arc Intelligence's video vectorization pipeline were already available, ready to be put to use.</p>
@@ -1066,7 +1066,7 @@
       </div>
 
       <div class="project-section">
-        <h3 class="section-heading">What shipped and what it meant</h3>
+        <h3 class="section-heading">As of May 2026, the AI Assistant has been adopted by 30 customer organizations with 259 daily active users.</h3>
         <p>The Composer version of the AI Assistant shipped to a closed beta in late 2025 and reached general availability in early 2026. The released functionality included metadata review, style guide checking, supporting content suggestions, and the full accept/reject/undo model we had designed around the research findings.</p>
         <p>The video explorations were not yet on a finalized roadmap when I was laid off, but the design language, the panel architecture, and the model for communicating changes versus suggestions were built to extend. The components were designed to be adapted, not rebuilt from scratch.</p>
         <p>What I came away with was a clearer sense of what it means to design for trust in an AI product. The hardest part of this project was not the interface. It was the model for how humans and AI share a workspace. Every decision about what the AI does automatically, what it surfaces as a suggestion, how it records what happened and makes that history legible: those are trust decisions before they are design decisions.</p>
@@ -1167,8 +1167,8 @@
       </div>
 
       <div class="project-section">
-        <h3 class="section-heading">Research</h3>
-        <p>Before touching Figma I spent several months in customer interviews. I talked to video producers, ad ops managers, and business stakeholders at organizations including the Boston Globe, Gray Media, GMG, El Universal, Grupo Nacion, and The National. I ran a survey that collected responses from 37 participants across publisher and broadcaster segments.</p>
+        <h3 class="section-heading">I wanted as much background from our customers as possible </h3>
+        <p>Before touching Figma I spent several months in customer interviews. I talked to video producers, ad ops managers, and business stakeholders at our biggest customer organizations. I ran a survey that collected responses from 37 participants across publisher and broadcaster segments.</p>
         <p>Three buckets of need emerged from every conversation: <strong>Engagement</strong>, <strong>Monetization</strong>, and <strong>Errors</strong>. Every client framed it differently but landed in the same place.</p>
         <div class="project-image">
           <img src="images/dashboard_synthesis.png" alt="Dashboard research synthesis grid">
@@ -1180,7 +1180,7 @@
       </div>
 
       <div class="project-section">
-        <h3 class="section-heading">The constraint</h3>
+        <h3 class="section-heading">The whole point was that there was no actual design needed, just organization</h3>
         <p>The design brief was deliberately minimal. Another team had already shipped a page that pulled raw Datadog output onto a screen with no styling. The directive was to do the same thing for video analytics: use whatever visualization Datadog could produce out of the box, organize it according to the three buckets, and get it in front of beta clients.</p>
         <p>This wasn't a failure of ambition. It was a deliberate call to reduce risk on a project where the data pipeline itself was still being validated. If the charts ended up as a wall of numbers, that was fine. The priority was confirming the data was accurate and the use cases were right before investing in visual polish.</p>
         <div class="project-image">
@@ -1191,7 +1191,7 @@
       </div>
 
       <div class="project-section">
-        <h3 class="section-heading">The design</h3>
+        <h3 class="section-heading">I came up with a structure that met the needs of the three different target users</h3>
         <p>The final structure follows the three-bucket framework that emerged from research.</p>
         <div class="key-decisions">
           <h4>Three-bucket framework</h4>
@@ -1216,7 +1216,7 @@
       </div>
 
       <div class="project-section">
-        <h3 class="section-heading">What I'd do differently</h3>
+        <h3 class="section-heading">I would have done more with the visual design if I could</h3>
         <p>The brief said no design. I followed it. But given more runway, this is where I'd take it.</p>
         <div class="project-image">
           <video autoplay loop muted playsinline style="width:100%; display:block;">
@@ -1229,7 +1229,7 @@
       </div>
 
       <div class="project-section">
-        <h3 class="section-heading">Outcome</h3>
+        <h3 class="section-heading">It was still received well from our customers, so it's still a win in my book</h3>
         <p>The dashboard shipped to a closed beta with select publisher clients. Positive feedback from the beta informed continued development, and the feature moved toward general availability as part of Arc XP's core offering. Clients who had been routing analytics questions through TAMs and support engineers gained a self-serve path to the data they needed to run their video and ad strategies.</p>
         <div class="quote-callout">I like the dashboard, it's everything we're looking for... We want what YouTube provides. This dashboard you made is what we're after. Can't understand our video performance without it...Why did you not give this to us 5 years ago?</div>
       </div>
