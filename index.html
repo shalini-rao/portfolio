@@ -662,12 +662,9 @@
       <span id="mt-label">Light</span>
     </button>
     <div class="mobile-menu-divider"></div>
-    <ul class="mobile-nav-links">
-      <li><a href="#" onclick="closeMobileMenu(); showPage('home',event)">Work</a></li>
-      <li><a href="https://www.linkedin.com/in/shalinidrao/" target="_blank" rel="noopener" onclick="closeMobileMenu()">LinkedIn</a></li>
-      <li><a href="#" onclick="closeMobileMenu(); showPage('hobbies',event)">Life outside design</a></li>
-      <li><a href="#" onclick="closeMobileMenu(); scrollToContact(event)">Contact</a></li>
-    </ul>
+    <!-- Filled at load from .nav-links above, so the links only live in one
+         place. Edit the desktop nav and this follows. -->
+    <ul class="mobile-nav-links"></ul>
   </div>
   <div id="mobile-overlay" class="mobile-overlay" onclick="closeMobileMenu()"></div>
 
@@ -1607,6 +1604,19 @@ function closeMobileMenu() {
   btn.setAttribute('aria-expanded', 'false');
   menu.setAttribute('aria-hidden', 'true');
 }
+
+// The hamburger menu shows exactly the desktop nav links, so it copies them in
+// rather than keeping a second list that has to be edited twice. The cloned
+// markup keeps its own onclick handlers; this only adds closing the menu.
+(function mirrorNavIntoMobileMenu() {
+  const source = document.querySelector('.nav-links');
+  const target = document.querySelector('.mobile-nav-links');
+  if (!source || !target) return;
+  target.innerHTML = source.innerHTML;
+  target.addEventListener('click', function(e) {
+    if (e.target.closest('a')) closeMobileMenu();
+  });
+})();
 
 // ── STATE ──
 let homeScrollPos = 0; // fallback scroll position if no project banner is being returned to
