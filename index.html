@@ -1704,11 +1704,26 @@ async function runHeroTyping() {
   heroCursor.classList.add('done');
 }
 
+// Index-aligned with the #project-N page ids and the showProject(N) calls in
+// the banners — a project inserted mid-list must be inserted here too, or its
+// URL will load a different case study.
+const PROJECT_SLUGS = [
+  'video-editing',
+  'audio',
+  'veil',
+  'ai-assistant',
+  'card-component',
+  'video-analytics',
+  'noteful'
+];
+
 // ── INIT ON LOAD ──
-(function() {
+// Declared here but invoked at the very end of the script: routing to a project
+// calls _activateProject, which reads `let` bindings declared further down. Run
+// it inline and a deep link throws a TDZ error that kills the rest of the file.
+function initFromUrl() {
   const hash = location.hash.slice(1);
-  const slugs = ['video-editing', 'audio', 'ai-assistant', 'card-component', 'video-analytics', 'noteful'];
-  const projectIdx = slugs.indexOf(hash);
+  const projectIdx = PROJECT_SLUGS.indexOf(hash);
   if (projectIdx !== -1) {
     history.replaceState({page: 'project-' + projectIdx, idx: projectIdx}, '', location.hash);
     _activateProject(projectIdx);
@@ -1735,7 +1750,7 @@ async function runHeroTyping() {
     observeFadeIns();
     runHeroTyping();
   }
-})();
+}
 
 // ── NAV SCROLL ──
 function initNavScroll() {
@@ -1790,16 +1805,6 @@ function showPage(pageId, e) {
   history.pushState({page: pageId}, '', '#' + pageId);
   _activatePage(pageId);
 }
-
-const PROJECT_SLUGS = [
-  'video-editing',
-  'audio',
-  'veil',
-  'ai-assistant',
-  'card-component',
-  'video-analytics',
-  'noteful'
-];
 
 function showProject(idx, e) {
   if (e) e.preventDefault();
@@ -1925,6 +1930,9 @@ function observeProjectSections() {
   });
   observer.observe(document.getElementById('site'), { childList:true, subtree:true, attributes:true });
 })();
+
+// Route to whatever the URL points at, last, once every binding above exists.
+initFromUrl();
 </script>
 </body>
 </html>
