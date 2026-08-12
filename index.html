@@ -273,6 +273,15 @@
   .project-banner.reverse { direction:rtl; }
   .project-banner.reverse > * { direction:ltr; }
 
+  /* Only rendered in a filtered view — the way over to the full portfolio. */
+  .view-all-link {
+    display:block; text-align:center; padding:40px 20px;
+    border-top:1px solid var(--border);
+    font-size:14px; font-weight:600; letter-spacing:.02em;
+    color:var(--muted); text-decoration:none; transition:color 0.2s, background 0.3s;
+  }
+  .view-all-link:hover { color:var(--accent); background:var(--card-bg); }
+
   .project-banner-img {
     background: var(--card-bg);
     display:flex; align-items:center; justify-content:center;
@@ -702,7 +711,7 @@
   
 
     <!-- PROJECT 1 -->
-    <div class="project-banner fade-in" onclick="showProject(0)">
+    <div class="project-banner fade-in" data-project="0" onclick="showProject(0)">
       <div class="project-banner-img hover-swap">
         <img class="swap-static" src="images/VE2_hero_landing.png" alt="Video editing workflow">
       </div>
@@ -719,7 +728,7 @@
     </div>
 
     <!-- PROJECT 2 -->
-    <div class="project-banner reverse fade-in" onclick="showProject(1)">
+    <div class="project-banner reverse fade-in" data-project="1" onclick="showProject(1)">
       <div class="project-banner-img hover-swap">
         <img class="swap-static" src="images/audio_landing_page.png" alt="Audio asset management">
       </div>
@@ -736,7 +745,7 @@
     </div>
 
     <!-- PROJECT 3 -->
-    <div class="project-banner fade-in" onclick="showProject(2)">
+    <div class="project-banner fade-in" data-project="2" onclick="showProject(2)">
       <div class="project-banner-img hover-swap">
         <img class="swap-static" src="images/veil_hero_landing.png" alt="Veil bachelorette planning app">
       </div>
@@ -753,7 +762,7 @@
     </div>
 
     <!-- PROJECT 4 -->
-    <div class="project-banner reverse fade-in" onclick="showProject(3)">
+    <div class="project-banner reverse fade-in" data-project="3" onclick="showProject(3)">
       <div class="project-banner-img hover-swap">
         <img class="swap-static" src="images/aia_hero_landing.png" alt="Video editing workflow">
       </div>
@@ -770,7 +779,7 @@
     </div>
 
     <!-- PROJECT 5 -->
-    <div class="project-banner fade-in" onclick="showProject(4)">
+    <div class="project-banner fade-in" data-project="4" onclick="showProject(4)">
       <div class="project-banner-img hover-swap">
         <img class="swap-static" src="images/Card_hero_landing.png" alt="Card component design">
       </div>
@@ -787,7 +796,7 @@
     </div>
 
     <!-- PROJECT 6 -->
-    <div class="project-banner reverse fade-in" onclick="showProject(5)">
+    <div class="project-banner reverse fade-in" data-project="5" onclick="showProject(5)">
       <div class="project-banner-img hover-swap">
         <img class="swap-static" src="images/dashboard_landing.png" alt="Dashboard hero image">
       </div>
@@ -804,7 +813,7 @@
     </div>
 
     <!-- PROJECT 7 -->
-    <div class="project-banner fade-in" onclick="showProject(6)">
+    <div class="project-banner fade-in" data-project="6" onclick="showProject(6)">
       <div class="project-banner-img"><img src="images/noteful_hero_landing.png" alt="Noteful app teacher dashboard"></div>
       <div class="project-banner-info">
         <div class="project-banner-title">We gamified music education to improve theory retention in children and adults</div>
@@ -928,7 +937,7 @@
         <div class="quote-callout">"The fact that I know Composer [editorial application] actually helps a lot with this because I've already learned this"</div>
       </div>
     </div>
-    <div class="project-nav-footer">
+    <div class="project-nav-footer" data-project="0">
       <div></div>
       <a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>
       <a href="#" class="proj-nav-link next" onclick="showProject(1,event)"><span class="nav-dir">Next →</span><span class="nav-title">Launching audio asset management...</span></a>
@@ -995,7 +1004,7 @@
         <div class="project-image"><img src="images/Podcast.png" alt="Podcast management system"></div>
       </div>
     </div>
-    <div class="project-nav-footer">
+    <div class="project-nav-footer" data-project="1">
       <a href="#" class="proj-nav-link" onclick="showProject(0,event)"><span class="nav-dir">← Previous</span><span class="nav-title">Rebuilding a decade-old video editing...</span></a>
       <a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>
       <a href="#" class="proj-nav-link next" onclick="showProject(2,event)"><span class="nav-dir">Next →</span><span class="nav-title">Building Veil with Claude, concept to prototype...</span></a>
@@ -1146,7 +1155,7 @@
         <p>After that, start layering the features I parked in the Future section: polls with weighted bride votes, richer expenses with pooled budgets, outfit and theme tooling, room assignments, the shared idea board. The design system and the role model are already built to hold them.</p>
       </div>
     </div>
-    <div class="project-nav-footer">
+    <div class="project-nav-footer" data-project="2">
       <a href="#" class="proj-nav-link" onclick="showProject(1,event)"><span class="nav-dir">← Previous</span><span class="nav-title">Prototyping a net-new audio product...</span></a>
       <a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>
       <a href="#" class="proj-nav-link next" onclick="showProject(3,event)"><span class="nav-dir">Next →</span><span class="nav-title">Designing an AI assistant from zero...</span></a>
@@ -1241,7 +1250,7 @@
 
     </div>
 
-    <div class="project-nav-footer">
+    <div class="project-nav-footer" data-project="3">
       <a href="#" class="proj-nav-link" onclick="showProject(2,event)"><span class="nav-dir">← Previous</span><span class="nav-title">Building Veil with Claude, concept to prototype...</span></a>
       <a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>
       <a href="#" class="proj-nav-link next" onclick="showProject(4,event)"><span class="nav-dir">Next →</span><span class="nav-title">Crafting a composable card component...</span></a>
@@ -1296,7 +1305,7 @@
         <p>Every designer reported a significant reduction in design and development time, and each release moving forward utilized this new component, saving engineering resources and reducing time to delivery.</p>
       </div>
     </div>
-    <div class="project-nav-footer">
+    <div class="project-nav-footer" data-project="4">
       <a href="#" class="proj-nav-link" onclick="showProject(3,event)"><span class="nav-dir">← Previous</span><span class="nav-title">Designing an AI assistant from zero...</span></a>
       <a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>
       <a href="#" class="proj-nav-link next" onclick="showProject(5,event)"><span class="nav-dir">Next →</span><span class="nav-title">Designing within hard constraints...</span></a>
@@ -1395,7 +1404,7 @@
 
     </div>
 
-    <div class="project-nav-footer">
+    <div class="project-nav-footer" data-project="5">
       <a href="#" class="proj-nav-link" onclick="showProject(4,event)"><span class="nav-dir">← Previous</span><span class="nav-title">Crafting a composable card component...</span></a>
       <a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>
       <a href="#" class="proj-nav-link next" onclick="showProject(6,event)"><span class="nav-dir">Next →</span><span class="nav-title">Gamifying music education...</span></a>
@@ -1492,7 +1501,7 @@
         <p>Specifically, teachers expected the navigation bar dropdown to show a roster of students rather than being used to toggle the views from classroom to individual students. They also thought that clicking an individual student's name would change the dashboard to that student's individual view. We need to be more mindful of the multiple different ways a teacher can accomplish the same task.</p>
       </div>
     </div>
-    <div class="project-nav-footer">
+    <div class="project-nav-footer" data-project="6">
       <a href="#" class="proj-nav-link" onclick="showProject(5,event)"><span class="nav-dir">← Previous</span><span class="nav-title">Designing within hard constraints...</span></a>
       <a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>
       <div></div>
@@ -1734,6 +1743,128 @@ const PROJECT_SLUGS = [
   'noteful'
 ];
 
+// Short titles for the Previous/Next links at the foot of each case study.
+// Index-aligned with PROJECT_SLUGS.
+const NAV_TITLES = [
+  'Rebuilding a decade-old video editing...',
+  'Prototyping a net-new audio product...',
+  'Building Veil with Claude, concept to prototype...',
+  'Designing an AI assistant from zero...',
+  'Crafting a composable card component...',
+  'Designing within hard constraints...',
+  'Gamifying music education...'
+];
+
+// ── VIEWS ──
+// A "view" is an alternate cut of the same portfolio: same case studies, a
+// different subset and order on the home page. Case study content is never
+// duplicated — only the home banners and the prev/next links change.
+//
+// `order` lists project indices in the order they should appear on the home
+// page. Any index left out is hidden from home, but its case study stays
+// reachable by direct link so no shared URL ever dies.
+const VIEWS = {
+  default: {
+    order: [0, 1, 2, 3, 4, 5, 6]
+  },
+  ai: {
+    label: 'AI-focused work',
+    order: [3, 2, 1, 0]
+  }
+};
+
+// Resolved once at load. Navigation never reloads the page, so this cannot be
+// lost mid-session; every pushState below writes a fragment-only URL, which
+// preserves the host and query string the view was resolved from.
+const ACTIVE_VIEW = resolveView();
+
+function resolveView() {
+  // ?view=ai works on any host — this is how a view is testable before (or
+  // without) a subdomain existing.
+  const param = new URLSearchParams(location.search).get('view');
+  if (param && VIEWS[param]) return param;
+  // ai.shalinidrao.com → the 'ai' view, no query string needed.
+  const sub = location.hostname.toLowerCase().split('.')[0];
+  if (sub !== 'www' && VIEWS[sub]) return sub;
+  return 'default';
+}
+
+function viewOrder() {
+  return (VIEWS[ACTIVE_VIEW] || VIEWS.default).order;
+}
+
+// Reorders and filters the home page banners to match the active view, then
+// regenerates the prev/next links so they can never walk into a project this
+// view is hiding. Runs before first paint of #home.
+function applyView() {
+  const order = viewOrder();
+  const banners = Array.from(document.querySelectorAll('#home .project-banner'));
+  const byIdx = {};
+  banners.forEach(b => { byIdx[b.dataset.project] = b; });
+
+  // Re-insert in view order at the banner list's original position — appending
+  // to the parent would drop them below #contact.
+  const parent = banners[0].parentNode;
+  const marker = document.createComment('banners');
+  parent.insertBefore(marker, banners[0]);
+  const frag = document.createDocumentFragment();
+  order.forEach((idx, pos) => {
+    const b = byIdx[idx];
+    if (!b) return;
+    b.style.display = '';
+    // The zigzag is positional, not per-project: recompute it after reordering
+    // or a filtered view alternates wrongly.
+    b.classList.toggle('reverse', pos % 2 === 1);
+    frag.appendChild(b);
+  });
+  parent.insertBefore(frag, marker);
+  parent.removeChild(marker);
+
+  banners.forEach(b => {
+    if (order.indexOf(Number(b.dataset.project)) === -1) b.style.display = 'none';
+  });
+
+  renderProjectNavs();
+  renderViewFooter();
+}
+
+function renderProjectNavs() {
+  const order = viewOrder();
+  document.querySelectorAll('.project-nav-footer').forEach(footer => {
+    const idx = Number(footer.dataset.project);
+    const pos = order.indexOf(idx);
+    // A project hidden from this view still renders (direct links work), but it
+    // has no place in the running order, so it gets home-only navigation.
+    const prev = pos > 0 ? order[pos - 1] : null;
+    const next = pos !== -1 && pos < order.length - 1 ? order[pos + 1] : null;
+    footer.innerHTML =
+      (prev === null ? '<div></div>' : link(prev, '← Previous', '')) +
+      '<a href="#" class="back-home-link" onclick="goHome(event)">⌂<br>All work</a>' +
+      (next === null ? '<div></div>' : link(next, 'Next →', ' next'));
+  });
+
+  function link(i, dir, cls) {
+    return '<a href="#" class="proj-nav-link' + cls + '" onclick="showProject(' + i + ',event)">' +
+      '<span class="nav-dir">' + dir + '</span>' +
+      '<span class="nav-title">' + NAV_TITLES[i] + '</span></a>';
+  }
+}
+
+// In a filtered view the hidden projects would otherwise be unreachable, so
+// offer a way over to the full portfolio.
+function renderViewFooter() {
+  if (ACTIVE_VIEW === 'default') return;
+  const order = viewOrder();
+  const last = document.querySelector(
+    '#home .project-banner[data-project="' + order[order.length - 1] + '"]');
+  if (!last) return;
+  const a = document.createElement('a');
+  a.className = 'view-all-link fade-in';
+  a.href = 'https://www.shalinidrao.com/';
+  a.textContent = 'See all work →';
+  last.parentNode.insertBefore(a, last.nextSibling);
+}
+
 // ── INIT ON LOAD ──
 // Declared here but invoked at the very end of the script: routing to a project
 // calls _activateProject, which reads `let` bindings declared further down. Run
@@ -1843,8 +1974,15 @@ function goHome(e) {
   // page, so look up the current project's banner position after activating —
   // this way "back to home" lands on the right banner even after using the
   // Next/Previous footer links to hop between projects.
-  const banner = currentIdx !== null ? document.querySelectorAll('#home .project-banner')[currentIdx] : null;
-  const scrollTarget = banner ? banner.offsetTop : homeScrollPos;
+  // Look the banner up by project, not by position — views reorder the list, so
+  // an index into the DOM order would return you to the wrong case study.
+  const banner = currentIdx !== null
+    ? document.querySelector('#home .project-banner[data-project="' + currentIdx + '"]')
+    : null;
+  // A banner hidden by the active view has no meaningful offset; fall back to
+  // wherever the visitor last was on home.
+  const visible = banner && banner.offsetParent !== null;
+  const scrollTarget = visible ? banner.offsetTop : homeScrollPos;
   setTimeout(() => window.scrollTo({ top: scrollTarget, behavior: 'instant' }), 20);
 }
 
@@ -1869,6 +2007,14 @@ window.addEventListener('popstate', function(e) {
   } else if (state.page) {
     _activatePage(state.page);
   }
+});
+
+// pushState does not fire hashchange, so this only catches the hash changing
+// without us: a URL-bar edit, or a link pasted into a tab already on the site.
+// Without it those land on whatever page was already showing.
+window.addEventListener('hashchange', function() {
+  const idx = PROJECT_SLUGS.indexOf(location.hash.slice(1));
+  if (idx !== -1) _activateProject(idx);
 });
 
 // ── SCROLL ANIMATIONS ──
@@ -1947,6 +2093,10 @@ function observeProjectSections() {
   });
   observer.observe(document.getElementById('site'), { childList:true, subtree:true, attributes:true });
 })();
+
+// Shape the home page to the active view before routing, so a deep link that
+// lands on a project already has correct prev/next links waiting behind it.
+applyView();
 
 // Route to whatever the URL points at, last, once every binding above exists.
 initFromUrl();
