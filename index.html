@@ -21,6 +21,26 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
+<!-- ══ CONTENTSQUARE ══
+     Replace CS_TAG_ID below with the tag id from Contentsquare
+     (Settings → Implementation → tracking tag). It's the number in the
+     t.contentsquare.net/uxa/<id>.js URL they give you. -->
+<script type="text/javascript">
+(function () {
+  window.CS_TAG_ID = 'CS_TAG_ID';
+  window._uxa = window._uxa || [];
+  if (typeof CS_CONF === 'undefined') {
+    window._uxa.push(['setPath', window.location.pathname + window.location.hash.replace('#', '?__')]);
+    var mt = document.createElement('script');
+    mt.type = 'text/javascript';
+    mt.async = true;
+    mt.src = 'https://t.contentsquare.net/uxa/' + window.CS_TAG_ID + '.js';
+    document.getElementsByTagName('head')[0].appendChild(mt);
+  } else {
+    window._uxa.push(['trackPageview', window.location.pathname + window.location.hash.replace('#', '?__')]);
+  }
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -1176,15 +1196,22 @@
     </div>
 
     <div class="project-body">
-
       <div class="project-section">
-        <h2 class="section-heading">The brief was intentionally vague.</h2>
-        <p>The assignment came with almost no constraints. No defined scope, no existing user research on AI specifically, no roadmap. Just a sense that the market was moving and Arc XP needed to move with it.</p>
-        <p>A tiger team of three designers was given 2 weeks to answer a deceptively simple question: what should AI actually do inside Arc XP?</p>
-        <p>We started broad. Where do journalists, producers, and editors spend time on work that does not require their expertise? Where do stories fall short of organizational standards not because the author did not care, but because there was too much to keep track of? What tasks were being done manually that did not need to be?</p>
+        <div class="project-image"><img src="images/aia_hero_landing.png" alt="ai assistant hero image"></div>
+      </div>
+      <div class="project-section">
+        <h2 class="section-heading">What does one do with "We need AI - go figure out what that means"?</h2>
+        <p>The assignment came with almost no constraints. No defined scope, no existing user research on AI specifically, no roadmap. Just a sense that the market was moving and Arc needed to move with it.</p>
+        <p>A tiger team of three designers, a PM, and a few engineers was given 2 weeks to answer a deceptively simple question: what should AI actually do inside the platform?</p>
+        <p>We started by asking questions. </p>
+        <ul>
+          <li>Where do journalists, producers, and editors spend time on work that does not require their expertise?</li>
+          <li>Where do stories fall short of organizational standards not because the author did not care, but because there was too much to keep track of?</li>
+          <li>What tasks were being done manually that did not need to be?</li>
+        </ul>
+        <div class="project-image"><img src="images/aia_ideation.png" alt="Audio edit page"><div class="image-caption">One week of open ideation before a direction was chosen. The brief was deliberately open: surface as many possibilities as possible, then narrow.</div></div>
         <p>The answer kept pointing to the same place: <strong>metadata</strong>. Tagging, SEO keywords, descriptions, related content, featured images. The work that happens <em>around</em> a story, not inside it. Time-consuming, inconsistently done, and directly tied to how content performs once published.</p>
         <p>Over the course of one focused week, we moved from open ideation through dozens of possibilities and landed on a direction: a persistent AI assistant panel that would live alongside the content editor. From there we built a first high-fidelity prototype. The weeks and months that followed were spent going deeper: refining the interaction model, running user research, and expanding what the assistant could do and where it could live.</p>
-        <div class="project-image"><img src="images/aia_ideation.png" alt="Audio edit page"><div class="image-caption">One week of open ideation before a direction was chosen. The brief was deliberately open: surface as many possibilities as possible, then narrow.</div></div>
       </div>
 
       <div class="project-section">
@@ -1192,8 +1219,7 @@
       </div>
 
       <div class="project-section">
-        <h3 class="section-heading">The panel as a first principle</h3>
-        <p>The most important design decision we made early was spatial. The assistant would live in a side panel, not inline with the content. We needed to build as much trust with our authors as possible.</p>
+        <h3 class="section-heading">We decided early that this assistant would live in a side panel so we didn't disrupt the writing space.</h3>
         <p>A tension kept surfacing throughout the project: journalists wanted help, but they did not want to open their story and find it changed. The panel gives the AI a place to exist without overstepping. It can do things, surface things, flag things. But the story body stays the author's.</p>
         <p>After settling on the panel concept, I took on the problem of how field-level changes would be communicated within it. Specifically: how do you distinguish between changes that were automatically applied versus changes that are suggestions waiting for a human decision?</p>
         <p>That distinction mattered more than it might seem. Some changes came from the organization's own configuration: required tags, mandatory keyword rules, standards that every story published through Arc had to meet. Those were not AI suggestions. They were organizational policy, automatically applied. The AI's own recommendations were a different category entirely, and they needed to read that way.</p>
@@ -1213,7 +1239,7 @@
       </div>
 
       <div class="project-section">
-        <h3 class="section-heading">The assistant could do more than just suggest changes</h3>
+        <h3 class="section-heading">The assistant needed to do more than just suggest metadata changes, it needed to work for business goals and engagement as well.</h3>
         <p>Beyond metadata, the panel also handled what we called supporting content: related stories surfaced from Arc's vector search, and lead art suggestions pulled from the story's subject matter.</p>
         <p>I worked on how these would be presented in the review flow, specifically how to show an AI-suggested image in context without making it feel like the AI had made an editorial call. The suggestion had to feel like a recommendation from a well-informed colleague, not an autonomous edit.</p>
         <p>The accepted and rejected states were as important as the suggestion itself. When an author rejected a lead image, that rejection needed to be visible and recoverable: not punitive, not permanent, not lost.</p>
@@ -1239,7 +1265,6 @@
         <p>The video explorations were not yet on a finalized roadmap when I was laid off, but the design language, the panel architecture, and the model for communicating changes versus suggestions were built to extend. The components were designed to be adapted, not rebuilt from scratch.</p>
         <p>What I came away with was a clearer sense of what it means to design for trust in an AI product. The hardest part of this project was not the interface. It was the model for how humans and AI share a workspace. Every decision about what the AI does automatically, what it surfaces as a suggestion, how it records what happened and makes that history legible: those are trust decisions before they are design decisions.</p>
         <div class="quote-callout">The panel was the answer we landed on. The work inside it was about earning the right to be there.</div>
-        <div class="project-image"><img src="images/aia_field_indicators.png" alt="Audio edit page"><div class="image-caption">Exploring how to signal an AI-suggested change at the field level without overwhelming the interface. The goal was clarity without noise.</div></div>
         <div class="project-image">
           <video autoplay loop muted playsinline style="width:100%; display:block;">
             <source src="images/aia_final_shipped.mp4" type="video/mp4">
@@ -1923,6 +1948,24 @@ function setNav(pageId) {
   }
 }
 
+// ── CONTENTSQUARE VIRTUAL PAGEVIEWS ──
+// Every "page" here is a hash route inside one document, so Contentsquare only
+// ever sees the first load on its own. Push a pageview on each route change so
+// case studies show up as separate pages in the Contentsquare UI.
+// Held off until initFromUrl has run: the tag in <head> already counts the
+// landing route, and the initial _activate* call would double it.
+let _csReady = false;
+let _csLastPath = null;
+
+function csTrackView() {
+  if (!_csReady) return;
+  const path = location.pathname + location.hash.replace('#', '?__');
+  if (path === _csLastPath) return;
+  _csLastPath = path;
+  window._uxa = window._uxa || [];
+  window._uxa.push(['trackPageview', path]);
+}
+
 // ── ROUTING ──
 let _pendingScrollFix = null;
 
@@ -1933,6 +1976,7 @@ function _activatePage(pageId) {
   window.scrollTo(0, 0);
   setNav(pageId);
   updateFloatBtns(pageId);
+  csTrackView();
 }
 
 function _activateProject(idx) {
@@ -1946,6 +1990,7 @@ function _activateProject(idx) {
   setNav('project-' + idx);
   observeProjectSections();
   updateFloatBtns('project-' + idx);
+  csTrackView();
 }
 
 function showPage(pageId, e) {
@@ -2001,6 +2046,7 @@ window.addEventListener('popstate', function(e) {
     document.getElementById('home').classList.add('active');
     setNav('home');
     updateFloatBtns('home');
+    csTrackView();
     setTimeout(() => window.scrollTo({ top: homeScrollPos, behavior: 'instant' }), 20);
   } else if (typeof state.idx === 'number') {
     _activateProject(state.idx);
@@ -2100,6 +2146,10 @@ applyView();
 
 // Route to whatever the URL points at, last, once every binding above exists.
 initFromUrl();
+// The <head> tag already counted the landing route; start reporting from the
+// next navigation on.
+_csReady = true;
+_csLastPath = location.pathname + location.hash.replace('#', '?__');
 </script>
 </body>
 </html>
