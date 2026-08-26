@@ -1895,7 +1895,10 @@ function renderViewFooter() {
 // calls _activateProject, which reads `let` bindings declared further down. Run
 // it inline and a deep link throws a TDZ error that kills the rest of the file.
 function initFromUrl() {
-  const hash = location.hash.slice(1);
+  // "#home" is a legacy URL the nav used to produce, and links to it are out in
+  // the wild. Treat it as home so it is normalised back to the clean URL below.
+  let hash = location.hash.slice(1);
+  if (hash === 'home') hash = '';
   const projectIdx = PROJECT_SLUGS.indexOf(hash);
   if (projectIdx !== -1) {
     history.replaceState({page: 'project-' + projectIdx, idx: projectIdx}, '', location.hash);
@@ -1913,15 +1916,13 @@ function initFromUrl() {
       history.replaceState({page: 'home'}, '', location.pathname + location.search);
       initNavScroll();
       updateFloatBtns('home');
-      observeFadeIns();
-      runHeroTyping();
+      initHome();
     }
   } else {
     history.replaceState({page: 'home'}, '', location.pathname + location.search);
     initNavScroll();
     updateFloatBtns('home');
-    observeFadeIns();
-    runHeroTyping();
+    initHome();
   }
 }
 
@@ -1969,10 +1970,24 @@ function csTrackView() {
 // ── ROUTING ──
 let _pendingScrollFix = null;
 
+// The hero heading is typed in by JS and every home banner starts at opacity 0
+// waiting on an IntersectionObserver, so home is a blank screen until this has
+// run. It must therefore run on every route into home, not just a bare first
+// load — an idle tab that the browser discards and reloads comes back on
+// whatever URL it was left on. Idempotent: safe to call on every activation.
+let _homeInited = false;
+function initHome() {
+  if (_homeInited) return;
+  _homeInited = true;
+  observeFadeIns();
+  runHeroTyping();
+}
+
 function _activatePage(pageId) {
   clearTimeout(_pendingScrollFix);
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
+  if (pageId === 'home') initHome();
   window.scrollTo(0, 0);
   setNav(pageId);
   updateFloatBtns(pageId);
@@ -1995,7 +2010,10 @@ function _activateProject(idx) {
 
 function showPage(pageId, e) {
   if (e) e.preventDefault();
-  history.pushState({page: pageId}, '', '#' + pageId);
+  // Home is the bare URL, not "#home". A "#home" URL used to be reachable from
+  // the nav, and reloading one skipped the home setup below entirely.
+  const url = pageId === 'home' ? location.pathname + location.search : '#' + pageId;
+  history.pushState({page: pageId}, '', url);
   _activatePage(pageId);
 }
 
@@ -2044,6 +2062,7 @@ window.addEventListener('popstate', function(e) {
   if (!state || state.page === 'home') {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('home').classList.add('active');
+    initHome();
     setNav('home');
     updateFloatBtns('home');
     csTrackView();
@@ -2059,8 +2078,15 @@ window.addEventListener('popstate', function(e) {
 // without us: a URL-bar edit, or a link pasted into a tab already on the site.
 // Without it those land on whatever page was already showing.
 window.addEventListener('hashchange', function() {
-  const idx = PROJECT_SLUGS.indexOf(location.hash.slice(1));
+  const hash = location.hash.slice(1);
+  const idx = PROJECT_SLUGS.indexOf(hash);
   if (idx !== -1) _activateProject(idx);
+  else if (!hash || hash === 'home') {
+    // Old "#home" links still work, but they get normalised away so the home
+    // page only ever has one URL.
+    if (hash) history.replaceState({page: 'home'}, '', location.pathname + location.search);
+    _activatePage('home');
+  }
 });
 
 // ── SCROLL ANIMATIONS ──
